@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :proposed_bets, foreign_key: :proposer_id, class_name: 'Bet'
+  has_many :receivers, through: :proposed_bets
 end
