@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :user, only: [:show, :index]
+  resources :users, only: [:show, :index]
 
   scope "/users/:id", :as => "user" do
     resources :bets, only: [:index, :new, :create]
