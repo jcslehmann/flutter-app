@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_162820) do
+ActiveRecord::Schema.define(version: 2019_05_24_093046) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bets", force: :cascade do |t|
+    t.integer "stake"
+    t.float "odds"
+    t.text "proposition"
+    t.datetime "deadline"
+    t.string "status"
+    t.boolean "outcome"
+    t.integer "likes"
+    t.integer "proposer_id"
+    t.integer "receiver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +47,6 @@ ActiveRecord::Schema.define(version: 2019_05_23_162820) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bets", "users", column: "proposer_id"
+  add_foreign_key "bets", "users", column: "receiver_id"
 end
