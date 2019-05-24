@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
 
   scope "/users/:id", :as => "user" do
-    resources :bets, only: [:index, :new, :create]
+    resources :bets, only: [:index, :new, :create, :show]
   end
 
   scope "/bets/:id", :as => "bet" do
