@@ -5,7 +5,7 @@ class BetsController < ApplicationController
 
   def new
     @bet = Bet.new
-    authorize @bet
+    # authorize @bet
   end
 
   def create
