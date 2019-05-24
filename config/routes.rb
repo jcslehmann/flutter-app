@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   scope "/users/:id", :as => "user" do
     resources :bets, only: [:index, :new, :create]
   end
-  resources :bets, only: [:show]
+  resources :bets, only: [:show, :destroy]
 
   scope "/bets/:id", :as => "bet" do
     resources :comments, only: [:index, :new, :create]
