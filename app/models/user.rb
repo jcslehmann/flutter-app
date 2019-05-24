@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :proposed_bets, foreign_key: :proposer_id, class_name: 'Bet'
   has_many :receivers, through: :proposed_bets
+  has_many :comments
 end
