@@ -1,1 +1,10 @@
-<p> hello im here </p>
+<h1>Have a flutter...</h1>
+<%= simple_form_for [@user, @bet] do |f| %>
+  <%= f.input :proposition, as: :text %>
+  <%= f.input :deadline,  as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :stake, as: :hidden, input_html: { class: "price_per_night"} %>
+  <p class="price-slider-text"></p>
+  <div class="money-slider my-3"></div>
+  <button class="btn btn-flat yellow"><%= f.button :submit %></button>
+
+<% end %>

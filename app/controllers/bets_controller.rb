@@ -5,6 +5,7 @@ class BetsController < ApplicationController
 
   def new
     @bet = Bet.new
+    @user = User.find(params[:id])
     # authorize @bet
   end
 
