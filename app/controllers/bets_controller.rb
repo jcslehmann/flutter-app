@@ -1,11 +1,11 @@
 class BetsController < ApplicationController
   def index
-    @bets = Bet.all
+    @bets = policy_scope(Bet)
   end
 
   def new
     @bet = Bet.new
-    # authorize @bet
+    authorize @bet
   end
 
   def create
@@ -13,12 +13,13 @@ class BetsController < ApplicationController
     @bet.likes = 0
     @bet.status = "Pending"
     @bet.proposer = current_user
+    authorize @bet
     @bet.save
   end
 
   def show
     find_bet
-    @bet.destroy
+    authorize @bet
   end
 
   private
