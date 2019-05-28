@@ -5,7 +5,5 @@ class Bet < ApplicationRecord
   validates :stake, presence: true
   validates :odds, presence: true
   validates :proposition, presence: true
-  validates :likes, presence: true
   validates :deadline, presence: true
-  validates :status, presence: true
 end
