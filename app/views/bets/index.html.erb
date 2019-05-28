@@ -1,3 +1,89 @@
+<h2> All bets</h2>
+
 <% @bets.each do |bet| %>
-<%= bet.proposition %>
+  <div class="card-product">
+    <% if bet.proposer == current_user %>
+      <%= cl_image_tag bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large" %>
+    <% else %>
+      <%= cl_image_tag bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large" %>
+    <% end %>
+      <div class="card-product-infos">
+        <ul>
+          <li> <%= bet.proposition %> </li>
+          <li> <%= bet.stake %> </li>
+          <li> <%= bet.deadline %> </li>
+        </ul>
+      </div>
+  </div>
 <% end %>
+
+<h2> Received bets </h2>
+
+<% @bets.each do |bet| %>
+  <div class="card-product">
+    <% if bet.status == received %>
+      <%= cl_image_tag bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large" %>
+    <% else %>
+      <%= cl_image_tag bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large" %>
+    <% end %>
+      <div class="card-product-infos">
+        <ul>
+          <li> <%= bet.proposition %> </li>
+          <li> <%= bet.stake %> </li>
+          <li> <%= bet.deadline %> </li>
+        </ul>
+      </div>
+  </div>
+<% end %>
+
+
+<% @bets.each do |bet| %>
+<% if bet.status == "received" %>
+  <%= bet.proposition %>
+  <%= bet.proposer.first_name %>
+<% end  %>
+<% end  %>
+
+<h2> Sent bets </h2>
+
+<% @bets.each do |bet| %>
+<% if bet.status == "sent" %>
+  <%= bet.proposition %>
+  <%= bet.receiver.first_name %>
+<% end  %>
+<% end  %>
+
+<h2> Ongoing bets </h2>
+
+<% @bets.each do |bet| %>
+<% if bet.status == "confirmed" %>
+  <%= bet.proposition %>
+  <% if bet.proposer == current_user %>
+  <%= bet.receiver.username %>
+  <% else  %>
+  <%= bet.proposer.username %>
+  <% end  %>
+<% end  %>
+<% end  %>
+
+<h2> Unvalidated bets </h2>
+
+<% @bets.each do |bet| %>
+<% if bet.status == "unvalidated" %>
+  <%= bet.proposition %>
+  <% if bet.proposer == current_user %>
+  <%= bet.receiver.username %>
+  <% else  %>
+  <%= bet.proposer.username %>
+<% end  %>
+<% end  %>
+<% end  %>
+
+<h2> Finished bets </h2>
+
+<% @bets.each do |bet| %>
+<% if bet.status == "finished" %>
+  <%= bet.proposition %>
+<% end  %>
+<% end  %>
+

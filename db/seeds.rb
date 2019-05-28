@@ -42,7 +42,7 @@ puts "Users created!"
   deadline =  Faker::Date.forward((1..20).to_a.sample)
   proposer = User.all.sample
   receiver = User.all.sample
-  status = %w[received sent confirmed unvalidated finished]
+  status = %w[pending confirmed unvalidated finished]
   likes = (1..100).to_a.sample
   Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
