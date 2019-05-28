@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  def my_bets
-    @user = current_user
-    authorize @user
-    @bets = @user.bets
+  def mybets
+    @bets = current_user.bets
   end
 
   def index
