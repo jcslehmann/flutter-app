@@ -1,7 +1,7 @@
 class BetPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(proposer: user).or(scope.where(receiver: user))
     end
 
     def create?
