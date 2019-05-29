@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = Policy_scope(User)
+    @users = User.all
   end
 
   def show
