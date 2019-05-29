@@ -1,0 +1,25 @@
+.icon-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $orange;
+  color: white;
+  height: 80px;
+  text-align: center;
+  color: $white !important;
+  font-size: 12px;
+  padding-top: 5px;
+  .btn{
+  width: 60px;
+  display: block;
+  };
+  .center-btn{
+  width: 60px;
+  display: block;
+  }
+  p {
+    color: $white !important;
+    font-size: 12px;
+  }
+}

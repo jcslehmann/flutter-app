@@ -1,11 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   background-color: $orange;
-  color: $black;
+  color: $white;
   align-items: center;
   height: 70px;
   display: flex;
-  margin-bottom: 50px;
 }
 
 .navbar-lewagon .navbar-brand i {
@@ -15,7 +14,7 @@
 .navbar-title {
   font-family: $headers-font;
   font-size: 48px;
-  color: $black;
+  color: $white;
 }
 
  #navbar {
