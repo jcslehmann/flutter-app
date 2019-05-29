@@ -1,11 +1,14 @@
 .avatar {
   width: 40px;
   border-radius: 50%;
+  background-color: $green;
+  text-align: center
 }
 .avatar-large {
   width: 56px;
   border-radius: 50%;
 }
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
