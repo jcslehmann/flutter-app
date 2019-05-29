@@ -1,0 +1,49 @@
+.noUi-base {
+  background-color: $cream !important;
+  color: $cream !important;
+}
+
+.noUi-handle {
+  background-color: $orange !important;
+  color: $orange !important;
+  border-radius: 50%;
+}
+
+.noUi-handle-lower {
+  border-radius: 50%;
+}
+
+.noUi-connect {
+  background-color: $blue !important;
+}
+
+#select2-receiver-container {
+  background-color: $cream;
+  box-shadow: 2px 2px;
+  border-radius: 8px;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: $white;
+  border: none !important;
+}
+
+.select2-results {
+  background-color: $cream;
+}
+
+.select2-search__field {
+  background-color: $cream;
+}
+
+#bet_odds {
+  background-color: $cream !important;
+}
+
+#bet_deadline {
+  background-color: $cream !important;
+}
+
+#bet_proposition {
+  background-color: $cream !important;
+}

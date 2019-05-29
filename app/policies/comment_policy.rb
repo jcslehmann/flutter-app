@@ -3,7 +3,7 @@ class CommentPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
+  end
     def create?
       true
     end
@@ -23,5 +23,4 @@ class CommentPolicy < ApplicationPolicy
     def destroy?
       true
     end
-  end
 end
