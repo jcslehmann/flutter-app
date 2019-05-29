@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-before_action :set_bet, only: [:new, :create, :destroy]
+
+  before_action :set_bet, only: [:new, :create, :destroy]
 
   def new
     @comment = Comment.new
