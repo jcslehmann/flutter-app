@@ -22,7 +22,8 @@
   <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
 
             <% @bets.each do |bet| %>
-                <div class="row index-card-bet align-items-center" >
+             <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
+                <div class="row index-card-bet align-items-center">
                     <div class="col-3">
                        <div class="align-self-start mr-3">
                           <% if bet.proposer == current_user %>
@@ -57,6 +58,7 @@
                     </div>
                 </div>
             <% end %>
+          <% end %>
   </div>
 
   <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
@@ -66,6 +68,7 @@
 
 
              <% @bets.each do |bet| %>
+             <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
               <% if bet.status == "pending" && bet.receiver = current_user %>
                   <div class="row index-card-bet align-items-center">
                       <div class="col-3">
@@ -102,13 +105,15 @@
                       </div>
                   </div>
               <% end %>
-            <% end %>
+              <% end %>
+           <% end %>
 
 
           <strong> Sent  </strong>
 
 
              <% @bets.each do |bet| %>
+               <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
                 <% if bet.status == "pending" && bet.proposer = current_user %>
                   <div class="row index-card-bet align-items-center">
                       <div class="col-3">
@@ -146,11 +151,13 @@
                   </div>
               <% end %>
             <% end %>
+           <% end %>
   </div>
 
   <div class="tab-pane fade" id="pills-live" role="tabpanel" aria-labelledby="pills-live-tab">
 
         <% @bets.each do |bet| %>
+         <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
               <% if bet.status == "confirmed" %>
                   <div class="row index-card-bet align-items-center">
                       <div class="col-3">
@@ -188,11 +195,13 @@
                   </div>
               <% end %>
             <% end %>
+          <% end %>
   </div>
 
   <div class="tab-pane fade" id="pills-verdict" role="tabpanel" aria-labelledby="pills-verdict-tab">
 
           <% @bets.each do |bet| %>
+            <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
               <% if bet.status == "unvalidated" %>
                   <div class="row index-card-bet align-items-center">
                       <div class="col-3">
@@ -230,6 +239,7 @@
                   </div>
               <% end %>
             <% end %>
+          <% end %>
   </div>
 
 
@@ -237,6 +247,7 @@
 
 
          <% @bets.each do |bet| %>
+          <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
             <% if bet.status == "finished" %>
                 <div class="row index-card-bet align-items-center">
                     <div class="col-3">
@@ -274,6 +285,7 @@
                 </div>
             <% end %>
           <% end %>
+        <% end %>
   </div>
 </div>
 
