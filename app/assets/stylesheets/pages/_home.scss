@@ -1,1 +1,135 @@
-// Specific CSS for your home-page
+.cards-container {
+  background-color: white;
+  padding: 20px;
+  justify-content: center
+}
+
+.card {
+  background-color: $cream;
+  border-radius: 50px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+}
+
+.card .card-avatars {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  p {
+    font-size: 14px;
+  }
+}
+
+.card-avatars-sides {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 35%;
+  p {
+    margin : 0px 10px;
+  }
+}
+
+.card .odds-avatar {
+  left: 128px;
+  top: 18px;
+  position: absolute;
+}
+
+.odds-avatar {
+  width: 64px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: $green;
+  text-align: center;
+  padding-top: 10px;
+  p {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.card .card-text-actions {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 45px
+}
+
+.card .card-text {
+  justify-content: left;
+  font-family: $body-font;
+  p {
+    text-overflow: ellipsis;
+    width: 250px;
+    white-space: nowrap;
+    overflow:hidden;
+    font-size: 14px;
+  }
+}
+
+.card .card-actions {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  right: -10px;
+  top: 40px
+
+}
+
+.big-button {
+  border-radius: 30px;
+  width: 100%;
+  background-color: $blue;
+  border-color: $blue;
+  transition-timing-function: ease-in-out;
+  transition: 0.7s;
+  color: $white;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+    border-color: $black;
+  }
+}
+
+.btn-action {
+  width: 25px;
+  display: block;
+}
+
+/*################################## put to shared */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
