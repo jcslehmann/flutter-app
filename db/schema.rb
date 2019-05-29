@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_135428) do
+ActiveRecord::Schema.define(version: 2019_05_29_094940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(version: 2019_05_28_135428) do
     t.text "proposition"
     t.datetime "deadline"
     t.string "status"
-    t.boolean "outcome"
+    t.boolean "proposer_verdict"
     t.integer "likes"
     t.integer "proposer_id"
     t.integer "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "receiver_verdict"
   end
 
   create_table "comments", force: :cascade do |t|
