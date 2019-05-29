@@ -1,4 +1,11 @@
-// .container {
-//   display: flex;
-// }
+.vert-cont {
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h1 {
+  padding: 20px;
+}
 
