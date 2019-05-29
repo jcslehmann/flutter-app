@@ -8,6 +8,7 @@ const initSlider = () => {
     noUiSlider.create(slider, {
       start: [3],
       step: 0.5,
+      connect: "lower",
       range: {
         min: [0.5],
         max: [40]

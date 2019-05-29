@@ -23,7 +23,6 @@ gem 'carrierwave', '~> 1.2'
 gem 'flatpickr'
 gem 'nouislider-rails'
 gem 'pg_search'
-gem 'select2-rails'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

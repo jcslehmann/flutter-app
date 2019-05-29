@@ -7,6 +7,7 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
+  background-color: $orange;
 }
 
 .search-form-control .form-control {
@@ -22,7 +23,7 @@
 }
 
 .btn-flat {
-  color: white;
+  color: $white;
   padding: 8px 24px;
   border-radius: 4px;
   background: $orange;
@@ -30,7 +31,7 @@
 }
 
 .btn-flat:hover {
-  background: $orange;
+  background: $blue;
   color: white;
 }
 

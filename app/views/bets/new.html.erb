@@ -1,18 +1,33 @@
 <h1>Have a flutter...</h1>
 <%= simple_form_for [@user, @bet] do |f| %>
-  <%= f.input :proposition, as: :text %>
-  <%= f.input :deadline,  as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.input :stake, as: :hidden, input_html: { class: "price_per_night"} %>
-  <p>Stake</p>
-  <p class="price-slider-text"></p>
-  <div class="money-slider my-3"></div>
-  <%= form_tag(root_path, :method => "get") do %>
-      <div class="search-form-control form-group yellow", id="search_bar">
-        <%= search_field_tag :search, params[:search], placeholder: "Find your challenger!", class: "form-control string required" %>
-        <button name="button" type="submit" class="btn btn-flat yellow">
-          <i class="fas fa-search"></i> Search
-        </button>
-      </div>
-    <% end %>
+  <div class="proposition">
+  <%= f.input :proposition, as: :text, include_blank: true, placeholder: "Please explain your yes/no proposition!" %>
+  <button class="btn btn-flat" type="button" id="button-one">Next</button>
+</div>
+  <div class="deadline d-none">
+    <%= f.input :deadline,  as: :string, required: false, input_html: {class: "datepicker"} %>
+    <button class="btn btn-flat" type="button" id="button-two">Next</button>
+  </div>
+  <div class="odds d-none">
+  <%= f.input :odds, as: :float, include_blank: true, placeholder: "Decimal" %>
+  <button class="btn btn-flat" type="button" id="button-three">Next</button>
+  </div>
+    <div class="stake d-none">
+      <%= f.input :stake, as: :hidden, input_html: { class: "price_per_night"} %>
+      <p>Stake</p>
+      <p class="price-slider-text"></p>
+      <div class="money-slider my-3"></div>
+      <button class="btn btn-flat" type="button" id="button-four">Next</button>
+    </div>
+    <div class="receiver d-none">
+    <p>Search for challenger</p>
+    <%= select_tag "receiver", options_from_collection_for_select(
+      User.all,
+      :id, :username),
+      class: 'select' %>
+    <br>
+    <br>
+    <br>
   <button class="btn btn-flat yellow"><%= f.button :submit %></button>
+    </div>
 <% end %>
