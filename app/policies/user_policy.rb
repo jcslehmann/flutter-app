@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def my_bets?
     true
   end
+
+  def show
+    true
+  end
 end
