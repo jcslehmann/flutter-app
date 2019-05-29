@@ -1,1 +1,18 @@
-<p> hello im here </p>
+<h1>Have a flutter...</h1>
+<%= simple_form_for [@user, @bet] do |f| %>
+  <%= f.input :proposition, as: :text %>
+  <%= f.input :deadline,  as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :stake, as: :hidden, input_html: { class: "price_per_night"} %>
+  <p>Stake</p>
+  <p class="price-slider-text"></p>
+  <div class="money-slider my-3"></div>
+  <%= form_tag(root_path, :method => "get") do %>
+      <div class="search-form-control form-group yellow", id="search_bar">
+        <%= search_field_tag :search, params[:search], placeholder: "Find your challenger!", class: "form-control string required" %>
+        <button name="button" type="submit" class="btn btn-flat yellow">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+  <button class="btn btn-flat yellow"><%= f.button :submit %></button>
+<% end %>
