@@ -1,3 +1,3 @@
-import flatpickr from "flatpickr"
-
-flatpickr(".datepicker", {})
+import flatpickr from "flatpickr";
+import "flatpickr/dist/themes/confetti.css";
+flatpickr(".datepicker", {});
