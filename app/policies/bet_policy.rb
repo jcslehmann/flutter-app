@@ -3,8 +3,8 @@ class BetPolicy < ApplicationPolicy
     def resolve
       scope.where(proposer: user).or(scope.where(receiver: user))
     end
-
   end
+
     def create?
       true
     end
