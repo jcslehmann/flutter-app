@@ -1,3 +1,22 @@
-<% @users.each do |user|  %>
-<%= user.email %>
-<% end  %>
+<% @users.each do |user| %>
+   <%= link_to user_path(user), class: 'text-decoration-none' do %>
+      <div class="row index-card-bet align-items-center">
+          <div class="col-3">
+             <div class="align-self-start mr-3">
+                  <%= cl_image_tag user.photo, height: 50, crop: :fill, class: "avatar-large" %>
+             </div>
+          </div>
+          <div class="col-7 align-left">
+              <div class="top-half">
+                  <%= user.first_name %>
+              </div>
+               <div class="bottom-half">
+                Bets won: xx | Bets played: xx
+              </div>
+          </div>
+          <div class="col-2 align-right-middle">
+              <p> #2 <p>
+          </div>
+      </div>
+  <% end %>
+<% end %>
