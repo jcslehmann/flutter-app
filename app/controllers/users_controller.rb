@@ -9,6 +9,11 @@ class UsersController < ApplicationController
 
   def show
     find_user
+    @user_bets = []
+    @user.received_bets.each { |b| @user_bets << b }
+    @user.proposed_bets.each { |b| @user_bets << b }
+
+    # authorize @user
   end
 
   private
