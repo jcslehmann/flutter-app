@@ -1,6 +1,7 @@
+<%= render 'shared/navbar', title: "Home" %>
 <div class="cards-container">
  <div class ="big-button">
-    <%= link_to new_user_bet_path(current_user) do %><p> Have a flutter </p><% end %>
+    <%= link_to new_user_bet_path(current_user) do %><p class="btn-color"> Have a flutter </p><% end %>
   </div>
   <br>
   <% @bets.each do |b| %>
@@ -29,6 +30,5 @@
         </div>
       </div>
     </div>
-    <br>
     <% end %>
 </div>
