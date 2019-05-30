@@ -1,12 +1,13 @@
 class BetsController < ApplicationController
   def index
-    @bets = policy_scope(Bet)
+    @bets = Bet.all
+    # @bets = policy_scope(Bet)
   end
 
   def new
     @bet = Bet.new
     @user = User.find(params[:id])
-    authorize @bet
+    # authorize @bet
   end
 
   def create
@@ -27,7 +28,7 @@ class BetsController < ApplicationController
 
   def show
     find_bet
-    authorize @bet
+    # authorize @bet
   end
 
   private
