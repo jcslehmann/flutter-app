@@ -61,7 +61,7 @@ puts "created #{User.first.email} as an admin!"
 # user.save!
 
 
-6.times do
+5.times do
   balance = (1..50).to_a.sample
   user = User.new(first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name, username: Faker::Food.dish,
