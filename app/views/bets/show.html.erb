@@ -4,7 +4,9 @@
 <p> They want to wager <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
 <p> If you win you would stand to gain <%= @bet.stake*(@bet.odds/2) %> </p>
 <p> Their proposition is: </p>
+  <p> ...............  </p>
 <p> "<%= @bet.proposition %>"" </p>
+  <p> ...............  </p>
 <p> Do you accept or reject this bet? </p>
 <p> YES or NO </p>
 <% end  %>
@@ -16,8 +18,11 @@
 <p> The deadline has now passed - it was <%= @bet.deadline %> </p>
 <p> They wagered <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
 <p> Did the proposition happen? <p>
-<p> <%= @bet.proposition %> </p>
-<p> YES or NO </p>
+  <p> ...............  </p>
+<p> "<%= @bet.proposition %>" </p>
+  <p> ...............  </p>
+  <p> Do you accept or reject this bet? </p>
+<p> YES (BUTTON) or NO (BUTTON) </p>
 
 <% end  %>
 
@@ -28,7 +33,9 @@
 <p> The deadline has now passed - it was <%= @bet.deadline %> </p>
 <p> You wagered  <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
 <p> Did the proposition happen? <p>
+  <p> ...............  </p>
 <p> <%= @bet.proposition %> </p>
+  <p> ...............  </p>
 <p> YES or NO </p>
 
 <% end  %>
@@ -39,8 +46,9 @@
 <p> You and <%= @bet.receiver.first_name %> </p>
 <p> You wagered  <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
 <p> The proposition was: </p>
+  <p> ...............  </p>
 <%= @bet.proposition %>
-<p> The proposition was: </p>
+  <p> ...............  </p>
 
 <% end  %>
 
