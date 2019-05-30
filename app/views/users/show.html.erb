@@ -1,4 +1,4 @@
-<%= render 'shared/navbar', title: "Pal" %>
+<%= render 'shared/navbar', title: "Profile" %>
 <div class="vert-cont">
 
 <% if @user == current_user %>
@@ -8,6 +8,7 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" id="pills-all-balance" data-toggle="pill" href="#pills-balance" role="tab" aria-controls="pills-pending" aria-selected="false">Balance</a>
+
   </li>
 </ul>
 
@@ -19,11 +20,17 @@
     <h6><%= @user.received_bets.count %></h6>
     <h5>Biggest Wager</h5>
     <h6><%= @user_bets.sort{ |b| b.stake }.reverse.first.stake %></h6>
+
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"%>
+
   </div>
 
   <div class="tab-pane fade" id="pills-balance" role="tabpanel" aria-labelledby="pills-all-balance">
     <h2>Balance here</h2>
     <h5>£ <%= @user.balance %>  </h5>
+
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"%>
+
   </div>
 
 <% else %>
@@ -54,6 +61,7 @@
 
 
 <% end  %>
+
 
 
 
