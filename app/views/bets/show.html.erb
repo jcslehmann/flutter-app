@@ -11,6 +11,16 @@
 <p> YES or NO </p>
 <% end  %>
 
+<% if current_user == @bet.proposer && @bet.status == "pending" %>
+<h1> You sent a bet... </h1>
+<p> <%= @bet.receiver.first_name %> still hasn't replied... </p>
+<p> You want to wager <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
+<p> Your proposition is: </p>
+  <p> ...............  </p>
+<p> "<%= @bet.proposition %>"" </p>
+  <p> ...............  </p>
+<% end  %>
+
 <% if current_user == @bet.receiver && @bet.status == "unvalidated" %>
 
 <h1> This bet needs your validation </h1>
