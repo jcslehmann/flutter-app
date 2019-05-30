@@ -14,8 +14,15 @@ class BetsController < ApplicationController
     @bet.likes = 0
     @bet.status = "Pending"
     @bet.proposer = current_user
+    @receiver = User.find(params[:receiver])
+    @bet.receiver = @receiver
     authorize @bet
-    @bet.save
+
+    if @bet.save
+      redirect_to bets_path
+    else
+      render :new
+    end
   end
 
   def show
