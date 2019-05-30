@@ -1,3 +1,4 @@
+<%= render 'shared/navbar', title: "Pals" %>
 <% @users.each do |user| %>
    <%= link_to user_path(user), class: 'text-decoration-none' do %>
       <div class="row index-card-bet align-items-center">

@@ -1,3 +1,4 @@
+<%= render 'shared/navbar', title: "Bet page" %>
 <% if current_user == @bet.receiver && @bet.status == "pending" %>
 <h1> You have received a bet... </h1>
 <p> <%= @bet.proposer.first_name %> wants to have a cheeky flutter with you </p>
