@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = policy_scope(User)
   end
 
   def show
@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     @user_bets = []
     @user.received_bets.each { |b| @user_bets << b }
     @user.proposed_bets.each { |b| @user_bets << b }
-
-    # authorize @user
+    authorize @user
   end
 
   private
