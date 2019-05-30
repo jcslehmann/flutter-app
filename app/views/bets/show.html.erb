@@ -1,1 +1,53 @@
-<h1> This is an individual bet show page</h1>
+<% if current_user == @bet.receiver && @bet.status == "pending" %>
+<h1> You have received a bet... </h1>
+<p> <%= @bet.proposer.first_name %> wants to have a cheeky flutter with you </p>
+<p> They want to wager <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
+<p> If you win you would stand to gain <%= @bet.stake*(@bet.odds/2) %> </p>
+<p> Their proposition is: </p>
+<p> "<%= @bet.proposition %>"" </p>
+<p> Do you accept or reject this bet? </p>
+<p> YES or NO </p>
+<% end  %>
+
+<% if current_user == @bet.receiver && @bet.status == "unvalidated" %>
+
+<h1> This bet needs your validation </h1>
+<p> <%= @bet.proposer.first_name %> had a cheeky flutter with you. %> </p>
+<p> The deadline has now passed - it was <%= @bet.deadline %> </p>
+<p> They wagered <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
+<p> Did the proposition happen? <p>
+<p> <%= @bet.proposition %> </p>
+<p> YES or NO </p>
+
+<% end  %>
+
+<% if current_user == @bet.proposer && @bet.status == "unvalidated" %>
+
+<h1> This bet needs your validation </h1>
+<p> You had a cheeky flutter with <%= @bet.receiver.first_name %> </p>
+<p> The deadline has now passed - it was <%= @bet.deadline %> </p>
+<p> You wagered  <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
+<p> Did the proposition happen? <p>
+<p> <%= @bet.proposition %> </p>
+<p> YES or NO </p>
+
+<% end  %>
+
+<% if @bet.status == "finished" && current_user == @bet.proposer %>
+
+<h1> This bet is finished, and has been validated.</h1>
+<p> You and <%= @bet.receiver.first_name %> </p>
+<p> You wagered  <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
+<p> The proposition was: </p>
+<%= @bet.proposition %>
+<p> The proposition was: </p>
+
+<% end  %>
+
+<% if @bet.status == "finished" && current_user == @bet.receiver %>
+
+<h1> This bet is finished, and has been validated.</h1>
+<h1> The <%= @bet.proposition %> happened! </h1>
+<p> Which means that you lose... :( </p>
+
+<% end  %>

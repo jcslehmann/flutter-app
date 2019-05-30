@@ -37,7 +37,7 @@ puts "Users created!"
 
 20.times do
   stake = (1..20).to_a.sample
-  odds = rand(0.1..0.9)
+  odds = rand(1.1..50)
   proposition = Faker::Movies::HarryPotter.quote
   deadline =  Faker::Date.forward((1..20).to_a.sample)
   proposer = User.first(3).sample
