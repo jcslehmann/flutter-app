@@ -1,13 +1,12 @@
 <div class="vert-cont">
 
-<div class="index-cards-container">
-
+<% if @user == current_user %>
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="pills-all-statistics" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">STATISTICS</a>
+    <a class="nav-link active" id="pills-all-statistics" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">Statistics</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-all-balance" data-toggle="pill" href="#pills-balance" role="tab" aria-controls="pills-pending" aria-selected="false">BALANCE</a>
+    <a class="nav-link" id="pills-all-balance" data-toggle="pill" href="#pills-balance" role="tab" aria-controls="pills-pending" aria-selected="false">Balance</a>
   </li>
 </ul>
 
@@ -25,6 +24,38 @@
     <h2>Balance here</h2>
     <h5>£ <%= @user.balance %>  </h5>
   </div>
+
+<% else %>
+
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-all-statistics" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">Statistics</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-all-balance" data-toggle="pill" href="#pills-balance" role="tab" aria-controls="pills-pending" aria-selected="false">Head-To-Head</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="pills-all">
+  <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-statistics">
+    <h5>Numbers of bets proposed</h5>
+    <h6><%= @user.proposed_bets.count %></h6>
+    <h5>Numbers of bets taken</h5>
+    <h6><%= @user.received_bets.count %></h6>
+    <h5>Biggest Wager</h5>
+    <h6><%= @user_bets.sort{ |b| b.stake }.reverse.first.stake %></h6>
+  </div>
+
+  <div class="tab-pane fade" id="pills-balance" role="tabpanel" aria-labelledby="pills-all-balance">
+    <h2>Head to head record</h2>
+  </div>
+
+
+<% end  %>
+
+
+
 </div>
 
 
