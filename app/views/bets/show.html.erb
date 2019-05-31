@@ -4,111 +4,300 @@
 <% if current_user == @bet.receiver && @bet.status == "pending" %>
 
 
-    <h1> You have received a bet... </h1>
-    <p> <%= @bet.proposer.first_name %> wants to have a cheeky flutter with you </p>
-    <p> They want to wager <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
-    <p> If you win you would stand to gain <%= @bet.stake*(@bet.odds/2) %> </p>
-    <p> Their proposition is: </p>
-    <p> ...............  </p>
-    <p> "<%= @bet.proposition %>"" </p>
-    <p> ...............  </p>
+    <div class= "show-card">
+      <strong> <%=  @bet.proposer.first_name %> bet you that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> They have wagered $<%= @bet.stake %> at odds of <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
     <p> Do you accept or reject this bet? </p>
     <div class="bet-confirmation">
       <%= link_to 'Accept', bet_path(@bet, receiver_accepting: true), class: 'btn btn-primary', method: :patch %>
       <%= link_to 'Reject', bet_path(@bet), class: 'btn btn-danger' %>
     </div>
+
 <% end  %>
 
 <% if current_user == @bet.proposer && @bet.status == "pending" %>
 
+    <div class= "show-card">
+      <strong> You bet <%=  @bet.receiver.first_name %> that: </strong>
+    </div>
 
-      <h1> You sent a bet... </h1>
-      <p> <%= @bet.receiver.first_name %> still hasn't replied... </p>
-      <p> You want to wager <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
-      <p> Your proposition is: </p>
-        <p> ...............  </p>
-      <p> "<%= @bet.proposition %>"" </p>
-        <p> ...............  </p>
-<% end  %>
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
 
-<% if @bet.status == "confirmed" %>
+    <div class= "show-card">
+      <p> You wagered $<%= @bet.stake %> at odds of <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
 
-    <p> Your bet is live! </p>
-    <p> In <%= @bet.deadline %> you will be asked to give your verdict </p>
-<% end  %>
-
-
-<% if current_user == @bet.proposer && @bet.proposer_verdict == nil && @bet.status == "unvalidated" %>
-
-    <h1> This bet needs your validation </h1>
-    <p> <%= @bet.receiver.first_name %> had a cheeky flutter with you. %> </p>
-    <p> The deadline has now passed - it was <%= @bet.deadline %> </p>
-    <p> They wagered <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
-    <p> Did the proposition happen? <p>
-    <p> ...............  </p>
-    <p> "<%= @bet.proposition %>" </p>
-    <p> ...............  </p>
-    <p> Did the event happen? </p>
-    <div class="bet-confirmation">
-        <%= link_to 'True', bet_path(@bet, proposer_verdict_true: true), class: 'btn btn-primary', method: :patch %>
-        <%= link_to 'False', bet_path(@bet, proposer_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+    <div class= "show-card">
+      <p> <%= @bet.receiver.first_name %> has not replied to your offer yet... </p>
     </div>
 
 <% end  %>
 
+<% if @bet.status == "confirmed" %>
+
+    <div class= "show-card">
+      <strong> <%=  @bet.proposer.first_name %> bet <%= @bet.receiver.first_name %> that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+    <div class= "show-card">
+      <p> Did it happen? </p>
+      <p> In ... </p>
+      <br>
+      <div id="countdownTimer"></div>
+      <br>
+      <p> You will be asked to verify this bet </p>
+    </div>
+
+<% end  %>
+
+<% if current_user == @bet.proposer && @bet.proposer_verdict == nil && @bet.status == "unvalidated" %>
+
+
+    <div class= "show-card">
+      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+        <p> Did it happen? </p>
+        <div class="bet-confirmation">
+          <%= link_to 'True', bet_path(@bet, proposer_verdict_true: true), class: 'btn btn-primary', method: :patch %>
+          <%= link_to 'False', bet_path(@bet, proposer_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+      </div>
+    </div>
+
+<% end  %>
+
+
 <% if current_user == @bet.proposer && @bet.proposer_verdict != nil && @bet.status == "unvalidated" %>
 
-    <p> Your friend hasn't validated yet... I'm sure they will soon. Sit tight! </p>
+
+ <div class= "show-card">
+      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+      <p> Your friend hasn't validated yet... I'm sure they will soon. Sit tight!  </p>
+   </div>
 
 <% end  %>
 
 
 <% if current_user == @bet.receiver && @bet.receiver_verdict == nil && @bet.status == "unvalidated" %>
 
-    <h1> This bet needs your validation </h1>
-    <p> <%= @bet.proposer.first_name %> had a cheeky flutter with you. %> </p>
-    <p> The deadline has now passed - it was <%= @bet.deadline %> </p>
-    <p> They wagered <%= @bet.stake %> at odds of <%= @bet.odds.round(2) %> </p>
-    <p> Did the proposition happen? <p>
-      <p> ...............  </p>
-    <p> "<%= @bet.proposition %>" </p>
-      <p> ...............  </p>
-      <p> Did the event happen? </p>
-    <div class="bet-confirmation">
-        <%= link_to 'True', bet_path(@bet, receiver_verdict_true: true), class: 'btn btn-primary', method: :patch %>
-        <%= link_to 'False', bet_path(@bet, receiver_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+    <div class= "show-card">
+      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+        <p> Did it happen? </p>
+        <div class="bet-confirmation">
+          <%= link_to 'True', bet_path(@bet, receiver_verdict_true: true), class: 'btn btn-primary', method: :patch %>
+          <%= link_to 'False', bet_path(@bet, receiver_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+      </div>
     </div>
 
 <% end  %>
 
 <% if current_user == @bet.receiver && @bet.receiver_verdict != nil && @bet.status == "unvalidated" %>
 
-    <p> Your friend hasn't validated yet ... I'm sure they will soon. Sit tight! </p>
+    <div class= "show-card">
+      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+        <p> Your friend hasn't validated yet ... I'm sure they will soon. Sit tight! </p>
+    </div>
 
 <% end  %>
 
 <% if @bet.status == "finished" && current_user == @bet.proposer && @bet.proposer_verdict = @bet.final_outcome  %>
 
-    <h1> You won </h1>
+
+    <div class= "show-card">
+      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+      <p> You won!  </p>
+   </div>
 
 <% end  %>
 
 <% if @bet.status == "finished" && current_user == @bet.proposer && @bet.proposer_verdict != @bet.final_outcome  %>
 
-    <h1> You lost </h1>
+   <div class= "show-card">
+      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+      <p> You lost!  </p>
+   </div>
 
 <% end  %>
 
 
 <% if @bet.status == "finished" && current_user == @bet.receiver && @bet.receiver_verdict == @bet.final_outcome  %>
 
-    <h1> You won </h1>
+
+ <div class= "show-card">
+      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+        <p> You won! </p>
+    </div>
 
 <% end  %>
 
 <% if @bet.status == "finished" && current_user == @bet.receiver && @bet.receiver_verdict != @bet.final_outcome  %>
 
-    <h1> You lost </h1>
+ <div class= "show-card">
+    <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+        <p> You lost! </p>
+    </div>
 
 <% end  %>
+
+<% if @bet.status == "finished" && @bet.consensus_reached != true  %>
+
+<div class= "show-card">
+
+    <strong> <%= @bet.proposer.first_name %> and <%= @bet.receiver.first_name %> had a flutter on... </strong>
+    </div>
+
+    <div class= "show-card">
+      <p> "<%= @bet.proposition %>" </p>
+    </div>
+
+    <div class= "show-card">
+      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+   <div class= "show-card">
+        <p> But sadly they weren't able to reach a consensus about what happened </p>
+    </div>
+
+<% end %>
+
+
+<script>
+  <%
+  @newTime = @bet.deadline.strftime("%b%e %Y %l %M %S").to_s.gsub('&quot;', '')
+  @formattedTime = @newTime.split.insert(2, ',').insert(5, ':').insert(7, ':').join.chars.insert(3, " ").insert(6, " ").insert(11, " ").join
+  %>
+  // Set the date we're counting down to
+  var countDownDate = new Date('<%= @formattedTime %>').getTime();
+
+  // Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("countdownTimer").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdownTimer").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
 
