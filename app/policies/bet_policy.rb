@@ -5,15 +5,23 @@ class BetPolicy < ApplicationPolicy
     end
   end
 
-    def create?
-      true
-    end
+  def create?
+    true
+  end
 
-    def show?
-      true
-    end
+  def show?
+    true
+  end
 
-    def new?
-      true
-    end
+  def new?
+    true
+  end
+
+  def update?
+    record.receiver == user || record.proposer == user
+  end
+
+  def edit?
+    update?
+  end
 end
