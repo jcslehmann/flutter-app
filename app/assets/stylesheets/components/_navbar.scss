@@ -8,9 +8,38 @@
   padding-bottom: 10px;
 }
 
-.navbar-brand .nav-icon {
-  width: 50px;
+.logos {
   padding-bottom: 20px;
+  display: flex;
+  justify-content: end;
+  position: absolute;
+  right: -10px;
+  top: 25px;
+  .icon-wrapper{
+        position:relative;
+        float:left;
+    }
+    *.icon-color {color: $blue}
+    i {
+        width:100px;
+        text-align:center;
+        vertical-align:middle;
+    }
+    .badge{
+        background: rgba(0,0,0,0.5);
+        width: 20px;
+        height: 20px;
+        margin: 0px;
+        border-radius: 50%;
+        position:absolute;
+        top:-15px;
+        right:16px;
+        padding-right:7px;
+        padding-top: 5px;
+        color: $white;
+        font-weight: 200;
+        font-size: 8px;
+    }
 }
 
 .navbar-title {
