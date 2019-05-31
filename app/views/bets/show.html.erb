@@ -1,4 +1,4 @@
-<%= render 'shared/navbar', title: "Bet page" %>
+<%= render 'shared/betnavbar', title: "Bet" %>
 
 
 <% if current_user == @bet.receiver && @bet.status == "pending" %>
@@ -59,10 +59,9 @@
     </div>
 
     <div class= "show-card">
-      <p> Did it happen? </p>
       <p> In ... </p>
       <br>
-      <div id="countdownTimer"></div>
+      <strong> <div id="countdownTimer"></div> </strong>
       <br>
       <p> You will be asked to verify this bet </p>
     </div>
