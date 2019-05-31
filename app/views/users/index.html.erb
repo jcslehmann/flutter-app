@@ -16,6 +16,28 @@
 
 <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
 
+   <%= link_to user_path(current_user), class: 'text-decoration-none' do %>
+      <div class="row index-card-bet align-items-center border-bottom border-secondary">
+          <div class="col-3">
+             <div class="align-self-start mr-3">
+                  <%= cl_image_tag current_user.photo, height: 50, crop: :fill, class: "avatar-large" %>
+             </div>
+          </div>
+          <div class="col-7 align-left">
+              <div class="top-half">
+                  <%= current_user.first_name %>
+              </div>
+               <div class="bottom-half">
+                Bets won: <%= current_user.wins  %>  | Bets lost: <%= current_user.loses  %>
+              </div>
+          </div>
+          <div class="col-2 align-right-middle">
+              <p> <%= current_user.ranking  %> <p>
+          </div>
+      </div>
+<% end %>
+
+
   <% @users.each do |user| %>
    <%= link_to user_path(user), class: 'text-decoration-none' do %>
       <div class="row index-card-bet align-items-center">
@@ -43,8 +65,49 @@
 
   <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
 
-<p> enter a-z ranking here</p>
+     <%= link_to user_path(current_user), class: 'text-decoration-none' do %>
+      <div class="row index-card-bet align-items-center border-bottom border-secondary">
+          <div class="col-3">
+             <div class="align-self-start mr-3">
+                  <%= cl_image_tag current_user.photo, height: 50, crop: :fill, class: "avatar-large" %>
+             </div>
+          </div>
+          <div class="col-7 align-left">
+              <div class="top-half">
+                  <%= current_user.first_name %>
+              </div>
+               <div class="bottom-half">
+                Bets won: <%= current_user.wins  %>  | Bets lost: <%= current_user.loses  %>
+              </div>
+          </div>
+          <div class="col-2 align-right-middle">
+              <p> <%= current_user.ranking  %> <p>
+          </div>
+      </div>
+<% end %>
 
+          <% @sorted_users.each do |user| %>
+         <%= link_to user_path(user), class: 'text-decoration-none' do %>
+            <div class="row index-card-bet align-items-center">
+                <div class="col-3">
+                   <div class="align-self-start mr-3">
+                        <%= cl_image_tag user.photo, height: 50, crop: :fill, class: "avatar-large" %>
+                   </div>
+                </div>
+                <div class="col-7 align-left">
+                    <div class="top-half">
+                        <%= user.first_name %>
+                    </div>
+                     <div class="bottom-half">
+                      Bets won: <%= user.wins  %>  | Bets lost: <%= user.loses  %>
+                    </div>
+                </div>
+                <div class="col-2 align-right-middle">
+                    <p> <%= user.ranking  %> <p>
+                </div>
+            </div>
+        <% end %>
+      <% end %>
   </div>
   </div>
 
