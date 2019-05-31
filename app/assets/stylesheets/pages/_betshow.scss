@@ -1,0 +1,119 @@
+.show-cards-container {
+  background-color: white;
+  padding: 20px;
+  justify-content: center
+}
+
+.show-card {
+  background-color: $cream;
+  border-radius: 5px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) */
+}
+
+.show-card .show-card-avatars {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  p {
+    font-size: 14px;
+  }
+}
+
+.show-card-avatars-sides {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 40%;
+  p {
+    margin : 0px 10px;
+  }
+}
+
+.show-card .show-odds-avatar {
+  left: 132px;
+  top: 18px;
+  position: absolute;
+}
+
+.show-odds-avatar {
+  width: 64px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: $green;
+  text-align: center;
+  padding-top: 10px;
+  p {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.show-user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.show-card .show-card-text-actions {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 45px
+}
+
+.show-card .show-card-text {
+  justify-content: left;
+  font-family: $body-font;
+  p {
+    text-overflow: ellipsis;
+    width: 250px;
+    white-space: nowrap;
+    overflow:hidden;
+    font-size: 14px;
+  }
+}
+
+.show-card .show-card-actions {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  right: -10px;
+  top: 40px
+
+}
+
+.big-button {
+  border-radius: 5px;
+  width: 100%;
+  background-color: $blue;
+  border-color: $blue;
+  transition-timing-function: ease-in-out;
+  transition: 0.2s;
+  color: $white !important;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+    border-color: $black;
+  }
+}
+
+.btn-action {
+  width: 25px;
+  display: block;
+}
+
+.btn-color {
+  color: $white;
+}
