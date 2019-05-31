@@ -3,6 +3,8 @@ class BetsController < ApplicationController
 
   def index
     @bets = policy_scope(Bet)
+    @user = current_user
+
   end
 
   def new
