@@ -19,7 +19,7 @@ Bet.destroy_all
 puts 'Making an admin!'
 
 # Admin User
-User.create!(username: "admin", first_name: "Joe", last_name: "Blogs", password: "123456", email: "joe@blogs.com", balance: 100, admin: true)
+User.create!(username: "admin", first_name: "Joe", last_name: "Blogs", password: "123456", email: "joe@blogs.com", balance: 100, admin: true, ranking: 6)
 
 puts "created #{User.first.email} as an admin!"
 
@@ -69,7 +69,7 @@ puts "created #{User.first.email} as an admin!"
     remote_photo_url: "https://source.unsplash.com/random/?person",
     wins: (1..50).to_a.sample,
     loses: (1..50).to_a.sample,
-    ranking: (1..6).to_a.sample)
+    ranking: (1..5).to_a.sample)
   user.email = "#{user.first_name}@email.com"
   user.save!
 end
