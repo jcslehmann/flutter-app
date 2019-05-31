@@ -12,7 +12,7 @@
           <p><%= b.proposer.first_name%></p>
         </div>
         <div class="odds-avatar">
-          <p><%=b.odds.round(2)%><p>
+          <p><%=b.odds.to_r.rationalize(0.05)%><p>
         </div>
         <div class="card-avatars-sides">
           <p><%=b.receiver.first_name%></p>
