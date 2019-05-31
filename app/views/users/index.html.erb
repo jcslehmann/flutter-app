@@ -1,5 +1,44 @@
 <%= render 'shared/navbar', title: "Pals" %>
-<% @users.each do |user| %>
+
+
+<div class="index-cards-container">
+
+  <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active px-3 mx-3" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">Ranking</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link px-3 mx-3" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="false">A-Z</a>
+    </li>
+  </ul>
+
+<div class="tab-content" id="pills-tabContent">
+
+<div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+
+   <%= link_to user_path(current_user), class: 'text-decoration-none' do %>
+      <div class="row index-card-bet align-items-center border-bottom border-secondary">
+          <div class="col-3">
+             <div class="align-self-start mr-3">
+                  <%= cl_image_tag current_user.photo, height: 50, crop: :fill, class: "avatar-large" %>
+             </div>
+          </div>
+          <div class="col-7 align-left">
+              <div class="top-half">
+                  <%= current_user.first_name %>
+              </div>
+               <div class="bottom-half">
+                Bets won: <%= current_user.wins  %>  | Bets lost: <%= current_user.loses  %>
+              </div>
+          </div>
+          <div class="col-2 align-right-middle">
+              <p> <%= current_user.ranking  %> <p>
+          </div>
+      </div>
+<% end %>
+
+
+  <% @users.each do |user| %>
    <%= link_to user_path(user), class: 'text-decoration-none' do %>
       <div class="row index-card-bet align-items-center">
           <div class="col-3">
@@ -16,8 +55,59 @@
               </div>
           </div>
           <div class="col-2 align-right-middle">
-              <p> #2 <p>
+              <p> <%= user.ranking  %> <p>
           </div>
       </div>
   <% end %>
 <% end %>
+
+</div>
+
+  <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
+
+     <%= link_to user_path(current_user), class: 'text-decoration-none' do %>
+      <div class="row index-card-bet align-items-center border-bottom border-secondary">
+          <div class="col-3">
+             <div class="align-self-start mr-3">
+                  <%= cl_image_tag current_user.photo, height: 50, crop: :fill, class: "avatar-large" %>
+             </div>
+          </div>
+          <div class="col-7 align-left">
+              <div class="top-half">
+                  <%= current_user.first_name %>
+              </div>
+               <div class="bottom-half">
+                Bets won: <%= current_user.wins  %>  | Bets lost: <%= current_user.loses  %>
+              </div>
+          </div>
+          <div class="col-2 align-right-middle">
+              <p> <%= current_user.ranking  %> <p>
+          </div>
+      </div>
+<% end %>
+
+          <% @sorted_users.each do |user| %>
+         <%= link_to user_path(user), class: 'text-decoration-none' do %>
+            <div class="row index-card-bet align-items-center">
+                <div class="col-3">
+                   <div class="align-self-start mr-3">
+                        <%= cl_image_tag user.photo, height: 50, crop: :fill, class: "avatar-large" %>
+                   </div>
+                </div>
+                <div class="col-7 align-left">
+                    <div class="top-half">
+                        <%= user.first_name %>
+                    </div>
+                     <div class="bottom-half">
+                      Bets won: <%= user.wins  %>  | Bets lost: <%= user.loses  %>
+                    </div>
+                </div>
+                <div class="col-2 align-right-middle">
+                    <p> <%= user.ranking  %> <p>
+                </div>
+            </div>
+        <% end %>
+      <% end %>
+  </div>
+  </div>
+
