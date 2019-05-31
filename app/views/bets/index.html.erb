@@ -66,8 +66,8 @@
 
           <strong> Received  </strong>
 
-
-           <% @bets.each do |bet| %>
+          <div>
+           <% @bets.where(receiver: current_user).each do |bet| %>
              <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
               <% if bet.status == "pending" && bet.receiver = current_user %>
                   <div class="row index-card-bet align-items-center">
@@ -107,12 +107,13 @@
               <% end %>
               <% end %>
            <% end %>
+           </div>
 
 
           <strong> Sent  </strong>
 
 
-             <% @bets.each do |bet| %>
+             <% @bets.where(proposer: current_user).each do |bet| %>
                <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
                 <% if bet.status == "pending" && bet.proposer = current_user %>
                   <div class="row index-card-bet align-items-center">
