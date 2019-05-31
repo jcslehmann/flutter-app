@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = policy_scope(User)
+    @user = current_user
     @sorted_users = User.order("first_name ASC")
   end
 
