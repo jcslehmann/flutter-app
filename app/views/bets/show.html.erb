@@ -160,7 +160,7 @@
 
 <% end  %>
 
-<% if @bet.status == "finished" && current_user == @bet.proposer && @bet.proposer_verdict = @bet.final_outcome  %>
+<% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == true  %>
 
 
     <div class= "show-card">
@@ -181,7 +181,7 @@
 
 <% end  %>
 
-<% if @bet.status == "finished" && current_user == @bet.proposer && @bet.proposer_verdict != @bet.final_outcome  %>
+<% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == false %>
 
    <div class= "show-card">
       <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
@@ -202,7 +202,7 @@
 <% end  %>
 
 
-<% if @bet.status == "finished" && current_user == @bet.receiver && @bet.receiver_verdict == @bet.final_outcome  %>
+<% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome == true  %>
 
 
  <div class= "show-card">
@@ -223,10 +223,10 @@
 
 <% end  %>
 
-<% if @bet.status == "finished" && current_user == @bet.receiver && @bet.receiver_verdict != @bet.final_outcome  %>
+<% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome  == true %>
 
- <div class= "show-card">
-    <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+    <div class= "show-card">
+      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
     </div>
 
     <div class= "show-card">
@@ -245,9 +245,8 @@
 
 <% if @bet.status == "finished" && @bet.consensus_reached != true  %>
 
-<div class= "show-card">
-
-    <strong> <%= @bet.proposer.first_name %> and <%= @bet.receiver.first_name %> had a flutter on... </strong>
+    <div class= "show-card">
+      <strong> <%= @bet.proposer.first_name %> and <%= @bet.receiver.first_name %> had a flutter on... </strong>
     </div>
 
     <div class= "show-card">
