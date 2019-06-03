@@ -38,7 +38,7 @@
 <% end %>
 
 
-  <% @users.each do |user| %>
+  <% @sorted_usersrank.each do |user| %>
    <%= link_to user_path(user), class: 'text-decoration-none' do %>
       <div class="row index-card-bet align-items-center">
           <div class="col-3">
@@ -86,7 +86,7 @@
       </div>
 <% end %>
 
-          <% @sorted_users.each do |user| %>
+          <% @sorted_usersalphabet.each do |user| %>
          <%= link_to user_path(user), class: 'text-decoration-none' do %>
             <div class="row index-card-bet align-items-center">
                 <div class="col-3">
