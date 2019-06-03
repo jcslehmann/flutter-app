@@ -1,267 +1,306 @@
 <%= render 'shared/betnavbar', title: "Bet" %>
 
+<div class="bet-show-container">
 
-<% if current_user == @bet.receiver && @bet.status == "pending" %>
+  <% if current_user == @bet.receiver && @bet.status == "pending" %>
 
+    <div class= "bet-info-container text-align-center">
 
-    <div class= "show-card">
-      <strong> <%=  @bet.proposer.first_name %> bet you that: </strong>
-    </div>
+      <div class="background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple"> <%= @bet.proposer.first_name %></span> <span class="light-grey">challenged</span> <span class="blue-purple"><%= @bet.receiver.first_name %></span></h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
+        </div>
 
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> They have wagered $<%= @bet.stake %> at odds of <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-    <p> Do you accept or reject this bet? </p>
-    <div class="bet-confirmation">
-      <%= link_to 'Accept', bet_path(@bet, receiver_accepting: true), class: 'btn btn-primary', method: :patch %>
-      <%= link_to 'Reject', bet_path(@bet), class: 'btn btn-danger' %>
-    </div>
-
-<% end  %>
-
-<% if current_user == @bet.proposer && @bet.status == "pending" %>
-
-    <div class= "show-card">
-      <strong> You bet <%=  @bet.receiver.first_name %> that: </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> You wagered $<%= @bet.stake %> at odds of <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-    <div class= "show-card">
-      <p> <%= @bet.receiver.first_name %> has not replied to your offer yet... </p>
-    </div>
-
-<% end  %>
-
-<% if @bet.status == "confirmed" %>
-
-    <div class= "show-card">
-      <strong> <%=  @bet.proposer.first_name %> bet <%= @bet.receiver.first_name %> that: </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-    <div class= "show-card">
-      <p> In ... </p>
-      <br>
-      <strong> <div id="countdownTimer"></div> </strong>
-      <br>
-      <p> You will be asked to verify this bet </p>
-    </div>
-
-<% end  %>
-
-<% if current_user == @bet.proposer && @bet.proposer_verdict == nil && @bet.status == "unvalidated" %>
-
-
-    <div class= "show-card">
-      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-   <div class= "show-card">
-        <p> Did it happen? </p>
-        <div class="bet-confirmation">
-          <%= link_to 'True', bet_path(@bet, proposer_verdict_true: true), class: 'btn btn-primary', method: :patch %>
-          <%= link_to 'False', bet_path(@bet, proposer_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+      <div class = "funky-container">
+          <div class = "d-flex justify-content-around">
+            <div class="odds">
+              <p class="grey tiny-text text-center">ODDS</p>
+              <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+            </div>
+            <div class="stake">
+              <p class="grey tiny-text text-center">STAKE</p>
+              <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+            </div>
+          </div>
+        <div>
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+        </div>
       </div>
-    </div>
 
-<% end  %>
-
-
-<% if current_user == @bet.proposer && @bet.proposer_verdict != nil && @bet.status == "unvalidated" %>
-
-
- <div class= "show-card">
-      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-   <div class= "show-card">
-      <p> Your friend hasn't validated yet... I'm sure they will soon. Sit tight!  </p>
-   </div>
-
-<% end  %>
-
-
-<% if current_user == @bet.receiver && @bet.receiver_verdict == nil && @bet.status == "unvalidated" %>
-
-    <div class= "show-card">
-      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-   <div class= "show-card">
-        <p> Did it happen? </p>
-        <div class="bet-confirmation">
-          <%= link_to 'True', bet_path(@bet, receiver_verdict_true: true), class: 'btn btn-primary', method: :patch %>
-          <%= link_to 'False', bet_path(@bet, receiver_verdict_false: true), class: 'btn btn-danger', method: :patch %>
       </div>
-    </div>
 
-<% end  %>
-
-<% if current_user == @bet.receiver && @bet.receiver_verdict != nil && @bet.status == "unvalidated" %>
-
-    <div class= "show-card">
-      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-   <div class= "show-card">
-        <p> Your friend hasn't validated yet ... I'm sure they will soon. Sit tight! </p>
-    </div>
-
-<% end  %>
-
-<% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == true  %>
+      <div class="card-bottomline">
+          <div class="card-likers">
+            <p>Liked by</p>
+            <div class="liker-avatars">
+            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            </div>
+          </div>
+          <div class="card-likes">
+            <i class="fas fa-thumbs-up like-color"></i>
+          </div>
+        </div>
 
 
-    <div class= "show-card">
-      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
-    </div>
+      <div class="btn-group-vertical">
+        <div class="bet-confirmation">
+          <%= link_to 'Accept', bet_path(@bet, receiver_accepting: true), class: 'btn btn-flutter', method: :patch %>
+        </div>
+        <div class="bet-rejection">
+           <%= link_to 'Reject', bet_path(@bet), class: 'btn btn-flutter-alt' %>
+        </div>
+     </div>
+  <% end  %>
 
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
+  <% if current_user == @bet.proposer && @bet.status == "pending" %>
 
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
+      <div class= "show-card">
+        <strong> You bet <%=  @bet.receiver.first_name %> that: </strong>
+      </div>
 
-   <div class= "show-card">
-      <p> You won!  </p>
-   </div>
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
 
-<% end  %>
+      <div class= "show-card">
+        <p> You wagered $<%= @bet.stake %> at odds of <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
 
-<% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == false %>
+      <div class= "show-card">
+        <p> <%= @bet.receiver.first_name %> has not replied to your offer yet... </p>
+      </div>
 
-   <div class= "show-card">
-      <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
-    </div>
+  <% end  %>
 
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
+  <% if @bet.status == "confirmed" %>
 
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
+      <div class= "show-card">
+        <strong> <%=  @bet.proposer.first_name %> bet <%= @bet.receiver.first_name %> that: </strong>
+      </div>
 
-   <div class= "show-card">
-      <p> You lost!  </p>
-   </div>
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
 
-<% end  %>
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+      <div class= "show-card">
+        <p> In ... </p>
+        <br>
+        <strong> <div id="countdownTimer"></div> </strong>
+        <br>
+        <p> You will be asked to verify this bet </p>
+      </div>
+
+  <% end  %>
+
+  <% if current_user == @bet.proposer && @bet.proposer_verdict == nil && @bet.status == "unvalidated" %>
 
 
-<% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome == true  %>
+      <div class= "show-card">
+        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+          <p> Did it happen? </p>
+          <div class="bet-confirmation">
+            <%= link_to 'True', bet_path(@bet, proposer_verdict_true: true), class: 'btn btn-primary', method: :patch %>
+            <%= link_to 'False', bet_path(@bet, proposer_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+        </div>
+      </div>
+
+  <% end  %>
 
 
- <div class= "show-card">
-      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
-    </div>
+  <% if current_user == @bet.proposer && @bet.proposer_verdict != nil && @bet.status == "unvalidated" %>
 
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-   <div class= "show-card">
-        <p> You won! </p>
-    </div>
-
-<% end  %>
-
-<% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome  == true %>
-
-    <div class= "show-card">
-      <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
-
-   <div class= "show-card">
-        <p> You lost! </p>
-    </div>
-
-<% end  %>
-
-<% if @bet.status == "finished" && @bet.consensus_reached != true  %>
-
-    <div class= "show-card">
-      <strong> <%= @bet.proposer.first_name %> and <%= @bet.receiver.first_name %> had a flutter on... </strong>
-    </div>
-
-    <div class= "show-card">
-      <p> "<%= @bet.proposition %>" </p>
-    </div>
-
-    <div class= "show-card">
-      <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-    </div>
 
    <div class= "show-card">
-        <p> But sadly they weren't able to reach a consensus about what happened </p>
-    </div>
+        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+        <p> Your friend hasn't validated yet... I'm sure they will soon. Sit tight!  </p>
+     </div>
+
+  <% end  %>
+
+
+  <% if current_user == @bet.receiver && @bet.receiver_verdict == nil && @bet.status == "unvalidated" %>
+
+      <div class= "show-card">
+        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+          <p> Did it happen? </p>
+          <div class="bet-confirmation">
+            <%= link_to 'True', bet_path(@bet, receiver_verdict_true: true), class: 'btn btn-primary', method: :patch %>
+            <%= link_to 'False', bet_path(@bet, receiver_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+        </div>
+      </div>
+
+  <% end  %>
+
+  <% if current_user == @bet.receiver && @bet.receiver_verdict != nil && @bet.status == "unvalidated" %>
+
+      <div class= "show-card">
+        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+          <p> Your friend hasn't validated yet ... I'm sure they will soon. Sit tight! </p>
+      </div>
+
+  <% end  %>
+
+  <% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == true  %>
+
+
+      <div class= "show-card">
+        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+        <p> You won!  </p>
+     </div>
+
+  <% end  %>
+
+  <% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == false %>
+
+     <div class= "show-card">
+        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+        <p> You lost!  </p>
+     </div>
+
+  <% end  %>
+
+
+  <% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome == true  %>
+
+
+   <div class= "show-card">
+        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+          <p> You won! </p>
+      </div>
+
+  <% end  %>
+
+  <% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome  == true %>
+
+      <div class= "show-card">
+        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+          <p> You lost! </p>
+      </div>
+
+  <% end  %>
+
+  <% if @bet.status == "finished" && @bet.consensus_reached != true  %>
+
+      <div class= "show-card">
+        <strong> <%= @bet.proposer.first_name %> and <%= @bet.receiver.first_name %> had a flutter on... </strong>
+      </div>
+
+      <div class= "show-card">
+        <p> "<%= @bet.proposition %>" </p>
+      </div>
+
+      <div class= "show-card">
+        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+      </div>
+
+     <div class= "show-card">
+          <p> But sadly they weren't able to reach a consensus about what happened </p>
+      </div>
 
 <% end %>
+
+</div>
+
 
 
 <script>
