@@ -47,7 +47,7 @@ user4.email = "#{user4.first_name}@email.com"
 user4.save!
 
 balance = (1..50).to_a.sample
-user5 = User.new(first_name: "Anna", last_name: Faker::Name.last_name, username: Faker::Name.initials,
+user5 = User.new(first_name: "Thor", last_name: Faker::Name.last_name, username: Faker::Name.initials,
   password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 4, wins: 15, loses: 9)
 user5.email = "#{user5.first_name}@email.com"
 user5.save!
@@ -76,9 +76,9 @@ stake = 100
 odds = 1.3
 proposition = "Flutter will secure funding"
 deadline =  Faker::Date.forward(10)
-proposer = user1
+proposer = user5
 receiver = user4
-likes = []
+likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 6)]
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
@@ -93,7 +93,7 @@ receiver = user5
 proposer_verdict = false
 receiver_verdict = false
 final_outcome = false
-likes = []
+likes = [Like.new(user_id: 4), Like.new(user_id: 7), Like.new(user_id: 1)]
 consensus_reached = true
 status = "finished"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
@@ -107,7 +107,7 @@ proposition = "Phelim will strip"
 deadline =  Faker::Date.forward(1)
 proposer = user4
 receiver = user5
-likes = []
+likes = [Like.new(user_id: 2), Like.new(user_id: 6), Like.new(user_id: 3)]
 status = "pending"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
@@ -118,7 +118,7 @@ odds = 12
 proposition = "Benjamin becomes Flutter CTO"
 deadline =  Faker::Date.forward(50)
 proposer = user7
-likes =[]
+likes =[Like.new(user_id: 1), Like.new(user_id: 3), Like.new(user_id: 6)]
 receiver = user2
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
@@ -130,7 +130,7 @@ odds = 3
 proposition = "James will give up smoking"
 deadline =  Faker::Date.forward(300)
 proposer = user4
-likes = []
+likes = [Like.new(user_id: 2), Like.new(user_id: 3), Like.new(user_id: 5)]
 receiver = user7
 status = %w[confirmed]
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
@@ -143,8 +143,8 @@ odds = 2
 proposition = "Flutter will build a messaging feature"
 deadline =  Faker::Date.backward(1)
 proposer = user3
-likes = []
-receiver = user1
+likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6)]
+receiver = user5
 status = "unvalidated"
 proposer_verdict = false
 receiver_verdict = nil
