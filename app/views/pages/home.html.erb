@@ -5,7 +5,7 @@
     <div class ="card">
         <div class="card-topline">
           <div class="card-users">
-            <span class="colored-name"> <%= b.proposer.first_name %></span> <span class="light-grey"> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
+            <span class="colored-name"> <%= b.proposer.first_name %></span> <span> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
           </div>
           <div class="card-odds">
             <%=b.odds.to_r.rationalize(0.05)%>
@@ -13,10 +13,10 @@
         </div>
 
         <div class="card-proposition">
-            <p><%= b.proposition %></p>
+            <p><%= b.proposition.truncate(70) %></p>
         </div>
 
-        <div class="card-bottomline">
+        <div class="card-bottomline1">
           <div class="card-likers">
             <p>Liked by</p>
             <div class="liker-avatars">

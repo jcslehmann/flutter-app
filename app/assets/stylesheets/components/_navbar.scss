@@ -1,51 +1,27 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background-color: $orange;
+  background-color: white;
   color: $white;
-  align-items: center;
   height: 70px;
-  display: flex;
-  padding-bottom: 10px;
+  padding: 20px;
 }
 
-.logos {
+.content {
   padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
-  justify-content: end;
-  position: absolute;
-  right: -10px;
-  top: 25px;
-  .icon-wrapper{
-        position:relative;
-        float:left;
-    }
-    *.icon-color {color: $blue}
-    i {
-        width:100px;
-        text-align:center;
-        vertical-align:middle;
-    }
-    .badge{
-        background: rgba(0,0,0,0.5);
-        width: 20px;
-        height: 20px;
-        margin: 0px;
-        border-radius: 50%;
-        position:absolute;
-        top:-15px;
-        right:16px;
-        padding-right:7px;
-        padding-top: 5px;
-        color: $white;
-        font-weight: 200;
-        font-size: 8px;
-    }
-}
-
-.navbar-title {
-  font-family: $headers-font;
-  font-size: 48px;
-  color: $white;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  color: $gray;
+  font-size: 12px;
+  font-weight: 500;
+  width: 100vw;
+  .colored-balance{
+    color: $blue-purple;
+    font-size: 12px;
+    font-weight: 400;
+  };
 }
 
  #navbar {
@@ -54,24 +30,7 @@
   top: 0;
  }
 
-.logos {
-
-}
-
 .transparent-navbar {
   transition: 0.5s background-color ease;
   background-color: rgba(240, 209, 123, 0.4);
-}
-
-.padded {
-  margin-right: 10px;
-}
-
-.white {
-  color: $white !important;
-  border-color: $white !important;
-}
-
-.colored {
-  color: $orange;
 }
