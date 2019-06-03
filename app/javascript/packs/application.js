@@ -1,18 +1,23 @@
 import "bootstrap";
 import "./form";
-import "../plugins/flatpickr";
 import "nouislider/distribute/nouislider.css";
 import 'select2/dist/css/select2.css';
-import "flatpickr/dist/themes/confetti.css";
 import { loadSelectForm } from '../plugins/init_select';
 import { initSlider } from "../plugins/slider";
 import { buttonFirst } from './form';
 import { buttonSecond } from './form';
 import { buttonThird } from './form';
-import { buttonFourth } from './form';
+import { backButtonFirst } from './form2';
+import { backButtonSecond } from './form2';
+import { backButtonThird } from './form2';
+import { flat } from '../plugins/flatpickr';
+
 buttonFirst();
 buttonSecond();
 buttonThird();
-buttonFourth();
+backButtonFirst();
+backButtonSecond();
+backButtonThird();
 loadSelectForm();
 initSlider();
+flat();

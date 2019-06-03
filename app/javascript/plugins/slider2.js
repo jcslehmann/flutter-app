@@ -6,20 +6,21 @@ const initSlider = () => {
   console.log(slider)
   if (slider) {
     noUiSlider.create(slider, {
-      start: [3],
-      step: 0.5,
+      start: [2],
+      step: 0.33,
       connect: "lower",
       range: {
         min: [0.5],
-        max: [40]
+        max: [10]
       }
     });
     slider.noUiSlider.on('update', () => {
       const currentValue = slider.noUiSlider.get();
-      priceSliderText.innerHTML = '$' + currentValue;
+      priceSliderText.innerHTML = currentValue;
       priceSliderInput.value = currentValue;
     });
   }
 }
 
 export { initSlider }
+
