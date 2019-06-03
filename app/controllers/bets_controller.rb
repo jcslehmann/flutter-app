@@ -4,7 +4,6 @@ class BetsController < ApplicationController
   def index
     @bets = policy_scope(Bet)
     @user = current_user
-
   end
 
   def new
@@ -14,6 +13,7 @@ class BetsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @bet = Bet.new(bet_params)
     @bet.likes = 0
     @bet.status = "Pending"
