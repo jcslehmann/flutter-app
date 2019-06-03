@@ -117,8 +117,14 @@
   };
 }
 
+.opaque {
+  color: $blue-purple
+}
 
-
+.light {
+  color: $blue-purple;
+  opacity: 0.5;
+}
 
 
 

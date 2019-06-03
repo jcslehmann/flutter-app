@@ -1,14 +1,16 @@
 class LikesController < ApplicationController
-before_action :find_bet
 before_action :find_like, only: [:destroy]
+
 
   def create
     if already_liked?
       flash[:notice] = "You can't like more than once"
     else
-      @bet.likes.create(user_id: current_user.id)
+      @bet.likes.create(user_id: current_user.id, like: true)
     end
       redirect_to bet_path(@bet)
+      authorize @bet
+
   end
 
   def destroy
@@ -17,22 +19,22 @@ before_action :find_like, only: [:destroy]
     else
       @like.destroy
     end
-    redirect_to bet_path(@bet)
+    redirect_to root_path
+    authorize @like
   end
 
   private
 
   def find_bet
-    @bet = Bet.find(params[:bet_id])
+    @bet = Like.find(params[:id].bet)
   end
 
   def already_liked?
-    Like.where(user_id: current_user.id, post_id:
-    params[:bet_id]).exists?
+    Like.where(user_id: current_user.id, bet_id: params[:bet_id]).exists?
   end
 
   def find_like
-    @like = @bet.likes.find(params[:id])
+    @like = Like.find(params[:id])
   end
 
 end

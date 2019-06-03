@@ -1,38 +1,56 @@
 <%= render 'shared/navbar', title: "" %>
 <div class="cards-container">
   <% @live_bets.each do |b| %>
-
     <div class ="card">
-        <div class="card-topline">
-          <div class="card-users">
-            <span class="colored-name"> <%= b.proposer.first_name %></span> <span class="light-grey"> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
-          </div>
-          <div class="card-odds">
-            <%=b.odds.to_r.rationalize(0.05)%>
-          </div>
+      <div class="card-topline">
+        <div class="card-users">
+          <span class="colored-name"> <%= b.proposer.first_name %></span> <span class="light-grey"> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
         </div>
-
-        <div class="card-proposition">
-            <p><%= b.proposition %></p>
+        <div class="card-odds">
+          <%=b.odds.to_r.rationalize(0.05)%>
         </div>
+      </div>
 
-        <div class="card-bottomline">
-          <div class="card-likers">
-            <p>Liked by</p>
-            <div class="liker-avatars">
-            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+      <div class="card-proposition">
+        <p><%= b.proposition %></p>
+      </div>
+
+      <div class="card-bottomline">
+        <div class="card-likers">
+          <p>Liked by</p>
+            <div>
+              <% if b.likes != nil %>
+                <% b.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+                <% end %>
+              <%end  %>
             </div>
-          </div>
-          <div class="card-likes">
-            <i class="fas fa-thumbs-up like-color"></i>
-          </div>
         </div>
+      <% # pre_like = @bet.likes.find { |like| like.user_id == current_user.id} %>
+      <% # if pre_like %>
+      <% # = # button_to 'Unlike', bet_like_path(@bet, pre_like), method: :delete %>
+      <% # else %>
+      <% # = # button_to 'Like', new_bet_like_path(@bet), method: :post %>
+      <% # end %>
 
+        <% if  b.likes.map { |user| user.id == current_user.id}.include?(true) %>
+
+          <%= link_to like_path(b.likes.ids.select { |like| Like.find(like).id == current_user.id }.first), method: :delete do %>
+            <div class="opaque card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(b), method: :post do %>
+            <div class="light card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+      </div> -
     </div>
-
-    <% end %>
+  <% end  %>
 </div>
+
+
+
