@@ -21,7 +21,7 @@ const backButtonSecond = () => {
       deadline.classList.add('slide-in')
       setTimeout(function() {
         oddsStake.classList.add('no-display')
-      })
+      }, 100)
       // oddsStake.classList.add('no-display')
       // deadline.classList.remove('no-display')
     })
@@ -35,7 +35,7 @@ const backButtonThird = () => {
     oddsStake.classList.add('slide-in')
     setTimeout(function() {
       receiver.classList.add('no-display')
-    })
+    }, 100)
       // receiver.classList.add('no-display')
       // oddsStake.classList.remove('no-display')
     })
