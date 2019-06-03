@@ -12,12 +12,12 @@
   <button class="btn btn-flat button-mar" type="button" id="button-one">Next</button>
  <!--  <button class="btn btn-outline-primary btn-sm" type="button" id="b-button-one">Back</button> -->
 </div>
-  <div class="deadline d-none">
+  <div class="deadline no-display">
     <%= f.input :deadline,  as: :string, required: false, placeholder: "Select your Deadline...", input_html: {class: "datepicker"} %>
     <button class="btn btn-flat button-mar" type="button" id="button-two">Next</button>
     <button class="btn btn-outline-primary btn-sm button-mar" type="button" id="b-button-one">Back</button>
   </div>
-  <div class="odds-stake d-none">
+  <div class="odds-stake no-display">
     <%= f.input :odds, as: :hidden, input_html: { class: "decimal_value"} %>
     <p>Odds</p>
     <p class="decimal_value_text"></p>
@@ -29,7 +29,7 @@
     <button class="btn btn-flat button-mar" type="button" id="button-three">Next</button>
     <button class="btn btn-outline-primary btn-sm button-mar" type="button" id="b-button-two">Back</button>
   </div>
-    <div class="receiver d-none">
+    <div class="receiver no-display">
     <p>Search for challenger</p>
     <%= select_tag "receiver", options_from_collection_for_select(
       User.all,

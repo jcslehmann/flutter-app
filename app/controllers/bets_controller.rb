@@ -19,7 +19,7 @@ class BetsController < ApplicationController
     @bet.status = "Pending"
     @bet.proposer = current_user
     @receiver = User.find(params[:receiver])
-    # @bet.receiver = @receiver
+    @bet.receiver = @receiver
     authorize @bet
 
     if @bet.save
