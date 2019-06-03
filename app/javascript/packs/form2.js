@@ -3,8 +3,13 @@ const backButtonFirst = () => {
   const deadline = document.querySelector('.deadline')
   const proposition = document.querySelector('.proposition')
   firstButton.addEventListener('click', (event) => {
-      deadline.classList.add('d-none')
-      proposition.classList.remove('d-none')
+      // proposition.classList.add('left-fix')
+      // proposition.classList.remove('slide-out')
+      // proposition.classList.remove('no-display')
+      proposition.classList.add('slide-in')
+      setTimeout(function() {
+      deadline.classList.add('no-display')
+      }, 100);
     })
 }
 
@@ -13,8 +18,12 @@ const backButtonSecond = () => {
   const oddsStake = document.querySelector('.odds-stake')
   const deadline = document.querySelector('.deadline')
   secondButton.addEventListener('click', (event) => {
-      oddsStake.classList.add('d-none')
-      deadline.classList.remove('d-none')
+      deadline.classList.add('slide-in')
+      setTimeout(function() {
+        oddsStake.classList.add('no-display')
+      })
+      // oddsStake.classList.add('no-display')
+      // deadline.classList.remove('no-display')
     })
 }
 
@@ -23,8 +32,12 @@ const backButtonThird = () => {
   const oddsStake = document.querySelector('.odds-stake')
   const receiver = document.querySelector('.receiver')
   thirdButton.addEventListener('click', (event) => {
-      receiver.classList.add('d-none')
-      oddsStake.classList.remove('d-none')
+    oddsStake.classList.add('slide-in')
+    setTimeout(function() {
+      receiver.classList.add('no-display')
+    })
+      // receiver.classList.add('no-display')
+      // oddsStake.classList.remove('no-display')
     })
 }
 
