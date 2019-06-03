@@ -103,7 +103,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 20
 odds = 1.4
-proposition = "Phelim will strip"
+proposition = "Phelim will lose at darts"
 deadline =  Faker::Date.forward(1)
 proposer = user4
 receiver = user5
