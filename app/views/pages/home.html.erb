@@ -2,12 +2,26 @@
 <div class="cards-container">
   <% @live_bets.each do |b| %>
     <div class ="card">
+<<<<<<< HEAD
       <div class="card-topline">
         <div class="card-users">
           <span class="colored-name"> <%= b.proposer.first_name %></span> <span class="light-grey"> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
         </div>
         <div class="card-odds">
           <%=b.odds.to_r.rationalize(0.05)%>
+=======
+        <div class="card-topline">
+          <div class="card-users">
+            <span class="colored-name"> <%= b.proposer.first_name %></span> <span> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
+          </div>
+          <div class="card-odds">
+            <%=b.odds.to_r.rationalize(0.05)%>
+          </div>
+        </div>
+
+        <div class="card-proposition">
+            <p><%= b.proposition.truncate(70) %></p>
+>>>>>>> master
         </div>
       </div>
 
@@ -15,6 +29,7 @@
         <p><%= b.proposition %></p>
       </div>
 
+<<<<<<< HEAD
       <div class="card-bottomline">
         <div class="card-likers">
           <p>Liked by</p>
@@ -24,6 +39,17 @@
                   <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "liker-avatar" %>
                 <% end %>
               <%end  %>
+=======
+        <div class="card-bottomline1">
+          <div class="card-likers">
+            <p>Liked by</p>
+            <div class="liker-avatars">
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+>>>>>>> master
             </div>
         </div>
       <% # pre_like = @bet.likes.find { |like| like.user_id == current_user.id} %>
