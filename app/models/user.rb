@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :received_bets, foreign_key: :receiver_id, class_name: 'Bet'
   has_many :receivers, through: :proposed_bets
   has_many :comments
+  has_many :likes, dependent: :destroy
+
   mount_uploader :photo, PhotoUploader
   validates :username, uniqueness: true, presence: true
   validates :first_name, presence: true

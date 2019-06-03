@@ -1,0 +1,27 @@
+.btn-flutter {
+  padding: 15px 125px;
+  border-radius: 50px;
+  background-color: #6c5ce7;
+  color: rgba(240,240,240,1);
+  margin: 0 auto;
+  &:hover {
+    background-color: #6c5ce7;
+    text-decoration: none;
+    color: rgba(240,240,240,1);
+    opacity: 0.9;
+  }
+}
+
+.btn-flutter-alt {
+  padding: 15px 125px;
+  border-radius: 50px;
+  background-color: rgba(108, 92, 231, 0.2);
+  color: #6c5ce7;
+  margin: 0 auto;
+  &:hover {
+    background-color: rgba(108, 92, 231, 0.2);
+    text-decoration: none;
+    color: #6c5ce7;
+    opacity: 0.9;
+  }
+}

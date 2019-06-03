@@ -93,7 +93,6 @@ deadline =  Faker::Date.forward(10)
 proposer = User.first(3).sample
 receiver = User.last(3).sample
 status = "confirmed"
-likes = 10
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
