@@ -19,7 +19,7 @@ Bet.destroy_all
 puts 'Making an admin!'
 
 # Admin User
-User.create!(username: "admin", first_name: "Joe", last_name: "Blogs", password: "123456", email: "joe@blogs.com", balance: 100, admin: true, ranking: 7, wins: 5, loses: 20)
+User.create!(username: "admin", first_name: "Joe", last_name: "Blogs", password: "123456", email: "joe@blogs.com", balance: 100, admin: true, ranking: 3, wins: 16, loses: 10)
 
 puts "Created #{User.first.email} as an admin!"
 
@@ -29,7 +29,7 @@ puts "Created #{User.first.email} as an admin!"
 puts "Creating users..."
 
 balance = (1..50).to_a.sample
-user = User.new(first_name: "Julius", last_name: Faker::Name.last_name, username: Faker::Name.initials,
+user = User.new(first_name: "Bob", last_name: Faker::Name.last_name, username: Faker::Name.initials,
   password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 1, wins: 18, loses: 2)
 user.email = "#{user.first_name}@email.com"
 user.save!
@@ -42,24 +42,24 @@ user.save!
 
 balance = (1..50).to_a.sample
 user = User.new(first_name: "James", last_name: Faker::Name.last_name, username: Faker::Name.initials,
-  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 3, wins: 16, loses: 10)
+  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 7, wins: 3, loses: 27)
 user.email = "#{user.first_name}@email.com"
 user.save!
 
 balance = (1..50).to_a.sample
-user = User.new(first_name: "Niall", last_name: Faker::Name.last_name, username: Faker::Name.initials,
+user = User.new(first_name: "Anna", last_name: Faker::Name.last_name, username: Faker::Name.initials,
   password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 4, wins: 15, loses: 9)
 user.email = "#{user.first_name}@email.com"
 user.save!
 
 balance = (1..50).to_a.sample
-user = User.new(first_name: "Sauron", last_name: Faker::Name.last_name, username: Faker::Name.initials,
+user = User.new(first_name: "Inga", last_name: Faker::Name.last_name, username: Faker::Name.initials,
   password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 5, wins: 14, loses: 13)
 user.email = "#{user.first_name}@email.com"
 user.save!
 
 balance = (1..50).to_a.sample
-user = User.new(first_name: "Gandalf", last_name: Faker::Name.last_name, username: Faker::Name.initials,
+user = User.new(first_name: "Zara", last_name: Faker::Name.last_name, username: Faker::Name.initials,
   password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 6, wins: 15, loses: 20)
 user.email = "#{user.first_name}@email.com"
 user.save!

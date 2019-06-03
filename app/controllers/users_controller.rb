@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   def index
     @users = policy_scope(User)
     @user = current_user
-    @sorted_users = User.order("first_name ASC")
+    @sorted_usersbyrank = User.order("ranking ASC")
+    @sorted_usersrank = @sorted_usersbyrank.select { |user| user != current_user}
+    @sorted_usersbyalphabet = User.order("first_name ASC")
+    @sorted_usersalphabet = @sorted_usersbyalphabet.select { |user| user != current_user}
   end
 
   def show
