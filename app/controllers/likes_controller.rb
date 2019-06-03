@@ -1,15 +1,14 @@
 class LikesController < ApplicationController
 before_action :find_like, only: [:destroy]
-
+after_action :verify_authorized, except: [:create, :destroy]
 
   def create
     if already_liked?
       flash[:notice] = "You can't like more than once"
     else
-      @bet.likes.create(user_id: current_user.id, like: true)
+      Like.new(user_id: current_user.id, bet_id: params[:id])
     end
-      redirect_to bet_path(@bet)
-      authorize @bet
+      redirect_to root_path
 
   end
 
