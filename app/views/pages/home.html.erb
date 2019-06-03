@@ -1,34 +1,38 @@
 <%= render 'shared/navbar', title: "" %>
 <div class="cards-container">
- <div class ="big-button">
-    <%= link_to new_user_bet_path(current_user) do %><p class="btn-color"> Have a flutter </p><% end %>
-  </div>
   <% @live_bets.each do |b| %>
+
     <div class ="card">
-      <div class="card-avatars">
-        <div class="card-avatars-sides">
-          <%= cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "user-avatar" %>
-          <p><%= b.proposer.first_name%></p>
-        </div>
-        <div class="odds-avatar">
-          <p class="font-odds1"><%=b.odds.to_r.rationalize(0.05)%><p><p class="font-odds2">odds<p>
-        </div>
-        <div class="card-avatars-sides">
-          <%= cl_image_tag b.receiver.photo, height: 50, crop: :fill, class: "user-avatar" %>
-          <p><%=b.receiver.first_name%></p>
-        </div>
-      </div>
-      <div class  ="card-text-actions">
-        <div class="card-text">
-          <p><%= b.proposition %></p>
-        </div>
-        <div class="card-actions">
-          <div class="icon-wrapper">
-            <i class="far fa-thumbs-up icon-color"></i>
-            <span class="badge"><%= b.likes%></span>
+        <div class="card-topline">
+          <div class="card-users">
+            <span class="colored-name"> <%= b.proposer.first_name %></span> <span class="light-grey"> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
+          </div>
+          <div class="card-odds">
+            <%=b.odds.to_r.rationalize(0.05)%>
           </div>
         </div>
-      </div>
+
+        <div class="card-proposition">
+            <p><%= b.proposition %></p>
+        </div>
+
+        <div class="card-bottomline">
+          <div class="card-likers">
+            <p>Liked by</p>
+            <div class="liker-avatars">
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            <%=cl_image_tag b.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+            </div>
+          </div>
+          <div class="card-likes">
+            <i class="fas fa-thumbs-up like-color"></i>
+          </div>
+        </div>
+
     </div>
+
     <% end %>
 </div>
