@@ -18,7 +18,10 @@
     <button class="btn btn-outline-primary btn-sm button-mar" type="button" id="b-button-one">Back</button>
   </div>
   <div class="odds-stake d-none">
-    <%= f.input :odds, as: :float, include_blank: true, placeholder: "Feel free to use decimals." %>
+    <%= f.input :odds, as: :hidden, input_html: { class: "decimal_value"} %>
+    <p>Odds</p>
+    <p class="decimal_value_text"></p>
+    <div class="decimal-slider my-3"></div>
     <%= f.input :stake, as: :hidden, input_html: { class: "price_per_night"} %>
     <p>Stake</p>
     <p class="price-slider-text"></p>

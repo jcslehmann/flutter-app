@@ -1,26 +1,26 @@
 import noUiSlider from 'nouislider';
-const initSlider = () => {
-  const slider = document.querySelector('.money-slider');
-  const priceSliderText = document.querySelector('.price-slider-text');
-  const priceSliderInput = document.querySelector('.price_per_night');
+const initScndSlider = () => {
+  const slider = document.querySelector('.decimal-slider');
+  const decimalSliderText = document.querySelector('.decimal_value_text');
+  const decimalSliderInput = document.querySelector('.decimal_value');
   console.log(slider)
   if (slider) {
     noUiSlider.create(slider, {
-      start: [2],
-      step: 0.33,
+      start: [1],
+      step: 0.2,
       connect: "lower",
       range: {
-        min: [0.5],
+        min: [1],
         max: [10]
       }
     });
     slider.noUiSlider.on('update', () => {
       const currentValue = slider.noUiSlider.get();
-      priceSliderText.innerHTML = currentValue;
-      priceSliderInput.value = currentValue;
+      decimalSliderText.innerHTML = currentValue;
+      decimalSliderInput.value = currentValue;
     });
   }
 }
 
-export { initSlider }
+export { initScndSlider };
 
