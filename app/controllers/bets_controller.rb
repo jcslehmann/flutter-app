@@ -15,11 +15,10 @@ class BetsController < ApplicationController
   def create
     @user = current_user
     @bet = Bet.new(bet_params)
-    @bet.likes = 0
     @bet.status = "Pending"
     @bet.proposer = current_user
     @receiver = User.find(params[:receiver])
-    # @bet.receiver = @receiver
+    @bet.receiver = @receiver
     authorize @bet
 
     if @bet.save
