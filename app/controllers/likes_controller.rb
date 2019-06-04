@@ -6,7 +6,8 @@ after_action :verify_authorized, except: [:create, :destroy]
     if already_liked?
       flash[:notice] = "You can't like more than once"
     else
-      Like.new(user_id: current_user.id, bet_id: params[:id])
+      like = Like.new(user_id: current_user.id, bet_id: params[:bet_id])
+      like.save
     end
       redirect_to root_path
 
