@@ -27,7 +27,7 @@
 }
 
 .vertical-spacing-medium {
-  padding: 50px 0;
+  padding: 60px;
 }
 
 .challenge-avatars {
@@ -37,14 +37,14 @@
 .challenger-1 {
   position: absolute;
   left: 38%;
-  top: 25%;
+  top: 20%;
   z-index: 5;
 }
 
 .challenger-2 {
   position: absolute;
   left: 46%;
-  top: 25%;
+  top: 20%;
 }
 
 .bold {
@@ -56,6 +56,19 @@
   border-radius: 0 0 20px 20px;
 }
 
+.bet_message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-around;
+  height: 20vh;
+}
+
+.bet_message_icon {
+  width: 50px
+}
+
 
 
 .bet-card-bottomline {
@@ -63,6 +76,7 @@
   justify-content: space-between;
   position: relative;
   width: 340px;
+  margin-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
@@ -93,7 +107,7 @@
   .bet-card-likes {
     display: flex;
     justify-content: space-between;
-    background-color: $purple;
+    background-color: $blue-purple;
     position: absolute;
     border-radius: 5px;
     right: -10px;
@@ -112,6 +126,8 @@
 
 .bet-confirmation {
   display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
   justify-content: center;
   width: 100vw;
 }
@@ -122,11 +138,32 @@
   width: 100vw;
 }
 
+.bet-validation {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  width: 100vw;
+}
+
+.bet-invalidation {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
 
 
+.timer {
+  padding-bottom: 20px;
+}
 
+.bet-odds {
+  line-height: 0.5;
+}
 
-
+.bet-stake {
+  line-height: 0.5;
+}
 
 
 // //////////////////////////////////

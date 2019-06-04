@@ -7,36 +7,40 @@
     <div class= "bet-info-container text-align-center">
 
       <div class="bet-background-overlay">
-        <h3 class="text-center small-text y-3"> <span class="blue-purple"> <%= @bet.proposer.first_name %></span> <span class="light-grey">challenged</span> <span class="blue-purple"><%= @bet.receiver.first_name %></span></h3>
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
         <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
-        </div>
+      </div>
 
       <div class = "funky-container">
-          <div class = "d-flex justify-content-around">
-            <div class="odds">
-              <p class="grey tiny-text text-center">ODDS</p>
-              <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
-            </div>
-            <div class="stake">
-              <p class="grey tiny-text text-center">STAKE</p>
-              <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
-            </div>
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
-        <div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
           <p class="text-center tiny-text grey"> Finishes in </p>
           <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
         </div>
       </div>
 
-      </div>
+    </div>
 
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>Liked by</p>
+          <p>LIKED BY</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -74,279 +78,805 @@
 
   <% if current_user == @bet.proposer && @bet.status == "pending" %>
 
-      <div class= "show-card">
-        <strong> You bet <%=  @bet.receiver.first_name %> that: </strong>
+
+    <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+        </div>
       </div>
 
-      <div class= "show-card">
-        <p> You wagered $<%= @bet.stake %> at odds of <%=  @bet.odds.to_r.rationalize(0.05) %></p>
+    </div>
+
+
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
       </div>
 
-      <div class= "show-card">
-        <p> <%= @bet.receiver.first_name %> has not replied to your offer yet... </p>
-      </div>
-
+      <div class="bet_message">
+          <%= image_tag "stopwatch.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> Waiting on <%= @bet.receiver.first_name %> to respond </p>
+    </div>
   <% end  %>
 
   <% if @bet.status == "confirmed" %>
 
-      <div class= "show-card">
-        <strong> <%=  @bet.proposer.first_name %> bet <%= @bet.receiver.first_name %> that: </strong>
+    <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3">
+          <span class="blue-purple"><%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
+        </div>
+
+        <div class = "funky-container">
+          <div class = "d-flex justify-content-around">
+            <div class="bet-odds">
+              <p class="grey tiny-text text-center">ODDS</p>
+              <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+            </div>
+            <div class="bet-stake">
+              <p class="grey tiny-text text-center">STAKE</p>
+              <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+            </div>
+          </div>
+          <div class ="timer">
+            <p class="text-center tiny-text grey"> Finishes in </p>
+            <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+          </div>
+        </div>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
-      </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-      </div>
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
 
-      <div class= "show-card">
-        <p> In ... </p>
-        <br>
-        <strong> <div id="countdownTimer"></div> </strong>
-        <br>
-        <p> You will be asked to verify this bet </p>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-
-  <% end  %>
+  <% end %>
 
   <% if current_user == @bet.proposer && @bet.proposer_verdict == nil && @bet.status == "unvalidated" %>
 
 
-      <div class= "show-card">
-        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+    <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
-      </div>
-
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-      </div>
-
-     <div class= "show-card">
-          <p> Did it happen? </p>
-          <div class="bet-confirmation">
-            <%= link_to 'True', bet_path(@bet, proposer_verdict_true: true), class: 'btn btn-primary', method: :patch %>
-            <%= link_to 'False', bet_path(@bet, proposer_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
         </div>
       </div>
 
-  <% end  %>
+      </div>
 
+
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+
+      <div class="btn-group-vertical">
+        <div class="bet-validation">
+          <%= link_to 'Validate', bet_path(@bet, proposer_verdict_true: true), class: 'btn btn-flutter', method: :patch %>
+        </div>
+        <div class="bet-invalidation">
+            <%= link_to 'Invalidate', bet_path(@bet, proposer_verdict_false: true), class: 'btn btn-flutter-alt', method: :patch %>
+        </div>
+     </div>
+  <% end  %>
 
   <% if current_user == @bet.proposer && @bet.proposer_verdict != nil && @bet.status == "unvalidated" %>
 
 
-   <div class= "show-card">
-        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+   <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+        </div>
       </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
       </div>
 
-     <div class= "show-card">
-        <p> Your friend hasn't validated yet... I'm sure they will soon. Sit tight!  </p>
-     </div>
 
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+             </div>
+
+        <div class="bet_message">
+          <%= image_tag "stopwatch.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> Waiting on <%= @bet.receiver.first_name %> to validate </p>
+        </div>
   <% end  %>
 
 
   <% if current_user == @bet.receiver && @bet.receiver_verdict == nil && @bet.status == "unvalidated" %>
 
-      <div class= "show-card">
-        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+      <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
-      </div>
-
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-      </div>
-
-     <div class= "show-card">
-          <p> Did it happen? </p>
-          <div class="bet-confirmation">
-            <%= link_to 'True', bet_path(@bet, receiver_verdict_true: true), class: 'btn btn-primary', method: :patch %>
-            <%= link_to 'False', bet_path(@bet, receiver_verdict_false: true), class: 'btn btn-danger', method: :patch %>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
         </div>
       </div>
 
+      </div>
+
+
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+
+      <div class="btn-group-vertical">
+        <div class="bet-validation">
+          <%= link_to 'Validate', bet_path(@bet, receiver_verdict_true: true), class: 'btn btn-flutter', method: :patch %>
+        </div>
+        <div class="bet-invalidation">
+            <%= link_to 'Invalidate', bet_path(@bet, receiver_verdict_false: true), class: 'btn btn-flutter-alt', method: :patch %>
+        </div>
+     </div>
   <% end  %>
 
   <% if current_user == @bet.receiver && @bet.receiver_verdict != nil && @bet.status == "unvalidated" %>
 
-      <div class= "show-card">
-        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
-      </div>
+   <div class= "bet-info-container text-align-center">
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
-      </div>
+          <div class="bet-background-overlay">
+            <h3 class="text-center small-text y-3"> <span class="blue-purple">
+              <%= @bet.proposer.first_name %></span>
+              <span class="light-grey">challenged</span>
+              <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+            </h3>
+            <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+            <div class="vertical-spacing-medium">
+              <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+              <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
+          </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-      </div>
+          <div class = "funky-container">
+            <div class = "d-flex justify-content-around">
+              <div class="bet-odds">
+                <p class="grey tiny-text text-center">ODDS</p>
+                <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+              </div>
+              <div class="bet-stake">
+                <p class="grey tiny-text text-center">STAKE</p>
+                <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+              </div>
+            </div>
+            <div class ="timer">
+              <p class="text-center tiny-text grey"> Finishes in </p>
+              <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+            </div>
+          </div>
 
-     <div class= "show-card">
-          <p> Your friend hasn't validated yet ... I'm sure they will soon. Sit tight! </p>
-      </div>
+          </div>
 
+
+          <div class="bet-card-bottomline">
+            <div class="bet-card-likers">
+              <p>LIKED BY</p>
+                <div>
+                  <% if @bet.likes != nil %>
+                    <% @bet.likes.each do |like| %>
+                      <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                    <% end %>
+                  <%end  %>
+                </div>
+            </div>
+            <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+              <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+                <div class="opaque bet-card-likes">
+                  <i class= "fas fa-thumbs-up like-color card_likes"></i>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to bet_likes_path(@bet), method: :post do %>
+                <div class="light bet-card-likes">
+                  <i class= "fas fa-thumbs-up like-color card_likes"></i>
+                </div>
+              <% end %>
+            <% end %>
+
+         </div>
+
+         <div class="bet_message">
+          <%= image_tag "stopwatch.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> Waiting on <%= @bet.proposer.first_name %> to validate </p>
+        </div>
   <% end  %>
 
   <% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == true  %>
 
 
-      <div class= "show-card">
-        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+      <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+        </div>
       </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
       </div>
 
-     <div class= "show-card">
-        <p> You won!  </p>
-     </div>
 
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+             </div>
+
+
+        <div class="bet_message">
+          <%= image_tag "purple-confetti.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> You won against <%= @bet.receiver.first_name %> </p>
+        </div>
   <% end  %>
 
   <% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == false %>
 
-     <div class= "show-card">
-        <strong> You bet <%= @bet.receiver.first_name %> that: </strong>
+     <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+        </div>
       </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
       </div>
 
-     <div class= "show-card">
-        <p> You lost!  </p>
-     </div>
 
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+             </div>
+
+       <div class="bet_message">
+          <%= image_tag "loser.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> You lost to <%= @bet.proposer.first_name %> </p>
+        </div>
   <% end  %>
 
 
   <% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome == true  %>
 
 
-   <div class= "show-card">
-        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+    <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+        </div>
       </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
       </div>
 
-     <div class= "show-card">
-          <p> You won! </p>
-      </div>
 
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+
+       </div>
+
+
+         <div class="bet_message">
+          <%= image_tag "loser.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> You lost to <%= @bet.proposer.first_name %> </p>
+        </div>
   <% end  %>
 
-  <% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome  == true %>
+  <% if @bet.status == "finished" && current_user == @bet.receiver && @bet.final_outcome  == false %>
 
-      <div class= "show-card">
-        <strong> <%= @bet.proposer.first_name %> bet you that: </strong>
+
+   <div class= "bet-info-container text-align-center">
+
+      <div class="bet-background-overlay">
+        <h3 class="text-center small-text y-3"> <span class="blue-purple">
+          <%= @bet.proposer.first_name %></span>
+          <span class="light-grey">challenged</span>
+          <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+        </h3>
+        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <div class="vertical-spacing-medium">
+          <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+          <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
       </div>
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
+      <div class = "funky-container">
+        <div class = "d-flex justify-content-around">
+          <div class="bet-odds">
+            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+          </div>
+          <div class="bet-stake">
+            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+          </div>
+        </div>
+        <div class ="timer">
+          <p class="text-center tiny-text grey"> Finishes in </p>
+          <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+        </div>
       </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
       </div>
 
-     <div class= "show-card">
-          <p> You lost! </p>
-      </div>
 
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>LIKED BY</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
+            </div>
+        </div>
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+             </div>
+
+        <div class="bet_message">
+          <%= image_tag "purple-confetti.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> You won against <%= @bet.proposer.first_name %> </p>
+        </div>
   <% end  %>
 
   <% if @bet.status == "finished" && @bet.consensus_reached != true  %>
 
-      <div class= "show-card">
-        <strong> <%= @bet.proposer.first_name %> and <%= @bet.receiver.first_name %> had a flutter on... </strong>
-      </div>
+    <div class= "bet-info-container text-align-center">
 
-      <div class= "show-card">
-        <p> "<%= @bet.proposition %>" </p>
-      </div>
+        <div class="bet-background-overlay">
+          <h3 class="text-center small-text y-3"> <span class="blue-purple">
+            <%= @bet.proposer.first_name %></span>
+            <span class="light-grey">challenged</span>
+            <span class="blue-purple"><%= @bet.receiver.first_name %></span>
+          </h3>
+          <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+          <div class="vertical-spacing-medium">
+            <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
+            <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
+        </div>
 
-      <div class= "show-card">
-        <p> At a price of $<%= @bet.stake %> for <%=  @bet.odds.to_r.rationalize(0.05) %></p>
-      </div>
+        <div class = "funky-container">
+          <div class = "d-flex justify-content-around">
+            <div class="bet-odds">
+              <p class="grey tiny-text text-center">ODDS</p>
+              <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
+            </div>
+            <div class="bet-stake">
+              <p class="grey tiny-text text-center">STAKE</p>
+              <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
+            </div>
+          </div>
+          <div class ="timer">
+            <p class="text-center tiny-text grey"> Finishes in </p>
+            <strong> <div class="medium-text blue-purple text-center bold" id="countdownTimer"></div> </strong>
+          </div>
+        </div>
 
-     <div class= "show-card">
-          <p> But sadly they weren't able to reach a consensus about what happened </p>
-      </div>
+        </div>
 
-<% end %>
+
+        <div class="bet-card-bottomline">
+          <div class="bet-card-likers">
+            <p>LIKED BY</p>
+              <div>
+                <% if @bet.likes != nil %>
+                  <% @bet.likes.each do |like| %>
+                    <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                  <% end %>
+                <%end  %>
+              </div>
+          </div>
+          <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+            <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+              <div class="opaque bet-card-likes">
+                <i class= "fas fa-thumbs-up like-color card_likes"></i>
+              </div>
+            <% end %>
+          <% else %>
+            <%= link_to bet_likes_path(@bet), method: :post do %>
+              <div class="light bet-card-likes">
+                <i class= "fas fa-thumbs-up like-color card_likes"></i>
+              </div>
+            <% end %>
+          <% end %>
+               </div>
+
+          <div class="bet_message">
+          <%= image_tag "exclamation.png", class: "bet_message_icon" %>
+          <p class="medium-text blue-purple text-center bold"> You were not able to reach consensus </p>
+        </div>
+  <% end %>
 
 </div>
 
 
 
 <script>
-  <%
-  @newTime = @bet.deadline.strftime("%b%e %Y %l %M %S").to_s.gsub('&quot;', '')
-  @formattedTime = @newTime.split.insert(2, ',').insert(5, ':').insert(7, ':').join.chars.insert(3, " ").insert(6, " ").insert(11, " ").join
-  %>
-  // Set the date we're counting down to
-  var countDownDate = new Date('<%= @formattedTime %>').getTime();
+      <% @newTime = @bet.deadline.strftime("%b%e %Y %l %M %S").to_s.gsub('&quot;', '')
+      @formattedTime = @newTime.split.insert(2, ',').insert(5, ':').insert(7, ':').join.chars.insert(3, " ").insert(6, " ").insert(11, " "). join
+      %>
+      // Set the date we're counting down to
+      var countDownDate = new Date('<%= @formattedTime %>').getTime();
 
-  // Update the count down every 1 second
-var x = setInterval(function() {
+      // Update the count down every 1 second
+      var x = setInterval(function() {
 
-  // Get today's date and time
-  var now = new Date().getTime();
+      // Get today's date and time
+      var now = new Date().getTime();
 
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
 
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Display the result in the element with id="demo"
-  document.getElementById("countdownTimer").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+      // Display the result in the element with id="demo"
+      document.getElementById("countdownTimer").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
 
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("countdownTimer").innerHTML = "EXPIRED";
-  }
-}, 1000);
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdownTimer").innerHTML = "EXPIRED";
+      }
+      }, 1000);
 </script>
 
