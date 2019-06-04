@@ -1,256 +1,73 @@
-<%= render 'shared/navbar', title: "Bet" %>
-<div class="index-cards-container">
-
-  <ul class="nav nav-pills mb-3 justify-content-around" id="pills-tab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="pills-live-tab" data-toggle="pill" href="#pills-live" role="tab" aria-controls="pills-live" aria-selected="true">Live</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="pills-pending-tab" data-toggle="pill" href="#pills-pending" role="tab" aria-controls="pills-pending" aria-selected="false">Pending</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="pills-verdict-tab" data-toggle="pill" href="#pills-verdict" role="tab" aria-controls="pills-verdict" aria-selected="false">Unverified</a>
-    </li>
-      <li class="nav-item">
-      <a class="nav-link" id="pills-final-tab" data-toggle="pill" href="#pills-final" role="tab" aria-controls="pills-final" aria-selected="false">Finished</a>
-    </li>
-  </ul>
-
-<div class="tab-content" id="pills-tabContent">
-
-  <div class="tab-pane fade show active" id="pills-live" role="tabpanel" aria-labelledby="pills-live-tab">
-
-        <% @bets.each do |bet| %>
-         <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
-              <% if bet.status == "confirmed" %>
-                  <div class="row index-card-bet align-items-center">
-                      <div class="col-3">
-                         <div class="align-self-start mr-3">
-                            <% if bet.proposer == current_user %>
-                              <%= cl_image_tag bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% else %>
-                              <%= cl_image_tag bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% end %>
-                         </div>
-                      </div>
-                      <div class="col-7 align-left">
-                          <div class="top-half">
-                            <% if bet.proposer == current_user %>
-                              <%= bet.receiver.first_name %>
-                            <% else %>
-                              <%= bet.proposer.first_name %>
-                            <% end %>
-                          </div>
-                           <div class="bottom-half">
-                            <p> $ <%= bet.stake %> | Odds: <%= bet.odds.round(2) %> </p>
-                          </div>
-                      </div>
-                      <div class="col-2 align-right">
-                          <% if bet.status == "pending" %>
-                            <i class="fas fa-ellipsis-h"></i>
-                          <% elsif bet.status == "confirmed" %>
-                            <i class="fas fa-play"></i>
-                          <% elsif bet.status == "unvalidated" %>
-                            <i class="fas fa-question"></i>
-                           <% elsif bet.status == "finished" %>
-                           <i class="fas fa-check-circle"></i>
-                           <% end %>
-                      </div>
-                  </div>
-              <% end %>
-            <% end %>
-          <% end %>
+<div class="navbar navbar-expand-sm navbar-light index-navbar-lewagon", id="index-navbar">
+  <div class="index-content">
+    <div class="index-logo">
+      <%= image_tag "earlybirds.png", alt: "Logo", width: 40%>
+    </div>
+    <div class="index-balance">
+      <span>You currently have </span> <span class="index-colored-balance"><%= @user.balance%> credits</span>
+    </div>
   </div>
-
-
-  <div class="tab-pane fade" id="pills-pending" role="tabpanel" aria-labelledby="pills-pending-tab">
-
-
-          <strong> Received  </strong>
-
-          <div>
-           <% @bets.where(receiver: current_user).each do |bet| %>
-             <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
-              <% if bet.status == "pending" && bet.receiver = current_user %>
-                  <div class="row index-card-bet align-items-center">
-                      <div class="col-3">
-                         <div class="align-self-start mr-3">
-                            <% if bet.proposer == current_user %>
-                              <%= cl_image_tag bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% else %>
-                              <%= cl_image_tag bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% end %>
-                         </div>
-                      </div>
-                      <div class="col-7 align-left">
-                          <div class="top-half">
-                            <% if bet.proposer == current_user %>
-                              <%= bet.receiver.first_name %>
-                            <% else %>
-                              <%= bet.proposer.first_name %>
-                            <% end %>
-                          </div>
-                           <div class="bottom-half">
-                            <p> $ <%= bet.stake %> | Odds: <%= bet.odds.round(2) %> </p>
-                          </div>
-                      </div>
-                      <div class="col-2 align-right">
-                          <% if bet.status == "pending" %>
-                            <i class="fas fa-ellipsis-h"></i>
-                          <% elsif bet.status == "confirmed" %>
-                            <i class="fas fa-play"></i>
-                          <% elsif bet.status == "unvalidated" %>
-                            <i class="fas fa-question"></i>
-                           <% elsif bet.status == "finished" %>
-                           <i class="fas fa-check-circle"></i>
-                           <% end %>
-                      </div>
-                  </div>
-              <% end %>
-              <% end %>
-           <% end %>
-           </div>
-
-
-          <strong> Sent  </strong>
-
-
-             <% @bets.where(proposer: current_user).each do |bet| %>
-               <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
-                <% if bet.status == "pending" && bet.proposer = current_user %>
-                  <div class="row index-card-bet align-items-center">
-                      <div class="col-3">
-                         <div class="align-self-start mr-3">
-                            <% if bet.proposer == current_user %>
-                              <%= cl_image_tag bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% else %>
-                              <%= cl_image_tag bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% end %>
-                         </div>
-                      </div>
-                      <div class="col-7 align-left">
-                          <div class="top-half">
-                            <% if bet.proposer == current_user %>
-                              <%= bet.receiver.first_name %>
-                            <% else %>
-                              <%= bet.proposer.first_name %>
-                            <% end %>
-                          </div>
-                           <div class="bottom-half">
-                            <p> $ <%= bet.stake %> | Odds: <%= bet.odds.round(2) %> </p>
-                          </div>
-                      </div>
-                      <div class="col-2 align-right">
-                          <% if bet.status == "pending" %>
-                            <i class="fas fa-ellipsis-h"></i>
-                          <% elsif bet.status == "confirmed" %>
-                            <i class="fas fa-play"></i>
-                          <% elsif bet.status == "unvalidated" %>
-                            <i class="fas fa-question"></i>
-                           <% elsif bet.status == "finished" %>
-                           <i class="fas fa-check-circle"></i>
-                           <% end %>
-                      </div>
-                  </div>
-              <% end %>
-            <% end %>
-           <% end %>
-  </div>
-
-
-  <div class="tab-pane fade" id="pills-verdict" role="tabpanel" aria-labelledby="pills-verdict-tab">
-
-          <% @bets.each do |bet| %>
-            <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
-              <% if bet.status == "unvalidated" %>
-                  <div class="row index-card-bet align-items-center">
-                      <div class="col-3">
-                         <div class="align-self-start mr-3">
-                            <% if bet.proposer == current_user %>
-                              <%= cl_image_tag bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% else %>
-                              <%= cl_image_tag bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                            <% end %>
-                         </div>
-                      </div>
-                      <div class="col-7 align-left">
-                          <div class="top-half">
-                            <% if bet.proposer == current_user %>
-                              <%= bet.receiver.first_name %>
-                            <% else %>
-                              <%= bet.proposer.first_name %>
-                            <% end %>
-                          </div>
-                           <div class="bottom-half">
-                            <p> $ <%= bet.stake %> | Odds: <%= bet.odds.round(2) %> </p>
-                          </div>
-                      </div>
-                      <div class="col-2 align-right">
-                          <% if bet.status == "pending" %>
-                            <i class="fas fa-ellipsis-h"></i>
-                          <% elsif bet.status == "confirmed" %>
-                            <i class="fas fa-play"></i>
-                          <% elsif bet.status == "unvalidated" %>
-                            <i class="fas fa-question"></i>
-                           <% elsif bet.status == "finished" %>
-                           <i class="fas fa-check-circle"></i>
-                           <% end %>
-                      </div>
-                  </div>
-              <% end %>
-            <% end %>
-          <% end %>
-  </div>
-
-
-  <div class="tab-pane fade" id="pills-final" role="tabpanel" aria-labelledby="pills-final-tab">
-
-
-         <% @bets.each do |bet| %>
-          <%= link_to bet_path(bet), class: 'text-decoration-none' do %>
-            <% if bet.status == "finished" %>
-                <div class="row index-card-bet align-items-center">
-                    <div class="col-3">
-                       <div class="align-self-start mr-3">
-                          <% if bet.proposer == current_user %>
-                            <%= cl_image_tag bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                          <% else %>
-                            <%= cl_image_tag bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large" %>
-                          <% end %>
-                       </div>
-                    </div>
-                    <div class="col-7 align-left">
-                        <div class="top-half">
-                          <% if bet.proposer == current_user %>
-                            <%= bet.receiver.first_name %>
-                          <% else %>
-                            <%= bet.proposer.first_name %>
-                          <% end %>
-                        </div>
-                         <div class="bottom-half">
-                          <p> $ <%= bet.stake %> | Odds: <%= bet.odds.round(2) %> </p>
-                        </div>
-                    </div>
-                    <div class="col-2 align-right">
-                        <% if bet.status == "pending" %>
-                          <i class="fas fa-ellipsis-h"></i>
-                        <% elsif bet.status == "confirmed" %>
-                          <i class="fas fa-play"></i>
-                        <% elsif bet.status == "unvalidated" %>
-                          <i class="fas fa-question"></i>
-                         <% elsif bet.status == "finished" %>
-                         <i class="fas fa-check-circle"></i>
-                         <% end %>
-                    </div>
-                </div>
-            <% end %>
-          <% end %>
-        <% end %>
+  <div class="index-heading">
+      <p> Challenges involving you </p>
   </div>
 </div>
 
 
+<div class="index-cards-container">
+  <% @bets.each do |b| %>
 
+    <div class ="index-card">
+
+      <div class="index-card-topline">
+        <div class="index-card-users">
+          <span class="index-colored-name"> <%= b.proposer.first_name %></span> <span class="index-light-grey"> challenged </span> <span class="index-colored-name"><%= b.receiver.first_name %></span>
+        </div>
+        <div class="index-card-odds">
+          <%=b.odds.to_r.rationalize(0.05)%>
+
+        </div>
+      </div>
+
+      <div class="index-card-proposition">
+        <%= link_to bet_path(b) do %>
+          <p><%= b.proposition %></p>
+        <% end  %>
+      </div>
+
+      <div class="index-card-bottomline">
+        <div class="index-card-status">
+          <p>Status</p>
+            <div class="index-card-status-elements">
+              <% if b.status == "pending" %>
+                <p class="no-margin"> Challenge to be accepted <p>
+              <% elsif b.status == "confirmed" %>
+                <p class="no-margin"> Challenge accepted <p>
+              <% elsif b.status == "unvalidated" %>
+                <p class="no-margin"> Challenge needs verdict <p>
+              <% elsif b.status == "finished" %>
+                <p class="no-margin"> Challenge finished <p>
+              <% end  %>
+            </div>
+        </div>
+        <% if b.status == "pending" %>
+          <%= link_to bet_path(b) do %>
+            <div class="index-card-button">
+              <p class="no-margin">Accept</p>
+            </div>
+          <% end %>
+        <% elsif b.status == "unvalidated" %>
+          <%= link_to bet_path(b) do %>
+            <div class="index-card-button">
+              <p class="no-margin">Verify</p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+
+    </div>
+  <% end  %>
+</div>
 
 
 
