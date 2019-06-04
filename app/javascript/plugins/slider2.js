@@ -16,7 +16,7 @@ const initScndSlider = () => {
     });
     slider.noUiSlider.on('update', () => {
       const currentValue = slider.noUiSlider.get();
-      decimalSliderText.innerHTML = currentValue;
+      decimalSliderText.innerHTML = "times by" + " " + currentValue;
       decimalSliderInput.value = currentValue;
     });
   }

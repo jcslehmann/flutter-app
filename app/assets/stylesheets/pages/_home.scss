@@ -117,22 +117,13 @@
           padding-top:4px;
       }
   };
-}
 
-.opaque {
-  color: $blue-purple
-}
+  .opaque {
+    color: $blue-purple
+  };
 
-.light {
-  color: $blue-purple;
-  opacity: 0.5;
-}
-
-
-
-
-
-
-
-
-
+  .light {
+    color: $blue-purple;
+    opacity: 0.5;
+  };
+};
