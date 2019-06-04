@@ -6,7 +6,7 @@
 
     <div class= "bet-info-container text-align-center">
 
-      <div class="background-overlay">
+      <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple"> <%= @bet.proposer.first_name %></span> <span class="light-grey">challenged</span> <span class="blue-purple"><%= @bet.receiver.first_name %></span></h3>
         <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
@@ -33,21 +33,33 @@
 
       </div>
 
-      <div class="card-bottomline">
-          <div class="card-likers">
-            <p>Liked by</p>
-            <div class="liker-avatars">
-            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
-            <%=cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "liker-avatar" %>
+
+      <div class="bet-card-bottomline">
+        <div class="bet-card-likers">
+          <p>Liked by</p>
+            <div>
+              <% if @bet.likes != nil %>
+                <% @bet.likes.each do |like| %>
+                  <%= cl_image_tag like.user.photo, height: 50, crop: :fill, class: "bet-liker-avatar" %>
+                <% end %>
+              <%end  %>
             </div>
-          </div>
-          <div class="card-likes">
-            <i class="fas fa-thumbs-up like-color"></i>
-          </div>
         </div>
+
+        <% if  @bet.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
+          <%= link_to bet_like_path(@bet.id, @bet.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
+            <div class="opaque bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to bet_likes_path(@bet), method: :post do %>
+            <div class="light bet-card-likes">
+              <i class= "fas fa-thumbs-up like-color card_likes"></i>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
 
 
       <div class="btn-group-vertical">
