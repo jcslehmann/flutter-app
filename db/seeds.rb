@@ -186,7 +186,7 @@ odds = 2
 proposition = "There will be a second referendum"
 deadline =  Faker::Date.forward(150)
 proposer = user2
-likes = []
+likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
 receiver = user5
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
@@ -200,7 +200,7 @@ proposition = "FlatIron buys Le Wagon"
 deadline =  Faker::Date.forward(360)
 proposer = user1
 receiver = user7
-likes = []
+likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
 status = "pending"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
@@ -213,7 +213,7 @@ proposition = "England will win the Euros"
 deadline =  Faker::Date.forward(300)
 proposer = user6
 receiver = user2
-likes = []
+likes = [Like.new(user_id: 3), Like.new(user_id: 6), Like.new(user_id: 1), Like.new(user_id: 7), Like.new(user_id: 5)]
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
@@ -226,7 +226,7 @@ proposition = "Man City will win premiership"
 deadline =  Faker::Date.backward(30)
 proposer = user6
 receiver = user2
-likes = []
+likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
 status = "finished"
 proposer_verdict = true
 receiver_verdict = true
