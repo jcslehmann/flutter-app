@@ -8,9 +8,8 @@ Rails.application.routes.draw do
     resources :bets, only: [:new, :create]
   end
   resources :bets do
-    resources :likes, only: [:create]
+    resources :likes, only: [:create, :destroy]
   end
-  resources :likes, only: [:destroy]
   scope "/bets/:id", :as => "bet" do
     resources :comments, only: [:index, :new, :create]
   end
