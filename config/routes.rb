@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'pages#landing_page'
 
+
+  get '/pages/:home', to: 'pages#home', as: 'home'
+
+  # resources :pages, only: [:home, :landing_page]
   resources :users, only: [:show, :index]
 
   scope "/users/:id", :as => "user" do
