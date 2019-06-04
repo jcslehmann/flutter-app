@@ -6,7 +6,7 @@ const loadSelectForm = () => {
   $(document).ready(function() {
     $('.select').select2({
       allowClear: true,
-      width: 200
+      width: 250,
     });
   });
 }

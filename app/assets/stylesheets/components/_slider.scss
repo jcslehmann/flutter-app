@@ -1,49 +1,148 @@
+// .noUi-base {
+//   background-color: $light-purple !important;
+//   color: $light-purple !important;
+// }
+
+// .noUi-handle {
+//   background-color: $black !important;
+//   color: $black !important;
+//   border-radius: 50%;
+// }
+
+// .noUi-handle-lower {
+//   border-radius: 50%;
+// }
+
+// .noUi-connect {
+//   background-color: $blue-purple !important;
+// }
+/// Height of the slider's handle
+/// @type String
+$control-height: 16px;
+/// Width of the slider's handle
+/// @type String
+$control-width: 16px;
+/// Color of the slider's handle
+/// @type Color
+$control-color: $blue-purple;
+/// Size of the slider handle's text
+/// @type String
+$control-font-size: 12px;
+/// Font Weight of the slider handle's text
+/// @type String
+$control-font-weight: 100;
+/// Color of the slider's "fill" when connected
+/// @type Color
+$fill-color: darken($control-color, 10%);
+/// Height of the slider's gutter
+/// @type String
+$gutter-height: 16px;
+
+/// noUiSlider Gutter
+.noUi-background {
+  height: $gutter-height;
+  &.noUi-vertical {
+    height: 200px;
+    width: $gutter-height;
+    margin: 0 auto 30px;
+  }
+}
 .noUi-base {
-  background-color: $cream !important;
-  color: $cream !important;
+
+  .noUi-connect {
+    background-color: $fill-color;
+  }
+  /// noUiSlider Handle
+  .noUi-handle {
+    background-color: $control-color;
+    border: none;
+    border-radius: 6px;
+    box-shadow: none;
+    display: table;
+    font-size: 15px;
+    height: $control-height;
+    left: 0;
+    margin-left: -8px;
+    margin-top: -($control-height/2) + $gutter-height/2 - 1;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: $control-width;
+    z-index: 2;
+
+    .noUi-horizontal & {
+      cursor: ew-resize;
+      width: 23px;
+      height: 23px;
+      left: -17px;
+      top: -3px;
+    }
+
+    .noUi-vertical & {
+      cursor: ns-resize;
+      margin-left: -($control-width/2) + $gutter-height/2;
+    }
+
+    &:hover {
+      background-color: lighten($control-color, 10%);
+    }
+
+    &.noUi-active {
+      background-color: darken($control-color, 10%);
+      z-index: 3;
+    }
+
+    &::before {
+      background: transparent;
+      content: attr(data-value);
+      display: table-cell;
+      font-size: $control-font-size;
+      font-weight: $control-font-weight;
+      position: static;
+      width: 100%;
+      vertical-align: middle;
+    }
+    &::after {
+      display: none;
+    }
+  }
 }
 
-.noUi-handle {
-  background-color: $orange !important;
-  color: $orange !important;
-  border-radius: 50%;
+.select2-selection__clear {
+  display: none !important;
 }
 
-.noUi-handle-lower {
-  border-radius: 50%;
-}
 
-.noUi-connect {
-  background-color: $blue !important;
-}
 
 #select2-receiver-container {
-  background-color: $cream;
-  box-shadow: 2px 2px;
+  background-color: $white;
   border-radius: 8px;
+  box-shadow: 0 0 3pt 2pt $blue-purple;
 }
 
 .select2-container--default .select2-selection--single {
   background-color: $white;
-  border: none !important;
 }
 
+
+
 .select2-results {
-  background-color: $cream;
+  background-color: $light-purple;
 }
 
 .select2-search__field {
-  background-color: $cream;
+  background-color: $white;
 }
 
 #bet_odds {
-  background-color: $cream !important;
+  background-color: $white !important;
 }
 
 #bet_deadline {
-  background-color: $cream !important;
+  background-color: $white !important;
 }
 
 #bet_proposition {
-  background-color: $cream !important;
+  background-color: $white !important;
 }
