@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: :landing_page
+  # before_action :authenticate_user!
 
   def home
     @bets = Bet.all
@@ -11,5 +12,8 @@ class PagesController < ApplicationController
         @live_bets << b
       end
     end
+  end
+
+  def landing_page
   end
 end
