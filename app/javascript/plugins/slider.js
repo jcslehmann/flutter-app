@@ -7,16 +7,16 @@ const initSlider = () => {
   if (slider) {
     noUiSlider.create(slider, {
       start: [3],
-      step: 0.5,
+      step: 1,
       connect: "lower",
       range: {
-        min: [0.5],
-        max: [40]
+        min: [0],
+        max: [50]
       }
     });
     slider.noUiSlider.on('update', () => {
       const currentValue = slider.noUiSlider.get();
-      priceSliderText.innerHTML = '$' + currentValue;
+      priceSliderText.innerHTML = currentValue + " " + "credits";
       priceSliderInput.value = currentValue;
     });
   }

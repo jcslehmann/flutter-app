@@ -1,5 +1,5 @@
 import flatpickr from "flatpickr";
-import "flatpickr/dist/themes/confetti.css";
+import "flatpickr/dist/themes/dark.css";
 // import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 
 const flat = flatpickr(".datepicker", {
