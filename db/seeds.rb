@@ -87,13 +87,13 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 10
 odds = 30
 proposition = "Chelsea will win Champions League"
-deadline =  Faker::Date.forward(340)
+deadline =  Faker::Date.backward(20)
 proposer = user2
 receiver = user5
 proposer_verdict = false
 receiver_verdict = false
 final_outcome = false
-likes = [Like.new(user_id: 4), Like.new(user_id: 7), Like.new(user_id: 1)]
+likes = [Like.new(user_id: 4), Like.new(user_id: 7), Like.new(user_id: 1), Like.new(user_id: 3), Like.new(user_id: 6)]
 consensus_reached = true
 status = "finished"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
@@ -146,7 +146,7 @@ proposer = user3
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6)]
 receiver = user5
 status = "unvalidated"
-proposer_verdict = false
+proposer_verdict = nil
 receiver_verdict = nil
 final_outcome = nil
 consensus_reached = nil
@@ -160,7 +160,7 @@ odds = 3
 proposition = "Royden will go bankrupt"
 deadline =  Faker::Date.forward(200)
 proposer = user6
-likes = []
+likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 5)]
 receiver = user2
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
@@ -172,9 +172,9 @@ stake = 20
 odds = 1.1
 proposition = "Royden will get $100m in seed funding"
 deadline =  Faker::Date.forward(364)
-proposer = User.first(3).sample
-receiver = User.last(3).sample
-likes = []
+proposer = user5
+receiver = user2
+likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 3)]
 status = "pending"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
