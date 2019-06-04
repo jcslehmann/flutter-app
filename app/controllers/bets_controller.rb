@@ -30,6 +30,7 @@ class BetsController < ApplicationController
 
   def show
     authorize @bet
+    @user = current_user
   end
 
   def edit

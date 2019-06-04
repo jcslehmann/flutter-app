@@ -1,3 +1,153 @@
+
+
+// *********************************************************
+
+.tiny-text {
+  font-size: 10px
+}
+
+.small-text {
+  font-size: 14px
+}
+
+.medium-text {
+  font-size: 20px
+}
+
+.blue-purple {
+  color: #6c5ce7;
+}
+
+.light-grey {
+  color: rgba(180,180,180,.8);
+}
+
+.grey {
+  color: rgba(120,120,120,1);
+}
+
+.vertical-spacing-medium {
+  padding: 50px 0;
+}
+
+.challenge-avatars {
+  border: 3px solid #fff;
+}
+
+.challenger-1 {
+  position: absolute;
+  left: 38%;
+  top: 25%;
+  z-index: 5;
+}
+
+.challenger-2 {
+  position: absolute;
+  left: 46%;
+  top: 25%;
+}
+
+.bold {
+  font-weight: bold
+}
+
+.bet-background-overlay {
+  background-color: rgba(108, 92, 231, 0.2);
+  border-radius: 0 0 20px 20px;
+}
+
+
+
+.bet-card-bottomline {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 340px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+
+  .bet-card-likers {
+    font-weight:200;
+    font-size:8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 40%;
+    align-text: left;
+    p {
+      margin : 5px 0px;
+      };
+    };
+
+  .bet-liker-avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: -3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $white;
+    };
+
+  .bet-card-likes {
+    display: flex;
+    justify-content: space-between;
+    background-color: $purple;
+    position: absolute;
+    border-radius: 5px;
+    right: -10px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    text-align:center;
+      *.like-color {color: $white}
+      i {
+          font-size:10px;
+          padding-left:5px;
+          padding-top:4px;
+      }
+  };
+}
+
+.bet-confirmation {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+.bet-rejection {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+
+
+
+
+
+
+
+// //////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .back-arrow i {
   color: black;
   font-size: 20px;
@@ -125,125 +275,6 @@
 
 .btn-color {
   color: $white;
-}
-
-
-// *********************************************************
-
-.tiny-text {
-  font-size: 10px
-}
-
-.small-text {
-  font-size: 14px
-}
-
-.medium-text {
-  font-size: 20px
-}
-
-.blue-purple {
-  color: #6c5ce7;
-}
-
-.light-grey {
-  color: rgba(180,180,180,.8);
-}
-
-.grey {
-  color: rgba(120,120,120,1);
-}
-
-.vertical-spacing-medium {
-  padding: 50px 0;
-}
-
-.challenge-avatars {
-  border: 3px solid #fff;
-}
-
-.challenger-1 {
-  position: absolute;
-  left: 38%;
-  top: 25%;
-  z-index: 5;
-}
-
-.challenger-2 {
-  position: absolute;
-  left: 46%;
-  top: 25%;
-}
-
-.bold {
-  font-weight: bold
-}
-
-.background-overlay {
-  background-color: rgba(108, 92, 231, 0.2);
-  border-radius: 0 0 20px 20px;
-}
-
-
-
-.card-bottomline {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-
-  .card-likers {
-    font-weight:200;
-    font-size:8px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 40%;
-    align-text: left;
-    p {
-      margin : 5px 0px;
-      };
-    };
-
-  .liker-avatar {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin: -3px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: $white;
-    };
-
-  .card-likes {
-    display: flex;
-    justify-content: space-between;
-    background-color: $purple;
-    position: absolute;
-    border-radius: 5px;
-    right: -10px;
-    top: 20px;
-    width: 20px;
-    height: 20px;
-    text-align:center;
-      *.like-color {color: $white}
-      i {
-          font-size:10px;
-          padding-left:5px;
-          padding-top:4px;
-      }
-  };
-}
-
-.bet-confirmation {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-}
-
-.bet-rejection {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
 }
 
 
