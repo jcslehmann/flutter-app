@@ -1,0 +1,8 @@
+like = document.getElementById("like_<%= @like.id %>")
+like.id = "bet_<%= @like.bet.id %>";
+like.setAttribute("data-method", "post");
+like.setAttribute("href", "/bets/<%= @like.bet.id %>/likes");
+like.childNodes[1].classList.remove("card-opaque");
+like.childNodes[1].classList.add("card-light");
+
+document.getElementById("user_<%= @like.user.id %>").remove();
