@@ -170,7 +170,7 @@ stake = 20
 odds = 1.1
 proposition = "Royden will get $100m in seed funding"
 deadline =  Faker::Date.forward(364)
-proposer = user5
+proposer = user3
 receiver = user2
 likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 3)]
 status = "pending"
@@ -185,7 +185,7 @@ proposition = "There will be a second referendum"
 deadline =  Faker::Date.forward(150)
 proposer = user2
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
-receiver = user5
+receiver = user6
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
