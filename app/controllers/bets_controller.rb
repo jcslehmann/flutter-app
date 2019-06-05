@@ -1,5 +1,5 @@
 class BetsController < ApplicationController
-  before_action :find_bet, only: [:show, :edit, :update]
+  before_action :find_bet, only: [ :show, :edit, :update ]
 
   def index
     @bets = policy_scope(Bet)

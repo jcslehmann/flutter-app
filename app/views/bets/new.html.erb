@@ -3,51 +3,50 @@
   <br>
 </div>
 <div class="form-container">
-<%= simple_form_for [@user, @bet] do |f| %>
-  <div class="proposition">
-  <div class="form-group text required bet_proposition">
-    <label class="form-control-label text required form-title" for="bet_proposition">Proposition
-    </label>
-    <textarea class="form-control text required" placeholder="Please explain your yes/no proposition!" name="bet[proposition]" id="bet_proposition"></textarea>
-  </div>
-  <button class="btn btn-flat button-mar" type="button" id="button-one">Next</button>
- <!--  <button class="btn btn-outline-primary btn-sm" type="button" id="b-button-one">Back</button> -->
-</div>
-  <div class="deadline no-display">
-    <%= f.label :deadline, class: "form-title", required: false %>
-    <%= f.input :deadline,  as: :string, required: false, placeholder: "Select your Deadline...", label: false, input_html: {class: "datepicker"} %>
-    <button class="btn btn-flat button-mar" type="button" id="button-two">Next</button>
-    <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-one">Back</button>
-  </div>
-  <div class="odds-stake no-display">
-    <%= f.input :odds, as: :hidden, input_html: { class: "decimal_value"} %>
-    <p class="form-title">Odds</p>
-    <div class="text-slide-box">
-      <p class="decimal_value_text"></p>
+  <%= simple_form_for [@user, @bet] do |f| %>
+    <div class="proposition">
+      <div class="form-group text required bet_proposition">
+        <label class="form-control-label text required form-title" for="bet_proposition">Proposition
+        </label>
+        <textarea class="form-control text required" placeholder="Please explain your yes/no proposition!" name="bet[proposition]" id="bet_proposition"></textarea>
+      </div>
+      <button class="btn btn-flat button-mar" type="button" id="button-one">Next</button>
     </div>
-    <div class="decimal-slider my-3"></div>
-    <%= f.input :stake, as: :hidden, input_html: { class: "price_per_night"} %>
-    <p class="form-title">Stake</p>
-    <div class="text-slide-box">
-      <p class="price-slider-text"></p>
+    <div class="deadline no-display">
+      <%= f.label :deadline, class: "form-title", required: false %>
+      <%= f.input :deadline, as: :string, required: false, placeholder: "Select your Deadline...", label: false, input_html: { class: "datepicker" } %>
+      <button class="btn btn-flat button-mar" type="button" id="button-two">Next</button>
+      <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-one">Back</button>
     </div>
-    <div class="money-slider my-3"></div>
-    <button class="btn btn-flat button-mar" type="button" id="button-three">Next</button>
-    <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-two">Back</button>
-  </div>
+    <div class="odds-stake no-display">
+      <%= f.input :odds, as: :hidden, input_html: { class: "decimal_value"} %>
+      <p class="form-title">Odds</p>
+      <div class="text-slide-box">
+        <p class="decimal_value_text"></p>
+      </div>
+      <div class="decimal-slider my-3"></div>
+      <%= f.input :stake, as: :hidden, input_html: { class: "price_per_night"} %>
+      <p class="form-title">Stake</p>
+      <div class="text-slide-box">
+        <p class="price-slider-text"></p>
+      </div>
+      <div class="money-slider my-3"></div>
+      <button class="btn btn-flat button-mar" type="button" id="button-three">Next</button>
+      <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-two">Back</button>
+    </div>
     <div class="receiver no-display">
-    <p class="form-title">Search for challenger</p>
-    <br>
-    <br>
-    <%= select_tag "receiver", options_from_collection_for_select(
-      User.all,
-      :id, :username),
-      class: 'select' %>
-    <br>
-    <br>
-    <br>
-    <input type="submit" name="commit" value="Create Bet" class="btn-flat button-mar button-sized" data-disable-with="Create Bet">
-  <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-three">Back</button>
+      <p class="form-title">Search for challenger</p>
+      <br>
+      <br>
+      <%= select_tag "receiver", options_from_collection_for_select(
+        User.all,
+        :id, :username),
+        class: 'select' %>
+      <br>
+      <br>
+      <br>
+      <input type="submit" name="commit" value="Create Bet" class="btn-flat button-mar button-sized" data-disable-with="Create Bet">
+      <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-three">Back</button>
     </div>
 <% end %>
 </div>
