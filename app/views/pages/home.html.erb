@@ -6,7 +6,7 @@
 
       <div class="card-topline">
         <div class="card-users">
-          <span class="colored-name"> <%= b.proposer.first_name %></span> <span class="light-grey"> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
+          <span class="colored-name"> <%= b.proposer.first_name %></span> <span> challenged </span> <span class="colored-name"><%= b.receiver.first_name %></span>
         </div>
         <div class="card-odds">
           <%=b.odds.to_r.rationalize(0.05)%>

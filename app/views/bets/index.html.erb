@@ -1,7 +1,7 @@
 <%= render 'shared/navbar'%>
 
 <div class="index-heading">
-    <p class="heading-index"> Challenges involving you </p>
+    <p class="heading-index"> You challenges </p>
 </div>
 
 <div class="index-cards-container">
@@ -30,13 +30,13 @@
           <p>Status</p>
             <div class="index-card-status-elements">
               <% if b.status == "pending" %>
-                <p class="no-margin"> Pending <p>
+                <p class="no-margin"> Challenge pending <p>
               <% elsif b.status == "confirmed" %>
-                <p class="no-margin"> Live <p>
+                <p class="no-margin"> Challenge live <p>
               <% elsif b.status == "unvalidated" %>
-                <p class="no-margin"> Unvalidated <p>
+                <p class="no-margin"> Outcome unverified <p>
               <% elsif b.status == "finished" %>
-                <p class="no-margin"> Finished <p>
+                <p class="no-margin"> Challenge finished <p>
               <% end  %>
             </div>
         </div>
@@ -66,6 +66,7 @@
           <% end %>
         <% end %>
       </div>
+
 
 
     </div>
