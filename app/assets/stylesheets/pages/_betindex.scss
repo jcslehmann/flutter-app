@@ -1,52 +1,16 @@
-.index-navbar-lewagon {
-  background-color: white;
-  color: $white;
-  height: 115px;
-  padding: 20px;
-
-  .index-content {
-    padding-bottom: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    align-items: center;
-    color: $gray;
-    font-size: 12px;
-    font-weight: 500;
-    width: 100vw;
-    .index-colored-balance{
-      color: $blue-purple;
-      font-size: 12px;
-      font-weight: 400;
-    };
-  };
-  .index-heading {
+.index-heading {
     color:$light-gray;
     font-size: 16px;
     font-weight: 400;
+    position: sticky;
+    z-index: 1;
+    top: 70px;
+    background-color: white;
+    padding-left:20px;
+    .heading-index {
+    margin-bottom: 0px !important;
+    };
   };
-}
-
- #index-navbar {
-  position: sticky;
-  z-index: 1;
-  top: 0;
- }
-
-.index-transparent-navbar {
-  transition: 0.5s background-color ease;
-  background-color: rgba(240, 209, 123, 0.4);
-}
-
-
-
-
-
-
-
-
 
 .index-cards-container {
   background-color: white;

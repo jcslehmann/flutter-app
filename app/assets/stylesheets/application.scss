@@ -18,3 +18,32 @@
   background-color: $white;
   min-height: 100vh;
 }
+
+:focus {
+  outline-color: $light-purple;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+input:focus {
+  outline-style: none;
+}
+
+span .select2-search {
+  background-color: $light-purple;
+}
+
+.decimal_value_text {
+  font-size: 14px;
+}
+
+.price-slider-text {
+  font-size: 14px;
+}
+
+.select2-search__field {
+  border-radius: 10px;
+  border: none;
+}

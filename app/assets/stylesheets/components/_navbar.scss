@@ -2,7 +2,9 @@
   background-color: white;
   color: $white;
   height: 70px;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
 }
 
 .content {
@@ -24,25 +26,32 @@
   };
 }
 
+
+
  #navbar {
   position: sticky;
   z-index: 1;
   top: 0;
  }
-
+/*
 .transparent-navbar {
   transition: 0.5s background-color ease;
   background-color: rgba(240, 209, 123, 0.4);
 }
 
+/*
+*/
+
 ///////////////////////////////////////////////////////////
 
 
 .bet-navbar-lewagon {
-  background-color: rgba(108, 92, 231, 0.2);
+  background-color: $light-purple;
   color: $white;
   height: 70px;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
 }
 
 .bet-content {
@@ -64,13 +73,18 @@
   };
 }
 
+
  #bet-navbar {
   position: sticky;
   z-index: 1;
   top: 0;
  }
 
+/*
 .bet-transparent-navbar {
   transition: 0.5s background-color ease;
   background-color: rgba(240, 209, 123, 0.4);
 }
+*/
+
+

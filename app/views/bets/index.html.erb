@@ -1,17 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light index-navbar-lewagon", id="index-navbar">
-  <div class="index-content">
-    <div class="index-logo">
-      <%= image_tag "earlybirds.png", alt: "Logo", width: 40%>
-    </div>
-    <div class="index-balance">
-      <span>You currently have </span> <span class="index-colored-balance"><%= @user.balance%> credits</span>
-    </div>
-  </div>
-  <div class="index-heading">
-      <p> Challenges involving you </p>
-  </div>
-</div>
+<%= render 'shared/navbar'%>
 
+<div class="index-heading">
+    <p class="heading-index"> Challenges involving you </p>
+</div>
 
 <div class="index-cards-container">
   <% @bets.each do |b| %>

@@ -33,7 +33,7 @@ $control-font-size: 12px;
 $control-font-weight: 100;
 /// Color of the slider's "fill" when connected
 /// @type Color
-$fill-color: darken($control-color, 10%);
+$fill-color: lighten($control-color, 10%);
 /// Height of the slider's gutter
 /// @type String
 $gutter-height: 16px;
@@ -84,9 +84,9 @@ $gutter-height: 16px;
       margin-left: -($control-width/2) + $gutter-height/2;
     }
 
-    &:hover {
+    /*&:hover {
       background-color: lighten($control-color, 10%);
-    }
+    }*/
 
     &.noUi-active {
       background-color: darken($control-color, 10%);
@@ -117,14 +117,13 @@ $gutter-height: 16px;
 
 #select2-receiver-container {
   background-color: $white;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 0 3pt 2pt $blue-purple;
 }
 
 .select2-container--default .select2-selection--single {
   background-color: $white;
 }
-
 
 
 .select2-results {

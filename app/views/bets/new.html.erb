@@ -1,5 +1,7 @@
-<%= render 'shared/navbar', title: "New Flutter" %>
-<br>
+<%= render 'shared/betnavbar'%>
+<div class="background">
+  <br>
+</div>
 <div class="form-container">
 <%= simple_form_for [@user, @bet] do |f| %>
   <div class="proposition">
@@ -15,7 +17,7 @@
     <%= f.label :deadline, class: "form-title", required: false %>
     <%= f.input :deadline,  as: :string, required: false, placeholder: "Select your Deadline...", label: false, input_html: {class: "datepicker"} %>
     <button class="btn btn-flat button-mar" type="button" id="button-two">Next</button>
-    <button class="btn btn-outline-primary btn-sm button-mar" type="button" id="b-button-one">Back</button>
+    <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-one">Back</button>
   </div>
   <div class="odds-stake no-display">
     <%= f.input :odds, as: :hidden, input_html: { class: "decimal_value"} %>
@@ -31,7 +33,7 @@
     </div>
     <div class="money-slider my-3"></div>
     <button class="btn btn-flat button-mar" type="button" id="button-three">Next</button>
-    <button class="btn btn-outline-primary btn-sm button-mar" type="button" id="b-button-two">Back</button>
+    <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-two">Back</button>
   </div>
     <div class="receiver no-display">
     <p class="form-title">Search for challenger</p>
@@ -45,7 +47,7 @@
     <br>
     <br>
     <input type="submit" name="commit" value="Create Bet" class="btn-flat button-mar button-sized" data-disable-with="Create Bet">
-  <button class="btn btn-outline-primary btn-sm button-mar" type="button" id="b-button-three">Back</button>
+  <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-three">Back</button>
     </div>
 <% end %>
 </div>
