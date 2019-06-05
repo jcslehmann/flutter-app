@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#landing_page'
 
 
-  get '/pages/:home', to: 'pages#home', as: 'home'
+  get '/pages/home', to: 'pages#home', as: 'home'
 
   # resources :pages, only: [:home, :landing_page]
   resources :users, only: [:show, :index]

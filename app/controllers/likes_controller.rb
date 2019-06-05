@@ -3,22 +3,16 @@ before_action :find_like, only: [:destroy]
 after_action :verify_authorized, except: [:create, :destroy]
 
   def create
-    if already_liked?
-      flash[:notice] = "You can't like more than once"
-    else
-      like = Like.new(user_id: current_user.id, bet_id: params[:bet_id])
-      like.save
+    @like = Like.new(user_id: current_user.id, bet_id: params[:bet_id])
+    @like.save
+    respond_to do |format|
+      format.html { redirect_to home_path }
+      format.js
     end
-    redirect_to home_path("/home")
   end
 
   def destroy
-    if !already_liked?
-      flash[:notice] = "Cannot unlike"
-    else
-      @like.destroy
-    end
-    redirect_to home_path("/home")
+    @like.destroy
     authorize @like
   end
 
