@@ -9,10 +9,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -21,11 +21,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -40,7 +40,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -84,10 +84,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -96,11 +96,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -115,7 +115,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -153,10 +153,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3">
           <span class="blue-purple"><%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -165,11 +165,11 @@
         <div class = "funky-container">
           <div class = "d-flex justify-content-around">
             <div class="bet-odds">
-              <p class="grey tiny-text text-center">ODDS</p>
+              <p class="grey tiny-text text-center">Odds</p>
               <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
             </div>
             <div class="bet-stake">
-              <p class="grey tiny-text text-center">STAKE</p>
+              <p class="grey tiny-text text-center">Stake</p>
               <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
             </div>
           </div>
@@ -183,7 +183,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -217,10 +217,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -229,11 +229,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -248,7 +248,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -291,10 +291,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -303,11 +303,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -322,7 +322,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -360,10 +360,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -372,11 +372,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -391,7 +391,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -433,10 +433,10 @@
           <div class="bet-background-overlay">
             <h3 class="text-center small-text y-3"> <span class="blue-purple">
               <%= @bet.proposer.first_name %></span>
-              <span class="light-grey">challenged</span>
+              <span class="dark-grey">challenged</span>
               <span class="blue-purple"><%= @bet.receiver.first_name %></span>
             </h3>
-            <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+            <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
             <div class="vertical-spacing-medium">
               <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
               <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -445,11 +445,11 @@
           <div class = "funky-container">
             <div class = "d-flex justify-content-around">
               <div class="bet-odds">
-                <p class="grey tiny-text text-center">ODDS</p>
+                <p class="grey tiny-text text-center">Odds</p>
                 <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
               </div>
               <div class="bet-stake">
-                <p class="grey tiny-text text-center">STAKE</p>
+                <p class="grey tiny-text text-center">Stake</p>
                 <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
               </div>
             </div>
@@ -464,7 +464,7 @@
 
           <div class="bet-card-bottomline">
             <div class="bet-card-likers">
-              <p>LIKED BY</p>
+              <p>Liked by</p>
                 <div>
                   <% if @bet.likes != nil %>
                     <% @bet.likes.each do |like| %>
@@ -503,10 +503,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -515,11 +515,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -534,7 +534,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -572,10 +572,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -584,11 +584,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -603,7 +603,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -642,10 +642,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -654,11 +654,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -673,7 +673,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -713,10 +713,10 @@
       <div class="bet-background-overlay">
         <h3 class="text-center small-text y-3"> <span class="blue-purple">
           <%= @bet.proposer.first_name %></span>
-          <span class="light-grey">challenged</span>
+          <span class="dark-grey">challenged</span>
           <span class="blue-purple"><%= @bet.receiver.first_name %></span>
         </h3>
-        <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+        <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
         <div class="vertical-spacing-medium">
           <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
           <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -725,11 +725,11 @@
       <div class = "funky-container">
         <div class = "d-flex justify-content-around">
           <div class="bet-odds">
-            <p class="grey tiny-text text-center">ODDS</p>
+            <p class="grey tiny-text text-center">Odds</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
           </div>
           <div class="bet-stake">
-            <p class="grey tiny-text text-center">STAKE</p>
+            <p class="grey tiny-text text-center">Stake</p>
             <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
           </div>
         </div>
@@ -744,7 +744,7 @@
 
       <div class="bet-card-bottomline">
         <div class="bet-card-likers">
-          <p>LIKED BY</p>
+          <p>Liked by</p>
             <div>
               <% if @bet.likes != nil %>
                 <% @bet.likes.each do |like| %>
@@ -781,10 +781,10 @@
         <div class="bet-background-overlay">
           <h3 class="text-center small-text y-3"> <span class="blue-purple">
             <%= @bet.proposer.first_name %></span>
-            <span class="light-grey">challenged</span>
+            <span class="dark-grey">challenged</span>
             <span class="blue-purple"><%= @bet.receiver.first_name %></span>
           </h3>
-          <h2 class="text-center medium-text grey"> <%= @bet.proposition %></h2>
+          <h2 class="text-center medium-text black" style="padding-top: 10px;"> <%= @bet.proposition %></h2>
           <div class="vertical-spacing-medium">
             <%= cl_image_tag @bet.proposer.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-1" %>
             <%= cl_image_tag @bet.receiver.photo, height: 50, crop: :fill, class: "avatar-large challenge-avatars challenger-2" %>
@@ -793,11 +793,11 @@
         <div class = "funky-container">
           <div class = "d-flex justify-content-around">
             <div class="bet-odds">
-              <p class="grey tiny-text text-center">ODDS</p>
+              <p class="grey tiny-text text-center">Odds</p>
               <p class="medium-text blue-purple text-center bold"> <%= @bet.odds %></p>
             </div>
             <div class="bet-stake">
-              <p class="grey tiny-text text-center">STAKE</p>
+              <p class="grey tiny-text text-center">Stake</p>
               <p class="medium-text blue-purple text-center bold"> <%= @bet.stake %></p>
             </div>
           </div>
@@ -812,7 +812,7 @@
 
         <div class="bet-card-bottomline">
           <div class="bet-card-likers">
-            <p>LIKED BY</p>
+            <p>Liked by</p>
               <div>
                 <% if @bet.likes != nil %>
                   <% @bet.likes.each do |like| %>

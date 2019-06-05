@@ -35,7 +35,7 @@
   };
 
   .card-users {
-    color: $gray;
+    color: $dark-gray;
     font-size: 14px;
     font-weight: 400;
 
@@ -54,7 +54,7 @@
     color: $blue-purple;
     text-align: center;
     font-size: 10px;
-    font-weight: 300;
+    font-weight: 400;
     padding-top: 2px;
   };
 }
@@ -80,7 +80,7 @@
   align-items: flex-end;
 
   .card-likers {
-    font-weight:300;
+    font-weight:400;
     color: $gray;
     font-size:10px;
     display: flex;
