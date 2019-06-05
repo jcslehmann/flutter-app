@@ -15,7 +15,7 @@ class BetsController < ApplicationController
   def create
     @user = current_user
     @bet = Bet.new(bet_params)
-    @bet.status = "Pending"
+    @bet.status = "pending"
     @bet.proposer = current_user
     @receiver = User.find(params[:receiver])
     @bet.receiver = @receiver
