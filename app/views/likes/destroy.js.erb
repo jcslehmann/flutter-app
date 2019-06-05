@@ -5,4 +5,10 @@ like.setAttribute("href", "/bets/<%= @like.bet.id %>/likes");
 like.childNodes[1].classList.remove("card-opaque");
 like.childNodes[1].classList.add("card-light");
 
-document.getElementById("user_<%= @like.user.id %>").remove();
+cardLikers = document.getElementById("card_bet_<%= @like.bet.id %>")
+cardLikers.childNodes[3].childNodes.forEach((node) => {
+  if (node.id === "user_<%= @like.user.id %>") {
+    node.remove();
+  }
+})
+// document.getElementById("user_<%= @like.user.id %>").remove();

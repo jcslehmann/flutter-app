@@ -6,4 +6,5 @@ bet.childNodes[1].classList.remove("card-light");
 bet.childNodes[1].classList.add("card-opaque");
 
 image = `<img height="50" id="user_<%= @like.user.id %>" class="liker-avatar" src="<%= @like.user.photo_url %>">`
-document.querySelector(".card-likers").childNodes[3].insertAdjacentHTML("beforeend", image);
+cardLikers = document.getElementById("card_bet_<%= @like.bet.id %>")
+cardLikers.childNodes[3].insertAdjacentHTML("beforeend", image)
