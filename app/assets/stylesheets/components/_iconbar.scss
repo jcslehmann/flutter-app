@@ -29,7 +29,12 @@
     }
 }
 
-.dropbtn:hover, .dropbtn:focus {
+// .dropbtn:active, .dropbtn:focus, .dropbtn:visited {
+//   background-color: $light-purple;
+//   color: $blue-purple !important;
+// }
+
+.active-button {
   background-color: $light-purple;
   color: $blue-purple !important;
 }
@@ -41,26 +46,53 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: $blue-purple;
-  color: white;
+  background-color: $light-purple;
   height: 70px;
   text-align: center;
-  color: $white !important;
+  color: $white;
   font-size: 12px;
-  .btn{
-  width: 50px;
-  display: block;
-  };
-  .center-btn{
-  width: 50px;
-  display: block;
+
+  .btn {
+    width: 50px;
+    display: block;
+    fill: white;
+    }
+  .svg-btn {
+    width: 50px;
+    display: block;
+    fill: white;
   }
+  .changefill {
+    fill: $blue-purple;
+    width: 50px;
+    display: block;
+    padding: 0.375rem 0.75rem;
+
+  }
+}
+
+
+.center-btn{
+  width: 50px;
+  display: block;
+  fill: white;
+
+  &:active {
+    color: $blue-purple;
+  }
+
   p {
     color: $white !important;
     font-size: 12px;
   }
-}
 
+}
+.changefill2 {
+    fill: $blue-purple;
+    width: 50px;
+    display: block;
+    // padding: 0.375rem 0.75rem;
+  }
 .dropdown-content a {
   color: $white;
   padding: 12px 0px;
@@ -68,6 +100,6 @@
   display: block;
 }
 
-.dropdown a:hover {background-color: $light-purple;}
+.dropdown a:active {background-color: $light-purple;}
 
 .show {display: flex;}
