@@ -15,7 +15,9 @@
       </div>
 
       <div class="card-proposition">
-        <p><%= b.proposition %></p>
+        <%= link_to bet_path(b) do %>
+          <p><%= b.proposition %></p>
+        <% end  %>
       </div>
 
       <div class="card-bottomline">
@@ -32,13 +34,13 @@
 
         <% if b.likes.map { |like| like.user_id == current_user.id }.include?(true) %>
           <%= link_to bet_like_path(b.id, b.likes.find { |like| like.user_id == current_user.id }), method: :delete do %>
-            <div class="opaque card-likes">
+            <div class="card-opaque card-likes">
               <i class= "fas fa-thumbs-up like-color card_likes"></i>
             </div>
           <% end %>
         <% else %>
           <%= link_to bet_likes_path(b), method: :post do %>
-            <div class="light card-likes">
+            <div class="card-light card-likes">
               <i class= "fas fa-thumbs-up like-color card_likes"></i>
             </div>
           <% end %>

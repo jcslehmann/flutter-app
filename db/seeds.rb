@@ -19,48 +19,46 @@ Bet.destroy_all
 puts 'Making an admin!'
 
 # Admin User
-user1 = User.create!(username: "admin", first_name: "Joe", last_name: "Blogs", password: "123456", email: "joe@blogs.com", balance: 100, admin: true, ranking: 3, wins: 16, loses: 10)
+user1 = User.create!(username: "David", first_name: "David", last_name: "Gordon", password: "password", remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/qyzyudrq6jxt2pk6ydbr.jpg", email: "david@email.com", balance: 100, admin: true, ranking: 3, wins: 16, loses: 10)
 
 puts "Created #{user1.email} as an admin!"
-
-
 # Normal Users...
 
 puts "Creating users..."
 
 balance = (1..50).to_a.sample
-user2 = User.new(first_name: "Bob", last_name: Faker::Name.last_name, username: Faker::Name.initials,
-  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 1, wins: 18, loses: 2)
-user2.email = "#{user2.first_name}@email.com"
+user2 = User.new(first_name: "Liam", last_name: "Garrison", username: "javascriptliam",
+  password: 'password', balance: balance, remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/vv16vr7j2a36wnqcpdbw.jpg", ranking: 1, wins: 18, loses: 2)
+user2.email = "liam@email.com"
 user2.save!
 
 balance = (1..50).to_a.sample
-user3 = User.new(first_name: "Jan", last_name: Faker::Name.last_name, username: Faker::Name.initials,
-  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 2, wins: 17, loses: 6)
-user3.email = "#{user3.first_name}@email.com"
+user3 = User.new(first_name: "Jan", last_name: "Linhart", username: "czechjan",
+  password: 'password', balance: balance, remote_photo_url: "https://avatars2.githubusercontent.com/u/46406611?v=4", ranking: 2, wins: 17, loses: 6)
+user3.email = "jan@email.com"
 user3.save!
 
 balance = (1..50).to_a.sample
-user4 = User.new(first_name: "James", last_name: Faker::Name.last_name, username: Faker::Name.initials,
-  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 7, wins: 3, loses: 27)
-user4.email = "#{user4.first_name}@email.com"
+user4 = User.new(first_name: "James", last_name: "Bates", username: "genzjames",
+  password: 'password', balance: balance, remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/s2fig1e9yccktv8qrxm0.jpg", ranking: 7, wins: 3, loses: 27)
+user4.email = "james@email.com"
 user4.save!
 
 balance = (1..50).to_a.sample
-user5 = User.new(first_name: "Thor", last_name: Faker::Name.last_name, username: Faker::Name.initials,
-  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 4, wins: 15, loses: 9)
-user5.email = "#{user5.first_name}@email.com"
+user5 = User.new(first_name: "Julius", last_name: "Lehmann", username: "scandijules",
+  password: 'password', balance: balance, remote_photo_url: "https://avatars1.githubusercontent.com/u/48035034?v=4", ranking: 4, wins: 15, loses: 9)
+user5.email = "julius@email.com"
 user5.save!
 
 balance = (1..50).to_a.sample
-user6 = User.new(first_name: "Inga", last_name: Faker::Name.last_name, username: Faker::Name.initials,
-  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 5, wins: 14, loses: 13)
+user6 = User.new(first_name: "Harsh", last_name: "Patel", username: "speedyharsh",
+  password: 'password', balance: balance, remote_photo_url: "https://avatars0.githubusercontent.com/u/45178969?v=4", ranking: 5, wins: 14, loses: 13)
 user6.email = "#{user6.first_name}@email.com"
 user6.save!
 
 balance = (1..50).to_a.sample
-user7 = User.new(first_name: "Zara", last_name: Faker::Name.last_name, username: Faker::Name.initials,
-  password: 'password', balance: balance, remote_photo_url: "https://source.unsplash.com/random/?person", ranking: 6, wins: 15, loses: 20)
+user7 = User.new(first_name: "Hussein", last_name: "Daher", username: "backendninja",
+  password: 'password', balance: balance, remote_photo_url: "https://avatars1.githubusercontent.com/u/47718583?v=4", ranking: 6, wins: 15, loses: 20)
 user7.email = "#{user7.first_name}@email.com"
 user7.save!
 
@@ -172,7 +170,7 @@ stake = 20
 odds = 1.1
 proposition = "Royden will get $100m in seed funding"
 deadline =  Faker::Date.forward(364)
-proposer = user5
+proposer = user3
 receiver = user2
 likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 3)]
 status = "pending"
@@ -187,7 +185,7 @@ proposition = "There will be a second referendum"
 deadline =  Faker::Date.forward(150)
 proposer = user2
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
-receiver = user5
+receiver = user6
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,

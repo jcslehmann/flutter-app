@@ -30,13 +30,13 @@
           <p>Status</p>
             <div class="index-card-status-elements">
               <% if b.status == "pending" %>
-                <p class="no-margin"> Challenge to be accepted <p>
+                <p class="no-margin"> Pending <p>
               <% elsif b.status == "confirmed" %>
-                <p class="no-margin"> Challenge accepted <p>
+                <p class="no-margin"> Live <p>
               <% elsif b.status == "unvalidated" %>
-                <p class="no-margin"> Challenge needs verdict <p>
+                <p class="no-margin"> Unvalidated <p>
               <% elsif b.status == "finished" %>
-                <p class="no-margin"> Challenge finished <p>
+                <p class="no-margin"> Finished <p>
               <% end  %>
             </div>
         </div>
@@ -46,10 +46,22 @@
               <p class="no-margin">Accept</p>
             </div>
           <% end %>
+        <% elsif b.status == "confirmed" %>
+          <%= link_to bet_path(b) do %>
+            <div class="index-card-button">
+              <p class="no-margin">View</p>
+            </div>
+        <% end %>
         <% elsif b.status == "unvalidated" %>
           <%= link_to bet_path(b) do %>
             <div class="index-card-button">
               <p class="no-margin">Verify</p>
+            </div>
+          <% end %>
+           <% elsif b.status == "finished" %>
+          <%= link_to bet_path(b) do %>
+            <div class="index-card-button">
+              <p class="no-margin">View</p>
             </div>
           <% end %>
         <% end %>

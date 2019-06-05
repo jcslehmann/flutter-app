@@ -23,7 +23,7 @@
 <meta name="twitter:description" content="<%= meta_description %>">
 <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
 <meta name="twitter:image:src" content="<%= meta_image %>">
-
+<script src="https://kit.fontawesome.com/f19d055e10.js"></script>
 
 
 
@@ -47,8 +47,11 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= yield %>
-  <% if !current_user.nil? %>
-     <%= render 'shared/iconbar'  %>
+
+
+  <% if !current_user.nil? && !current_page?('/')%>
+    <%= render 'shared/iconbar'  %>
+
   <% end  %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

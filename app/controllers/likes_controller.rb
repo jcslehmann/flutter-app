@@ -9,8 +9,7 @@ after_action :verify_authorized, except: [:create, :destroy]
       like = Like.new(user_id: current_user.id, bet_id: params[:bet_id])
       like.save
     end
-      redirect_to root_path
-
+    redirect_to home_path("/home")
   end
 
   def destroy
@@ -19,7 +18,7 @@ after_action :verify_authorized, except: [:create, :destroy]
     else
       @like.destroy
     end
-    redirect_to root_path
+    redirect_to home_path("/home")
     authorize @like
   end
 
