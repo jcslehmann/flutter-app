@@ -25,3 +25,18 @@
     opacity: 0.9;
   }
 }
+
+.btn-flutter-white {
+  padding: 20px 60px;
+  border-radius: 50px;
+  background-color: #fff;
+  color: #6c5ce7;
+  font-size: 20px;
+  margin: 0 auto;
+  &:hover {
+    background-color: rgba(240,240,240,1);
+    text-decoration: none;
+    color: #6c5ce7;
+    opacity: 0.9;
+  }
+}

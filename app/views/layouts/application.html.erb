@@ -47,8 +47,10 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= yield %>
-  <% if !current_user.nil? %>
+
+  <% if !current_user.nil? && !current_page?('/')%>
     <%= render 'shared/iconbar'  %>
+
   <% end  %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
