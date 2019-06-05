@@ -52,8 +52,9 @@
 }
 
 .bet-background-overlay {
-  background-color: rgba(108, 92, 231, 0.2);
+  background-color: $light-purple;
   border-radius: 0 0 20px 20px;
+  height: 300px;
 }
 
 .bet_message {

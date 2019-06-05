@@ -2,23 +2,29 @@
   width: 100% !important;
   display: block;
     height: calc(1.5em + 0.75rem + 2px);
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.5;
     color: $black;
-    background-color: $light-purple;
+    background-color: $white;
     background-clip: padding-box;
-    border: 1px solid $blue-purple;
-    border-radius: 2px;
+    border: /*1px solid*/ $blue-purple;
+    border-radius: 10px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     justify-content: center;
 }
 
 .form-container {
-  background-color: $white;
+  background-color: $light-purple;
   justify-content: center;
   display: flex;
-  height: 100vh;
+  height: 300px;
+  border-radius: 0 0 20px 20px;
+  padding-top:0px;
+}
+
+.background {
+  background-color: $light-purple;
 }
 
 .new_bet {
@@ -28,6 +34,7 @@
 .button-mar {
   margin: 20px;
   margin-left: 0px !important;
+  border-radius: 50px;
 }
 
 .no-display {
@@ -54,18 +61,18 @@
 }
 
 .odds-stake {
-  margin-top: -236px;
+  margin-top: -190px;
 }
 
 .receiver {
-  margin-top: -349px;
+  margin-top: -315px;
 }
 
 .form-title {
-  color: $blue-purple;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 12px;
+  color: $gray;
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 0px;
   margin-top: 0px;
 }
 
