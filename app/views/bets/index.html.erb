@@ -1,7 +1,7 @@
 <%= render 'shared/navbar'%>
 
 <div class="index-heading">
-    <p class="heading-index"> You challenges </p>
+    <p class="heading-index"> Your Flutters </p>
 </div>
 
 <div class="index-cards-container">
@@ -11,7 +11,7 @@
 
       <div class="index-card-topline">
         <div class="index-card-users">
-          <span class="index-colored-name"> <%= b.proposer.first_name %></span> <span class="index-light-grey"> challenged </span> <span class="index-colored-name"><%= b.receiver.first_name %></span>
+          <span class="index-colored-name"> <%= b.proposer.first_name %></span> <span class="index-light-grey"> bet </span> <span class="index-colored-name"><%= b.receiver.first_name %></span>
         </div>
         <div class="index-card-odds">
           <%=b.odds.to_r.rationalize(0.05)%>
@@ -30,13 +30,13 @@
           <p>Status</p>
             <div class="index-card-status-elements">
               <% if b.status == "pending" %>
-                <p class="no-margin"> Challenge pending <p>
+                <p class="no-margin">  Bet Pending <p>
               <% elsif b.status == "confirmed" %>
-                <p class="no-margin"> Challenge live <p>
+                <p class="no-margin">  Bet Live <p>
               <% elsif b.status == "unvalidated" %>
-                <p class="no-margin"> Outcome unverified <p>
+                <p class="no-margin">  Bet Unverified <p>
               <% elsif b.status == "finished" %>
-                <p class="no-margin"> Challenge finished <p>
+                <p class="no-margin">  Bet Finished <p>
               <% end  %>
             </div>
         </div>
