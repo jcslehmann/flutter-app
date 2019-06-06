@@ -847,18 +847,11 @@
 
 
 <script>
-      <% @newTime = @bet.deadline.strftime("%b%e %Y %l %M %S").to_s.gsub('&quot;', '')
-      @formattedTime = @newTime.split.insert(2, ',').insert(5, ':').insert(7, ':').join.chars.insert(3, " ").insert(6, " ").insert(11, " "). join
-      %>
+
       // Set the date we're counting down to
-      // var countDownDate = new Date('<%= @formattedTime %>').getTime();
-      // var deadline = new Date('<%=@bet.deadline %>');
-      // var dateToday = new Date();
       var countDownDate = new Date('<%=@bet.deadline %>').getTime();
       var now = new Date().getTime();
-      // console.log(deadline);
-      // console.log(dateToday);
-      // if( )
+
       // Update the count down every 1 second
       var x = setInterval(function() {
         // Get today's date and time
