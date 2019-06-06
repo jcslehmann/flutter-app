@@ -111,17 +111,6 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
 
-stake = 30
-odds = 12
-proposition = "Benjamin becomes Flutter CTO"
-deadline =  "Aug 15, 2019, 12:00:00"
-proposer = user7
-likes =[Like.new(user_id: 1), Like.new(user_id: 3), Like.new(user_id: 6)]
-receiver = user2
-status = "confirmed"
-Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
-    proposition: proposition, proposer: proposer,
-    receiver: receiver, status: status)
 
 stake = 20
 odds = 3
@@ -153,14 +142,15 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     receiver: receiver, status: status, proposer_verdict: proposer_verdict)
 
 
-stake = 20
-odds = 1.1
-proposition = "Royden raise $10m in seed funding"
-deadline =  "Jun 7, 2020, 18:00:00"
-proposer = user3
+
+stake = 30
+odds = 12
+proposition = "Benjamin becomes Flutter CTO"
+deadline =  "Aug 15, 2019, 12:00:00"
+proposer = user7
+likes =[Like.new(user_id: 1), Like.new(user_id: 3), Like.new(user_id: 6)]
 receiver = user2
-likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 3)]
-status = "pending"
+status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
@@ -180,16 +170,17 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 
 stake = 20
-odds = 200
-proposition = "FlatIron buys Le Wagon"
+odds = 1.1
+proposition = "Royden raise $10m in seed funding"
 deadline =  "Jun 7, 2020, 18:00:00"
-proposer = user1
-receiver = user7
-likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
-status = "pending"
+proposer = user3
+receiver = user2
+likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 3)]
+status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
+
 
 
 stake = 30
