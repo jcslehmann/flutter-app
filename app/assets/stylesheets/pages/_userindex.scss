@@ -1,4 +1,4 @@
-.cards-container {
+.cards-container-2 {
   background-color: white;
   padding-bottom: 20px;
   padding-left: 20px;
@@ -9,7 +9,7 @@
 
 
 
-.card {
+.card-2 {
   background-color: white;
   border-radius: 10px;
   width: 100%;
@@ -26,7 +26,7 @@
   position: relative;
 }
 
-.card-topline {
+.card-topline-2 {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -36,22 +36,22 @@
     margin: -1px;
   }
 
-  .card-users {
+  .card-users-2 {
     color: $gray;
     font-size: 14px;
     font-weight: 400;
 
-    .user-colored-name {
+    .user-colored-name-2 {
       color: $blue-purple;
       font-size: 14px;
       font-weight: 400;
     }
   }
 
-  .card-ranking {
+  .card-ranking-2 {
     width: 40px;
     height: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: $light-purple;
     color: $blue-purple;
     text-align: center;
@@ -61,7 +61,7 @@
   }
 }
 
-.card-fullname {
+.card-fullname-2 {
   justify-content: left;
   p {
     text-overflow: ellipsis;
@@ -73,7 +73,7 @@
   }
 }
 
-.card-bottomline {
+.card-bottomline-2 {
   top: -15px;
   display: flex;
   justify-content: space-between;
@@ -82,7 +82,7 @@
 }
 
 
-  .card-info {
+  .card-info-2 {
     font-weight:300;
     color: $gray;
     font-size:10px;
@@ -97,15 +97,15 @@
     }
 
 
-.rankings-container {
+.rankings-container-2 {
   border-radius: 10px;
 }
 
-.personal-ranking {
+.personal-ranking-2 {
   height: 75px;
   width: 100%;
   text-align: center;
-  background: linear-gradient(35deg, #6c5ce7 70%, rgba(107, 91, 230, 0.2));
+  background-color: $blue-purple;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
   display: flex;
@@ -113,12 +113,14 @@
   justify-content: center;
 }
 
-.personal-ranking-text {
-  color: #fff;
+.personal-ranking-text-2 {
+  color: $white;
   margin: 0;
+  font-weight: 400;
+  font-size: 16px;
 }
 
-.light {
+.light-2 {
   background-color: white;
   width: 100%;
   height: 70px;
@@ -129,8 +131,8 @@
   padding: 0 10px;
 }
 
-.dark {
-  background-color: rgba(107, 91, 230, 0.08);
+.dark-2 {
+  background-color: $light-purple;
   width: 100%;
   height: 70px;
   display: flex;
@@ -140,7 +142,7 @@
   padding: 0 10px;
 }
 
-.ranking-left {
+.ranking-left-2 {
   display: flex;
   width: 30%;
   align-items: center;
@@ -148,22 +150,30 @@
 
 }
 
-.no-margin {
+.no-margin-2 {
   margin: 0;
+  font-weight: 500;
+  color: $gray;
+  font-size: 12px;
 }
 
-.ranking-number {
+.ranking-number-2 {
   width: 30px;
   height: 20px;
   border-radius: 8px;
   background-color: $blue-purple;
-  color: #fff;
+  color: $white;
   text-align: center;
   font-size: 10px;
-  font-weight: 300;
+  font-weight: 500;
   padding-top: 2px;
 }
 
+.ranking-right-2 {
+  color: $gray;
+  font-weight: 500;
+  font-size: 12px;
+}
 
 
 
