@@ -1,6 +1,7 @@
 <%= render 'shared/betnavbarshow'%>
 
 <div class="bet-show-container">
+        <span class="javascript-cheat"><%=@bet.deadline %></span>
 
   <% if current_user == @bet.receiver && @bet.status == "pending" %>
 

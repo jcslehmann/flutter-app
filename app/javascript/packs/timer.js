@@ -1,6 +1,7 @@
  // Set the date we're counting down to
     const timer = () => {
-      var countDownDate = new Date('<%=@bet.deadline %>').getTime();
+      const deadline = document.querySelector('.javascript-cheat').innerText;
+      var countDownDate = new Date(deadline).getTime();
       var now = new Date().getTime();
 
       // Update the count down every 1 second
