@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   def home
     @live_bets = []
     Bet.all.each do |b|
-      if b.status == "confirmed" || b.status == "finished" && current_user != b.proposer || current_user != b.receiver
+      if (b.status == "confirmed" || b.status == "finished") && (current_user != b.proposer && current_user != b.receiver)
         @live_bets << b
       end
     end
