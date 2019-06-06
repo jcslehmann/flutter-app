@@ -35,12 +35,12 @@
       <button class="btn btn-outline-primary button-mar btn-sm" type="button" id="b-button-two">Back</button>
     </div>
     <div class="receiver no-display">
-      <p class="form-title">Search for challenger</p>
+      <p class="form-title">Search for friend</p>
       <br>
       <br>
       <%= select_tag "receiver", options_from_collection_for_select(
         User.all,
-        :id, :email),
+        :id, :username),
         class: 'select' %>
       <br>
       <br>
