@@ -142,6 +142,18 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     receiver: receiver, status: status, proposer_verdict: proposer_verdict)
 
 
+stake = 10
+odds = 99
+proposition = "Liam will overcome Jeff Bezos"
+deadline =  "Jun 8, 2021, 12:00:00"
+proposer = user2
+receiver = user4
+likes = [Like.new(user_id: 1), Like.new(user_id: 5), Like.new(user_id: 6)]
+status = "confirmed"
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status)
+
 
 stake = 30
 odds = 12
@@ -171,7 +183,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 20
 odds = 1.1
-proposition = "Royden raise $10m in seed funding"
+proposition = "Royden will raise $10m in seed funding"
 deadline =  "Jun 7, 2020, 18:00:00"
 proposer = user3
 receiver = user2
@@ -195,41 +207,36 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
 
-
-stake = 10
-odds = 4
-proposition = "Man City will win premiership"
-deadline =  "May 7, 2019, 18:00:00"
-proposer = user6
-receiver = user2
-likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
-status = "finished"
-proposer_verdict = true
-receiver_verdict = true
-final_outcome = true
-consensus_reached = true
-Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
-    proposition: proposition, proposer: proposer,
-    receiver: receiver, status: status, proposer_verdict: proposer_verdict, receiver_verdict: receiver_verdict,
-    final_outcome: final_outcome, consensus_reached: consensus_reached)
-
-
 stake = 20
-odds = 6
-proposition = "Liam will be last man standing"
-deadline =  "Jun 8, 2019, 12:00:00"
-proposer = user2
-receiver = user4
-likes = [Like.new(user_id: 1), Like.new(user_id: 5), Like.new(user_id: 6)]
+odds = 60
+proposition = "This will be the hottest summer ever"
+deadline =  "Oct 10, 2019, 18:00:00"
+proposer = user3
+receiver = user6
+likes = [Like.new(user_id: 1), Like.new(user_id: 2)]
 status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
 
 
+stake = 10
+odds = 50
+proposition = "Ants will take over the world"
+deadline =  "May 7, 2030, 18:00:00"
+proposer = user6
+receiver = user2
+likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
+status = "confirmed"
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status, proposer_verdict: proposer_verdict, receiver_verdict: receiver_verdict)
+
+
+
 stake = 30
 odds = 5
-proposition = "England will win cricket world cup"
+proposition = "England will win the Cricket World Cup"
 deadline =  "July 7, 2019, 18:00:00"
 proposer = user1
 receiver = user7
@@ -239,18 +246,6 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
 
-
-stake = 20
-odds = 100
-proposition = "Chelsea will sign Messi"
-deadline =  "Aug 7, 2019, 18:00:00"
-proposer = user3
-receiver = user6
-likes = [Like.new(user_id: 1), Like.new(user_id: 2)]
-status = "confirmed"
-Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
-    proposition: proposition, proposer: proposer,
-    receiver: receiver, status: status)
 
 
 
