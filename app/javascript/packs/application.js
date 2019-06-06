@@ -12,6 +12,7 @@ import { backButtonFirst } from './form2';
 import { backButtonSecond } from './form2';
 import { backButtonThird } from './form2';
 import { flat } from '../plugins/flatpickr';
+import { timer } from './timer';
 
 // buttonFirst();
 // buttonSecond();
@@ -34,15 +35,15 @@ const setPath = () => {
 $(document).ready(() => {
   setPath();
   if (/\/users\/[1-9]*\/bets\/new/.test(url)) {
-  buttonFirst();
-  buttonSecond();
-  buttonThird();
-  backButtonFirst();
-  backButtonSecond();
-  backButtonThird();
-  loadSelectForm();
-  initSlider();
-  initScndSlider();
-  flat();
+    buttonFirst();
+    buttonSecond();
+    buttonThird();
+    backButtonFirst();
+    backButtonSecond();
+    backButtonThird();
+    loadSelectForm();
+    initSlider();
+    initScndSlider();
+    flat();
   }
 })
