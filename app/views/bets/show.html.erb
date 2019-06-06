@@ -276,10 +276,10 @@
 
       <div class="btn-group-vertical">
         <div class="bet-validation">
-          <%= link_to 'Validate', bet_path(@bet, proposer_verdict_true: true), class: 'btn btn-flutter', method: :patch %>
+          <%= link_to 'It happened', bet_path(@bet, proposer_verdict_true: true), class: 'btn verification-btn-flutter', method: :patch %>
         </div>
         <div class="bet-invalidation">
-            <%= link_to 'Invalidate', bet_path(@bet, proposer_verdict_false: true), class: 'btn btn-flutter-alt', method: :patch %>
+            <%= link_to 'It did not happen', bet_path(@bet, proposer_verdict_false: true), class: 'btn verification-btn-flutter-alt', method: :patch %>
         </div>
      </div>
   <% end  %>
@@ -419,10 +419,10 @@
 
       <div class="btn-group-vertical">
         <div class="bet-validation">
-          <%= link_to 'Validate', bet_path(@bet, receiver_verdict_true: true), class: 'btn btn-flutter', method: :patch %>
+          <%= link_to 'It happened', bet_path(@bet, receiver_verdict_true: true), class: 'btn verification-btn-flutter', method: :patch %>
         </div>
         <div class="bet-invalidation">
-            <%= link_to 'Invalidate', bet_path(@bet, receiver_verdict_false: true), class: 'btn btn-flutter-alt', method: :patch %>
+            <%= link_to 'It did not happen', bet_path(@bet, receiver_verdict_false: true), class: 'btn verification-btn-flutter-alt', method: :patch %>
         </div>
      </div>
   <% end  %>
@@ -490,10 +490,10 @@
 
          </div>
 
-         <div class="bet_message">
-          <%= image_tag "stopwatch.png", class: "bet_message_icon" %>
-          <p class="medium-text blue-purple text-center"> Waiting on <%= @bet.proposer.first_name %> to validate </p>
-        </div>
+           <div class="bet_message">
+            <%= image_tag "stopwatch.png", class: "bet_message_icon" %>
+            <p class="medium-text blue-purple text-center"> Waiting on <%= @bet.proposer.first_name %> to validate </p>
+             </div>
   <% end  %>
 
   <% if @bet.status == "finished" && current_user == @bet.proposer && @bet.final_outcome == true  %>
