@@ -183,7 +183,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 20
 odds = 1.1
-proposition = "Royden will raise $10m in seed funding"
+proposition = "Royden will raise a $10m seed round"
 deadline =  "Jun 7, 2020, 18:00:00"
 proposer = user3
 receiver = user2
@@ -221,7 +221,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 
 stake = 10
-odds = 50
+odds = 999
 proposition = "Ants will take over the world"
 deadline =  "May 7, 2030, 18:00:00"
 proposer = user6
