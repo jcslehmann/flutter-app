@@ -223,6 +223,46 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     final_outcome: final_outcome, consensus_reached: consensus_reached)
 
 
+stake = 20
+odds = 6
+proposition = "Liam will be last man standing"
+deadline =  "Jun 8, 2019, 12:00:00"
+proposer = user2
+receiver = user4
+likes = [Like.new(user_id: 1), Like.new(user_id: 5), Like.new(user_id: 6)]
+status = "confirmed"
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status)
+
+
+stake = 30
+odds = 5
+proposition = "England will win cricket world cup"
+deadline =  "July 7, 2019, 18:00:00"
+proposer = user1
+receiver = user7
+likes = [Like.new(user_id: 2), Like.new(user_id: 4), Like.new(user_id: 5)]
+status = "confirmed"
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status)
+
+
+stake = 20
+odds = 100
+proposition = "Chelsea will sign Messi"
+deadline =  "Aug 7, 2019, 18:00:00"
+proposer = user3
+receiver = user6
+likes = [Like.new(user_id: 1), Like.new(user_id: 2)]
+status = "confirmed"
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status)
+
+
+
 
 puts "Bets created!"
 
