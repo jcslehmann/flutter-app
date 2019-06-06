@@ -46,4 +46,9 @@ $(document).ready(() => {
     initScndSlider();
     flat();
   }
+  if (/\/bets\/[1-9]*/.test(url)) {
+    console.log('fghj')
+    timer();
+  }
 })
+
