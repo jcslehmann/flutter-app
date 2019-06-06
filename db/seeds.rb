@@ -73,7 +73,7 @@ puts "Creating bets!"
 stake = 100
 odds = 1.5
 proposition = "Flutter will not break on demo day"
-deadline =  Faker::Date.forward(1)
+deadline =  "Jun 7, 2019, 22:00:00"
 proposer = user5
 receiver = user4
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 6)]
@@ -85,7 +85,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 10
 odds = 30
 proposition = "Tottenham will win Champions League"
-deadline =  Faker::Date.backward(1)
+deadline =  "May 15, 2019, 22:00:00"
 proposer = user6
 receiver = user5
 proposer_verdict = false
@@ -102,7 +102,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 20
 odds = 1.4
 proposition = "Flatiron will buy Le Wagon"
-deadline =  Faker::Date.forward(300)
+deadline =  "Jan 5, 2021, 15:37:25"
 proposer = user4
 receiver = user5
 likes = [Like.new(user_id: 2), Like.new(user_id: 6), Like.new(user_id: 3)]
@@ -114,7 +114,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 30
 odds = 12
 proposition = "Benjamin becomes Flutter CTO"
-deadline =  Faker::Date.forward(50)
+deadline =  "Aug 15, 2019, 12:00:00"
 proposer = user7
 likes =[Like.new(user_id: 1), Like.new(user_id: 3), Like.new(user_id: 6)]
 receiver = user2
@@ -126,7 +126,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 20
 odds = 3
 proposition = "James will give up smoking"
-deadline =  Faker::Date.forward(300)
+deadline =  "Jun 6, 2020, 12:00:00"
 proposer = user4
 likes = [Like.new(user_id: 2), Like.new(user_id: 3), Like.new(user_id: 5)]
 receiver = user7
@@ -139,7 +139,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 14
 odds = 2
 proposition = "Flutter will build a messaging feature"
-deadline =  Faker::Date.backward(1)
+deadline =  "Jun 6, 2019, 18:00:00"
 proposer = user3
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6)]
 receiver = user5
@@ -155,8 +155,8 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 20
 odds = 1.1
-proposition = "Royden will get $10m in funding"
-deadline =  Faker::Date.forward(364)
+proposition = "Royden raise $10m in seed funding"
+deadline =  "Jun 7, 2020, 18:00:00"
 proposer = user3
 receiver = user2
 likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 3)]
@@ -169,7 +169,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 20
 odds = 4
 proposition = "There will be a second referendum"
-deadline =  Faker::Date.forward(150)
+deadline =  "Jan 7, 2019, 18:00:00"
 proposer = user2
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
 receiver = user6
@@ -182,7 +182,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 20
 odds = 200
 proposition = "FlatIron buys Le Wagon"
-deadline =  Faker::Date.forward(360)
+deadline =  "Jun 7, 2020, 18:00:00"
 proposer = user1
 receiver = user7
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
@@ -195,7 +195,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 30
 odds = 2
 proposition = "England will win the Euros"
-deadline =  Faker::Date.forward(300)
+deadline =  "Jun 7, 2020, 18:00:00"
 proposer = user6
 receiver = user2
 likes = [Like.new(user_id: 3), Like.new(user_id: 6), Like.new(user_id: 1), Like.new(user_id: 7), Like.new(user_id: 5)]
@@ -208,7 +208,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 10
 odds = 4
 proposition = "Man City will win premiership"
-deadline =  Faker::Date.backward(30)
+deadline =  "May 7, 2019, 18:00:00"
 proposer = user6
 receiver = user2
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6), Like.new(user_id: 3)]
