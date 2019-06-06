@@ -13,13 +13,36 @@ import { backButtonSecond } from './form2';
 import { backButtonThird } from './form2';
 import { flat } from '../plugins/flatpickr';
 
-buttonFirst();
-buttonSecond();
-buttonThird();
-backButtonFirst();
-backButtonSecond();
-backButtonThird();
-loadSelectForm();
-initSlider();
-initScndSlider();
-flat();
+// buttonFirst();
+// buttonSecond();
+// buttonThird();
+// backButtonFirst();
+// backButtonSecond();
+// backButtonThird();
+// loadSelectForm();
+// initSlider();
+// initScndSlider();
+// flat();
+
+const url = window.location.pathname;
+
+const setPath = () => {
+  $(`#myDropdown a[href="${url}"] .btn`).addClass('changefill');
+  $(`#myDropdown a[href="${url}"] .center-btn`).addClass('changefill2')
+}
+
+$(document).ready(() => {
+  setPath();
+  if (/\/users\/[1-9]*\/bets\/new/.test(url)) {
+  buttonFirst();
+  buttonSecond();
+  buttonThird();
+  backButtonFirst();
+  backButtonSecond();
+  backButtonThird();
+  loadSelectForm();
+  initSlider();
+  initScndSlider();
+  flat();
+  }
+})

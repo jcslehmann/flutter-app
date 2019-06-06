@@ -4,6 +4,7 @@
   bottom: 2px;
   left: 0;
   position: fixed;
+  margin-right: 20px;
 
 }
 
@@ -42,7 +43,7 @@
 
 .dropdown-content {
   display: none;
-  justify-content: space-between;
+  justify-content: center;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -56,6 +57,11 @@
     width: 50px;
     display: block;
     fill: white;
+    }
+
+  .profile-button {
+    height: 43px;
+    width: 43px;
     }
   .svg-btn {
     width: 50px;
@@ -95,7 +101,7 @@
   }
 .dropdown-content a {
   color: $white;
-  padding: 12px 0px;
+  padding: 12px 12px;
   text-decoration: none;
   display: block;
 }
