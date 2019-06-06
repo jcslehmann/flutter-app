@@ -1,0 +1,12 @@
+<div class="navbar navbar-expand-sm navbar-light bet-navbar-lewagon", id="bet-navbar">
+  <div class="content">
+    <div class="logo">
+      <%= link_to bets_path do %>
+      <i class="fas fa-chevron-left" alt="Back Arrow" style="font-size: 16px;"></i>
+      <% end %>
+    </div>
+    <div class="balance">
+      <span>You currently have </span> <span class="colored-balance"><%= @user.balance%> credits</span>
+    </div>
+  </div>
+</div>
