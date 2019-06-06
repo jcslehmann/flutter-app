@@ -851,7 +851,9 @@
       @formattedTime = @newTime.split.insert(2, ',').insert(5, ':').insert(7, ':').join.chars.insert(3, " ").insert(6, " ").insert(11, " "). join
       %>
       // Set the date we're counting down to
-      var countDownDate = new Date('<%= @formattedTime %>').getTime();
+      // var countDownDate = new Date('<%= @formattedTime %>').getTime();
+      var countDownDate = new Date('<%=@bet.deadline %>').getTime();
+
 
       // Update the count down every 1 second
       var x = setInterval(function() {
