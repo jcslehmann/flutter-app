@@ -6,7 +6,7 @@ const initSlider = () => {
   console.log(slider)
   if (slider) {
     noUiSlider.create(slider, {
-      start: [3],
+      start: [0],
       step: 1,
       connect: "lower",
       range: {

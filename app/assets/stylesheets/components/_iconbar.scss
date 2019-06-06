@@ -42,7 +42,7 @@
 
 .dropdown-content {
   display: none;
-  justify-content: space-between;
+  justify-content: center;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -95,7 +95,7 @@
   }
 .dropdown-content a {
   color: $white;
-  padding: 12px 0px;
+  padding: 12px 12px;
   text-decoration: none;
   display: block;
 }
