@@ -139,7 +139,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 stake = 14
 odds = 2
 proposition = "Flutter will build a messaging feature"
-deadline =  "Jun 6, 2019, 18:00:00"
+deadline =  "Jun 6, 2019, 14:00:00"
 proposer = user3
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6)]
 receiver = user5
