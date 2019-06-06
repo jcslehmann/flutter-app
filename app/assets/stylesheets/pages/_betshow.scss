@@ -3,12 +3,14 @@
 // *********************************************************
 
 .tiny-text {
-  font-size: 12px;
+  font-weight:500;
+  color: $gray;
+  font-size:12px;
 }
 
 .small-text {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .medium-text {
@@ -17,15 +19,11 @@
 }
 
 .blue-purple {
-  color: #6c5ce7;
+  color: $blue-purple;
 }
 
 .light-grey {
   color: rgba(180,180,180,.8);
-}
-
-.dark-grey {
-  color: $gray;
 }
 
 .dark-gray {
@@ -33,7 +31,7 @@
 }
 
 .grey {
-  color: rgba(120,120,120,1);
+  color: $gray;
 }
 
 .black {
@@ -100,7 +98,8 @@
   align-items: flex-end;
 
   .bet-card-likers {
-    font-weight:200;
+    font-weight:500;
+    color: $gray;
     font-size:12px;
     display: flex;
     flex-direction: column;

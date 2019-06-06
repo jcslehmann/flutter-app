@@ -1,20 +1,20 @@
 <%= render 'shared/navbar' %>
 
-<div class="cards-container">
-  <div class="rankings-container">
-    <div class="personal-ranking">
-      <p class="personal-ranking-text">You are currently ranked #<%= @user.ranking %></p>
+<div class="cards-container-2">
+  <div class="rankings-container-2">
+    <div class="personal-ranking-2">
+      <p class="personal-ranking-text-2">You are currently ranked #<%= @user.ranking %></p>
     </div>
     <% counter = 0 %>
     <% @sorted_usersbyrank.each do |user| %>
       <% counter +=1 %>
-      <div class=<%= counter.even? ? "light" : "dark" %> >
-        <div class="ranking-left">
-          <p class="no-margin ranking-number"><%=user.ranking%></p>
+      <div class=<%= counter.even? ? "light-2" : "dark-2" %> >
+        <div class="ranking-left-2">
+          <p class="no-margin-2 ranking-number-2"><%=user.ranking%></p>
           <%= cl_image_tag user.photo, height: 50, crop: :fill, class: "avatar-bordered" %>
         </div>
-        <p class="no-margin"><%= user.first_name %> <%= user.last_name  %></p>
-        <div class="ranking-right">
+        <p class="no-margin-2"><%= user.first_name %> <%= user.last_name  %></p>
+        <div class="ranking-right-2">
           <span> won: <%= user.wins %> | lost: <%= user.loses %></span>
         </div>
       </div>
