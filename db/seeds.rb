@@ -26,37 +26,37 @@ puts "Created #{user1.email} as an admin!"
 
 puts "Creating users..."
 
-balance = (1..50).to_a.sample
+balance = 20
 user2 = User.new(first_name: "Liam", last_name: "Garrison", username: "javascriptliam",
   password: 'password', balance: balance, remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/vv16vr7j2a36wnqcpdbw.jpg", ranking: 1, wins: 18, loses: 2)
 user2.email = "liam@email.com"
 user2.save!
 
-balance = (1..50).to_a.sample
+balance = 30
 user3 = User.new(first_name: "Jan", last_name: "Linhart", username: "czechjan",
   password: 'password', balance: balance, remote_photo_url: "https://avatars2.githubusercontent.com/u/46406611?v=4", ranking: 2, wins: 17, loses: 6)
 user3.email = "jan@email.com"
 user3.save!
 
-balance = (1..50).to_a.sample
+balance = 20
 user4 = User.new(first_name: "James", last_name: "Bates", username: "genzjames",
   password: 'password', balance: balance, remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/s2fig1e9yccktv8qrxm0.jpg", ranking: 7, wins: 3, loses: 27)
 user4.email = "james@email.com"
 user4.save!
 
-balance = (1..50).to_a.sample
+balance = 80
 user5 = User.new(first_name: "Julius", last_name: "Lehmann", username: "scandijules",
   password: 'password', balance: balance, remote_photo_url: "https://avatars1.githubusercontent.com/u/48035034?v=4", ranking: 4, wins: 15, loses: 9)
 user5.email = "julius@email.com"
 user5.save!
 
-balance = (1..50).to_a.sample
+balance = 40
 user6 = User.new(first_name: "Harsh", last_name: "Patel", username: "speedyharsh",
   password: 'password', balance: balance, remote_photo_url: "https://avatars0.githubusercontent.com/u/45178969?v=4", ranking: 5, wins: 14, loses: 13)
 user6.email = "#{user6.first_name}@email.com"
 user6.save!
 
-balance = (1..50).to_a.sample
+balance = 20
 user7 = User.new(first_name: "Hussein", last_name: "Daher", username: "backendninja",
   password: 'password', balance: balance, remote_photo_url: "https://avatars1.githubusercontent.com/u/47718583?v=4", ranking: 6, wins: 15, loses: 20)
 user7.email = "#{user7.first_name}@email.com"
@@ -71,9 +71,9 @@ puts "Creating bets!"
 
 
 stake = 100
-odds = 1.3
-proposition = "Flutter will secure funding"
-deadline =  Faker::Date.forward(10)
+odds = 1.5
+proposition = "Flutter will not break on demo day"
+deadline =  Faker::Date.forward(1)
 proposer = user5
 receiver = user4
 likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 6)]
@@ -84,9 +84,9 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 10
 odds = 30
-proposition = "Chelsea will win Champions League"
-deadline =  Faker::Date.backward(20)
-proposer = user2
+proposition = "Tottenham will win Champions League"
+deadline =  Faker::Date.backward(1)
+proposer = user6
 receiver = user5
 proposer_verdict = false
 receiver_verdict = false
@@ -101,8 +101,8 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 20
 odds = 1.4
-proposition = "Phelim will lose at darts"
-deadline =  Faker::Date.forward(1)
+proposition = "Flatiron will buy Le Wagon"
+deadline =  Faker::Date.forward(300)
 proposer = user4
 receiver = user5
 likes = [Like.new(user_id: 2), Like.new(user_id: 6), Like.new(user_id: 3)]
@@ -153,22 +153,9 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     receiver: receiver, status: status, proposer_verdict: proposer_verdict)
 
 
-stake = 300
-odds = 3
-proposition = "Royden will go bankrupt"
-deadline =  Faker::Date.forward(200)
-proposer = user6
-likes = [Like.new(user_id: 1), Like.new(user_id: 4), Like.new(user_id: 5)]
-receiver = user2
-status = "confirmed"
-Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
-    proposition: proposition, proposer: proposer,
-    receiver: receiver, status: status)
-
-
 stake = 20
 odds = 1.1
-proposition = "Royden will get $100m in seed funding"
+proposition = "Royden will get $10m in funding"
 deadline =  Faker::Date.forward(364)
 proposer = user3
 receiver = user2
@@ -180,7 +167,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 
 stake = 20
-odds = 2
+odds = 4
 proposition = "There will be a second referendum"
 deadline =  Faker::Date.forward(150)
 proposer = user2

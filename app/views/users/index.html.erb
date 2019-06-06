@@ -3,7 +3,7 @@
 <div class="cards-container">
   <div class="rankings-container">
     <div class="personal-ranking">
-      <p class="personal-ranking-text">You are currently in <%= @user.ranking %> place.</p>
+      <p class="personal-ranking-text">You are currently ranked #<%= @user.ranking %></p>
     </div>
     <% counter = 0 %>
     <% @sorted_usersbyrank.each do |user| %>
