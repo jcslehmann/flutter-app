@@ -84,7 +84,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 10
 odds = 30
-proposition = "Tottenham will win Champions League"
+proposition = "PSG will win Champions League"
 deadline =  "May 15, 2019, 22:00:00"
 proposer = user6
 receiver = user5
