@@ -70,6 +70,18 @@ puts "Created users..."
 puts "Creating bets!"
 
 
+stake = 20
+odds = 1.4
+proposition = "Flatiron will buy Le Wagon"
+deadline =  "Jan 5, 2021, 15:37:25"
+proposer = user4
+receiver = user5
+likes = [Like.new(user_id: 2), Like.new(user_id: 6), Like.new(user_id: 3)]
+status = "pending"
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status)
+
 stake = 100
 odds = 1.5
 proposition = "Flutter will not break on demo day"
@@ -81,6 +93,24 @@ status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
+
+
+stake = 14
+odds = 2
+proposition = "Flutter will build a messaging feature"
+deadline =  "Jun 6, 2019, 14:00:00"
+proposer = user3
+likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6)]
+receiver = user5
+status = "unvalidated"
+proposer_verdict = nil
+receiver_verdict = nil
+final_outcome = nil
+consensus_reached = nil
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status, proposer_verdict: proposer_verdict)
+
 
 stake = 10
 odds = 30
@@ -99,18 +129,6 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     receiver: receiver, status: status, proposer_verdict: proposer_verdict, receiver_verdict: receiver_verdict,
     final_outcome: final_outcome, consensus_reached: consensus_reached)
 
-stake = 20
-odds = 1.4
-proposition = "Flatiron will buy Le Wagon"
-deadline =  "Jan 5, 2021, 15:37:25"
-proposer = user4
-receiver = user5
-likes = [Like.new(user_id: 2), Like.new(user_id: 6), Like.new(user_id: 3)]
-status = "pending"
-Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
-    proposition: proposition, proposer: proposer,
-    receiver: receiver, status: status)
-
 
 stake = 20
 odds = 3
@@ -124,22 +142,6 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status.sample)
 
-
-stake = 14
-odds = 2
-proposition = "Flutter will build a messaging feature"
-deadline =  "Jun 6, 2019, 14:00:00"
-proposer = user3
-likes = [Like.new(user_id: 1), Like.new(user_id: 2), Like.new(user_id: 7), Like.new(user_id: 6)]
-receiver = user5
-status = "unvalidated"
-proposer_verdict = nil
-receiver_verdict = nil
-final_outcome = nil
-consensus_reached = nil
-Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
-    proposition: proposition, proposer: proposer,
-    receiver: receiver, status: status, proposer_verdict: proposer_verdict)
 
 
 stake = 10
