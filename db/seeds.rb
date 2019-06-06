@@ -221,7 +221,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 
 stake = 10
-odds = 999
+odds = 978
 proposition = "Ants will take over the world"
 deadline =  "May 7, 2030, 18:00:00"
 proposer = user6
