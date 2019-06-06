@@ -157,7 +157,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 30
 odds = 12
-proposition = "Benjamin becomes Flutter CTO"
+proposition = "Benjamin will become Flutter CTO"
 deadline =  "Aug 15, 2019, 12:00:00"
 proposer = user7
 likes =[Like.new(user_id: 1), Like.new(user_id: 3), Like.new(user_id: 6)]
