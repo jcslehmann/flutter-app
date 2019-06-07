@@ -16,7 +16,7 @@ const initSlider = () => {
     });
     slider.noUiSlider.on('update', () => {
       const currentValue = Math.round(slider.noUiSlider.get());
-      priceSliderText.innerHTML = currentValue + " " + "credits";
+      priceSliderText.innerHTML ="£" + currentValue ;
       priceSliderInput.value = currentValue;
     });
   }
