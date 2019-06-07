@@ -175,7 +175,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
 
-stake = 20
+stake = 25
 odds = 3
 proposition = "Ana will slap Katherine"
 deadline =  "July 8, 2019, 18:00:00"
