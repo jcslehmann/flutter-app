@@ -19,7 +19,7 @@ Bet.destroy_all
 puts 'Making an admin!'
 
 # Admin User
-user1 = User.create!(username: "David", first_name: "David", last_name: "Gordon", password: "password", remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/qyzyudrq6jxt2pk6ydbr.jpg", email: "david@email.com", balance: 100, admin: true, ranking: 3, wins: 16, loses: 10)
+user1 = User.create!(username: "asiamu", first_name: "Asia", last_name: "Mu", password: "password", remote_photo_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/xervi21kfyzojxtlcxaf.jpg", email: "david@email.com", balance: 100, admin: true, ranking: 3, wins: 16, loses: 10)
 
 puts "Created #{user1.email} as an admin!"
 # Normal Users...
@@ -57,8 +57,8 @@ user6.email = "#{user6.first_name}@email.com"
 user6.save!
 
 balance = 20
-user7 = User.new(first_name: "Hussein", last_name: "Daher", username: "backendninja",
-  password: 'password', balance: balance, remote_photo_url: "https://avatars1.githubusercontent.com/u/47718583?v=4", ranking: 6, wins: 15, loses: 20)
+user7 = User.new(first_name: "Maria", last_name: "Rojas", username: "mariacolombia",
+  password: 'password', balance: balance, remote_photo_url: "https://avatars3.githubusercontent.com/u/47041307?v=4", ranking: 6, wins: 15, loses: 20)
 user7.email = "#{user7.first_name}@email.com"
 user7.save!
 
