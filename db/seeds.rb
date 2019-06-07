@@ -152,7 +152,7 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
 
 stake = 10
 odds = 99
-proposition = "Liam will overcome Jeff Bezos"
+proposition = "Liam will eat Jeff Bezos"
 deadline =  "Jun 8, 2021, 12:00:00"
 proposer = user2
 receiver = user4
