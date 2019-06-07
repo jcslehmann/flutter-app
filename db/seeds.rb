@@ -65,7 +65,7 @@ user7.save!
 balance = 20
 user8 = User.new(first_name: "Ana", last_name: "Ghidelli", username: "anabrasilia",
   password: 'password', balance: balance, remote_photo_url: "https://avatars3.githubusercontent.com/u/48299174?v=4", ranking: 8, wins: 2, loses: 37)
-user8.email = "#{user7.first_name}@email.com"
+user8.email = "#{user8.first_name}@email.com"
 user8.save!
 
 
