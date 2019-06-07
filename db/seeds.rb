@@ -62,6 +62,12 @@ user7 = User.new(first_name: "Maria", last_name: "Rojas", username: "mariacolomb
 user7.email = "#{user7.first_name}@email.com"
 user7.save!
 
+balance = 20
+user8 = User.new(first_name: "Ana", last_name: "Ghidelli", username: "anabrasilia",
+  password: 'password', balance: balance, remote_photo_url: "https://avatars3.githubusercontent.com/u/48299174?v=4", ranking: 8, wins: 2, loses: 37)
+user8.email = "#{user7.first_name}@email.com"
+user8.save!
+
 
 puts "Created users..."
 
@@ -169,6 +175,18 @@ Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
 
+stake = 20
+odds = 3
+proposition = "Ana will slap Katherine"
+deadline =  "July 8, 2019, 18:00:00"
+proposer = user8
+receiver = user3
+likes = [Like.new(user_id: 2), Like.new(user_id: 4), Like.new(user_id: 5)]
+status = "confirmed"
+Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
+    proposition: proposition, proposer: proposer,
+    receiver: receiver, status: status)
+
 
 stake = 20
 odds = 4
@@ -194,7 +212,6 @@ status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
-
 
 
 stake = 30
@@ -247,8 +264,6 @@ status = "confirmed"
 Bet.create!(stake: stake, odds: odds, deadline: deadline, likes: likes,
     proposition: proposition, proposer: proposer,
     receiver: receiver, status: status)
-
-
 
 
 
